@@ -1,0 +1,1 @@
+../../../DOUSNSSharing/DOUSNSSharing/DOUSNSSharing/Source/Core/Model/DOUOAuth2Credential.h

@@ -1,0 +1,1 @@
+../../../DOUSNSSharing/DOUSNSSharing/DOUSNSSharing/Source/Core/Impl/Renren/DOUAuthorizationRenrenServiceHandler.h

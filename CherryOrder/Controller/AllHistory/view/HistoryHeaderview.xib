@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Yf6-Ya-aT6" customClass="HistoryHeaderview">
+            <rect key="frame" x="0.0" y="0.0" width="459" height="235"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lh8-Pl-2TY">
+                    <rect key="frame" x="29" y="66" width="139" height="90"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="FZf-ZD-RZ5"/>
+                        <constraint firstAttribute="height" constant="40" id="hHZ-zY-dfR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYc-BS-Qlk">
+                    <rect key="frame" x="273" y="73" width="139" height="90"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Ewy-pv-Oel"/>
+                        <constraint firstAttribute="width" constant="100" id="dEp-bM-MnP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="lh8-Pl-2TY" firstAttribute="centerY" secondItem="Yf6-Ya-aT6" secondAttribute="centerY" id="Ce4-dN-Sez"/>
+                <constraint firstItem="uYc-BS-Qlk" firstAttribute="centerY" secondItem="Yf6-Ya-aT6" secondAttribute="centerY" id="LRs-dh-uGy"/>
+                <constraint firstItem="lh8-Pl-2TY" firstAttribute="leading" secondItem="Yf6-Ya-aT6" secondAttribute="leading" constant="29" id="dnM-cH-HDs"/>
+                <constraint firstAttribute="trailing" secondItem="uYc-BS-Qlk" secondAttribute="trailing" constant="29" id="fyB-y6-rIq"/>
+                <constraint firstItem="uYc-BS-Qlk" firstAttribute="centerY" secondItem="Yf6-Ya-aT6" secondAttribute="centerY" id="iaf-Pg-lbt"/>
+                <constraint firstItem="lh8-Pl-2TY" firstAttribute="centerY" secondItem="Yf6-Ya-aT6" secondAttribute="centerY" id="rEY-Kl-cER"/>
+                <constraint firstItem="lh8-Pl-2TY" firstAttribute="leading" secondItem="Yf6-Ya-aT6" secondAttribute="leading" constant="29" id="z7l-0d-vFO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="rEY-Kl-cER"/>
+                    <exclude reference="z7l-0d-vFO"/>
+                    <exclude reference="iaf-Pg-lbt"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="countLabel" destination="uYc-BS-Qlk" id="cvz-9n-poE"/>
+                <outlet property="dateLabel" destination="lh8-Pl-2TY" id="clm-Ev-hUU"/>
+            </connections>
+            <point key="canvasLocation" x="752.5" y="338.5"/>
+        </view>
+    </objects>
+</document>

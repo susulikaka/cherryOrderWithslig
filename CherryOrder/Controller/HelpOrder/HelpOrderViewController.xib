@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HelpOrderViewController">
+            <connections>
+                <outlet property="collectionView" destination="IF7-vc-5rZ" id="KC7-wa-RHc"/>
+                <outlet property="helpOrderBtn" destination="M6n-G8-L9C" id="qca-aq-y0a"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="IF7-vc-5rZ">
+                    <rect key="frame" x="16" y="16" width="568" height="404"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="l9e-Zu-jzT">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="QID-SE-tzC"/>
+                        <outlet property="delegate" destination="-1" id="b4o-cC-8Sz"/>
+                    </connections>
+                </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6n-G8-L9C">
+                    <rect key="frame" x="200" y="450" width="200" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="eAS-AW-1Ms"/>
+                        <constraint firstAttribute="height" constant="50" id="kwq-OC-qTr"/>
+                    </constraints>
+                    <state key="normal" title="代点"/>
+                    <connections>
+                        <action selector="helpOderAction:" destination="-1" eventType="touchUpInside" id="cXx-nm-33P"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="M6n-G8-L9C" secondAttribute="bottom" constant="100" id="2Ow-f8-tWR"/>
+                <constraint firstAttribute="trailing" secondItem="IF7-vc-5rZ" secondAttribute="trailing" constant="16" id="CuH-26-IGq"/>
+                <constraint firstItem="IF7-vc-5rZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Eqc-jn-GBl"/>
+                <constraint firstItem="IF7-vc-5rZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="16" id="Z4k-n2-aaB"/>
+                <constraint firstItem="M6n-G8-L9C" firstAttribute="top" secondItem="IF7-vc-5rZ" secondAttribute="bottom" constant="30" id="rjf-Ce-lq7"/>
+                <constraint firstItem="M6n-G8-L9C" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xf6-UQ-bkA"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

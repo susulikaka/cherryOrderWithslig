@@ -1,0 +1,1 @@
+../../../DOUSNSSharing/DOUSNSSharing/DOUSNSSharing/Source/Core/Impl/Renren/JSON2Object/DOUVenderPost+Renren.h

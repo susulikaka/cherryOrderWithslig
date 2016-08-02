@@ -1,0 +1,34 @@
+PODS:
+  - DOUSNSSharing (2.3.6)
+  - MKNetworkKit (0.87):
+    - Reachability (~> 3.1.0)
+  - PureLayout (3.0.2)
+  - Reachability (3.1.1)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
+  - SVProgressHUD (2.0.3)
+
+DEPENDENCIES:
+  - DOUSNSSharing (= 2.3.6)
+  - MKNetworkKit (= 0.87)
+  - PureLayout (~> 3.0.2)
+  - Reachability (= 3.1.1)
+  - ReactiveCocoa
+  - SVProgressHUD (= 2.0.3)
+
+SPEC CHECKSUMS:
+  DOUSNSSharing: 3708985b9120742235efac00e794a362a4b53ab0
+  MKNetworkKit: 60ad3c83b62183e40ba75ce772c9427c25b520de
+  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+  Reachability: dd9aa4fb6667b9f787690a74f53cb7634ce99893
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+
+PODFILE CHECKSUM: 083f010ef76944058ac55757892bc6e9ab7f5573
+
+COCOAPODS: 1.0.1

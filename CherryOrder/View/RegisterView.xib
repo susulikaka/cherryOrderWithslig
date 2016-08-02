@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="bfc-52-ylw" customClass="RegisterView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWh-td-nEb">
+                    <rect key="frame" x="130" y="100" width="340" height="400"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rod-VQ-JTw">
+                            <rect key="frame" x="120" y="-50" width="100" height="100"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="crs-u3-Qhz"/>
+                                <constraint firstAttribute="width" constant="100" id="pm6-94-J1g"/>
+                            </constraints>
+                        </imageView>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" 请输入你的路口邮箱" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eKR-A3-kLh">
+                            <rect key="frame" x="30" y="120" width="280" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="260" id="7w3-Q1-L2R"/>
+                                <constraint firstAttribute="height" constant="40" id="rcy-vF-0K7"/>
+                            </constraints>
+                            <color key="textColor" red="0.69355003228087919" green="1" blue="0.91200790541227572" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="7w3-Q1-L2R"/>
+                                </mask>
+                            </variation>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入你的真实姓名" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xnF-Pt-6WW">
+                            <rect key="frame" x="30" y="170" width="280" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="260" id="WxE-R7-Uwa"/>
+                                <constraint firstAttribute="height" constant="40" id="zjq-yD-Kmu"/>
+                            </constraints>
+                            <color key="textColor" white="0.8040320889261745" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="WxE-R7-Uwa"/>
+                                </mask>
+                            </variation>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIS-eT-AAu">
+                            <rect key="frame" x="120" y="260" width="100" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="JRb-SS-DCT"/>
+                                <constraint firstAttribute="width" constant="100" id="MCS-6d-nMj"/>
+                            </constraints>
+                            <state key="normal" title="开始">
+                                <color key="titleColor" red="0.75600325906065091" green="0.75965544871794877" blue="0.75235106940335317" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="MCS-6d-nMj"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="doneAction:" destination="bfc-52-ylw" eventType="touchUpInside" id="Sss-Rl-NUD"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="留下你的大名吧" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pl9-sY-ua1">
+                            <rect key="frame" x="100" y="60" width="140" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="1T0-d4-5cp"/>
+                                <constraint firstAttribute="width" constant="140" id="ZDQ-TV-O2A"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" red="0.99574440717697144" green="0.98818427324295044" blue="0.9922446608543396" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="eKR-A3-kLh" firstAttribute="centerY" secondItem="IWh-td-nEb" secondAttribute="centerY" constant="-60" id="1ib-4j-7wy"/>
+                        <constraint firstItem="pl9-sY-ua1" firstAttribute="top" secondItem="IWh-td-nEb" secondAttribute="top" constant="60" id="4rj-e2-Uq9"/>
+                        <constraint firstItem="VIS-eT-AAu" firstAttribute="leading" secondItem="IWh-td-nEb" secondAttribute="leading" constant="30" id="Dqh-7n-yuA"/>
+                        <constraint firstAttribute="bottom" secondItem="rod-VQ-JTw" secondAttribute="bottom" constant="-50" id="Htz-i4-fIH"/>
+                        <constraint firstAttribute="trailing" secondItem="eKR-A3-kLh" secondAttribute="trailing" constant="30" id="NpX-4Z-66U"/>
+                        <constraint firstItem="VIS-eT-AAu" firstAttribute="centerX" secondItem="IWh-td-nEb" secondAttribute="centerX" id="R4o-Ip-NdM"/>
+                        <constraint firstItem="xnF-Pt-6WW" firstAttribute="centerX" secondItem="IWh-td-nEb" secondAttribute="centerX" id="XF2-RG-k6i"/>
+                        <constraint firstItem="xnF-Pt-6WW" firstAttribute="leading" secondItem="IWh-td-nEb" secondAttribute="leading" constant="30" id="bQA-a7-1Qc"/>
+                        <constraint firstItem="rod-VQ-JTw" firstAttribute="centerX" secondItem="IWh-td-nEb" secondAttribute="centerX" id="db6-81-UsA"/>
+                        <constraint firstAttribute="bottom" secondItem="VIS-eT-AAu" secondAttribute="bottom" constant="100" id="ipf-EX-xL2"/>
+                        <constraint firstItem="rod-VQ-JTw" firstAttribute="top" secondItem="pl9-sY-ua1" secondAttribute="bottom" constant="-50" id="nNv-Yu-INz"/>
+                        <constraint firstItem="rod-VQ-JTw" firstAttribute="top" secondItem="IWh-td-nEb" secondAttribute="top" constant="-50" id="pez-gb-raL"/>
+                        <constraint firstAttribute="trailing" secondItem="VIS-eT-AAu" secondAttribute="trailing" constant="30" id="tKy-Jg-QjZ"/>
+                        <constraint firstAttribute="trailing" secondItem="xnF-Pt-6WW" secondAttribute="trailing" constant="30" id="tYL-n5-sEe"/>
+                        <constraint firstAttribute="width" constant="340" id="xjS-Ve-3q7"/>
+                        <constraint firstItem="pl9-sY-ua1" firstAttribute="centerX" secondItem="IWh-td-nEb" secondAttribute="centerX" id="yeR-5f-SDi"/>
+                        <constraint firstItem="xnF-Pt-6WW" firstAttribute="centerY" secondItem="IWh-td-nEb" secondAttribute="centerY" constant="-10" id="ygg-19-3Oz"/>
+                        <constraint firstItem="eKR-A3-kLh" firstAttribute="leading" secondItem="IWh-td-nEb" secondAttribute="leading" constant="30" id="yte-PB-MdS"/>
+                        <constraint firstAttribute="height" constant="400" id="z1I-pz-OLx"/>
+                        <constraint firstItem="eKR-A3-kLh" firstAttribute="centerX" secondItem="IWh-td-nEb" secondAttribute="centerX" id="zvE-3n-4FE"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Htz-i4-fIH"/>
+                            <exclude reference="nNv-Yu-INz"/>
+                        </mask>
+                    </variation>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VIp-92-7Jk">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="VIp-92-7Jk" secondAttribute="trailing" id="228-yF-FR8"/>
+                <constraint firstAttribute="bottom" secondItem="VIp-92-7Jk" secondAttribute="bottom" id="2lJ-FA-Mq7"/>
+                <constraint firstItem="VIp-92-7Jk" firstAttribute="leading" secondItem="bfc-52-ylw" secondAttribute="leading" id="34Y-go-Ny2"/>
+                <constraint firstItem="VIp-92-7Jk" firstAttribute="top" secondItem="bfc-52-ylw" secondAttribute="top" id="E43-re-CHO"/>
+                <constraint firstItem="IWh-td-nEb" firstAttribute="centerX" secondItem="bfc-52-ylw" secondAttribute="centerX" id="hob-8X-xvA"/>
+                <constraint firstItem="IWh-td-nEb" firstAttribute="centerY" secondItem="bfc-52-ylw" secondAttribute="centerY" id="qrM-HY-CgG"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="backGroudImg" destination="VIp-92-7Jk" id="3IU-JD-RG6"/>
+                <outlet property="backView" destination="IWh-td-nEb" id="k05-PB-0uE"/>
+                <outlet property="doneBtn" destination="VIS-eT-AAu" id="gLx-le-8sJ"/>
+                <outlet property="imageView" destination="rod-VQ-JTw" id="YRH-U7-ZGx"/>
+                <outlet property="mailText" destination="eKR-A3-kLh" id="HR2-cn-XRz"/>
+                <outlet property="nameText" destination="xnF-Pt-6WW" id="CdG-HZ-ltg"/>
+            </connections>
+            <point key="canvasLocation" x="-40" y="667"/>
+        </view>
+    </objects>
+</document>
