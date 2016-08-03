@@ -106,15 +106,7 @@
         self.userListDataSource = [list.list mutableCopy];
         [self.UserListCollectionView reloadData];
     } errorHandler:^(LKAPIError *engineError) {
-        UIAlertView * alert = [[UIAlertView alloc]
-                               initWithTitle:engineError.message
-                               message:@""
-                               delegate:self
-                               cancelButtonTitle:@"取消"
-                               otherButtonTitles:@"确定",
-                               nil];
-        [self.view addSubview:alert];
-        [alert show];
+        [LKUOUtils showError:engineError.message];
     }];
 }
 

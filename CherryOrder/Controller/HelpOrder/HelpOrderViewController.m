@@ -59,7 +59,7 @@
         return;
     }
     [[LKAPIClient sharedClient] requestGETForcurDateOrderList:@"users" params:@{@"list":nameStr} modelClass:[UserList class] completionHandler:^(LKJSonModel *aModelBaseObject) {
-        
+        self.helpOrderBtn.enabled = YES;
         UserList * dic;
         if ([aModelBaseObject isKindOfClass:[UserList class]]) {
             dic = (UserList *)aModelBaseObject;
@@ -67,16 +67,8 @@
         self.helpOrderDataSource = dic.list;
         [self.collectionView reloadData];
     } errorHandler:^(LKAPIError *engineError) {
-        
-        UIAlertView * alert = [[UIAlertView alloc]
-                               initWithTitle:engineError.message
-                               message:@""
-                               delegate:self
-                               cancelButtonTitle:@"取消"
-                               otherButtonTitles:@"确定",
-                               nil];
-        [self.view addSubview:alert];
-        [alert show];
+        self.helpOrderBtn.enabled = NO;
+        [LKUOUtils showError:engineError.message];
     }];
 }
 
@@ -135,7 +127,6 @@
     } else {
         view.name.text = name;
     }
-    
     while ([cell.contentView.subviews count] != 0) {
         UIView *subView = [cell.contentView.subviews lastObject];
         [subView removeFromSuperview];

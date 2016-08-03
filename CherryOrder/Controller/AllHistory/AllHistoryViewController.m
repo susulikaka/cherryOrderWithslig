@@ -66,7 +66,7 @@
         [self.tableView reloadData];
         [self.PullToBounceWrapper stopLoadingAnimation];
     } errorHandler:^(LKAPIError *engineError) {
-        
+        [LKUOUtils showError:engineError.message];
     }];
 }
 
@@ -148,6 +148,7 @@
                                                 self.cellDataSource = [self getCellDataSource];
                                                 [self.tableView reloadData];
                                             } errorHandler:^(LKAPIError *engineError) {
+                                                [LKUOUtils showError:engineError.message];
                                             }];
 }
 

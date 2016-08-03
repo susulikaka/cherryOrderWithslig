@@ -209,15 +209,7 @@
                 self.orderBtn.backgroundColor = LK_TEXT_COLOR_GRAY;
             }
         } errorHandler:^(LKAPIError *engineError) {
-            UIAlertView * alert = [[UIAlertView alloc]
-                                   initWithTitle:engineError.message
-                                   message:@""
-                                   delegate:self
-                                   cancelButtonTitle:@"取消"
-                                   otherButtonTitles:@"确定",
-                                   nil];
-            [self.view addSubview:alert];
-            [alert show];
+            [LKUOUtils showError:engineError.message];
         }];
     }
 }
@@ -258,15 +250,7 @@
         [[UserInfoManager sharedManager] saveUserInfo:[LKUser sharedUser]];
         self.orderBtn.backgroundColor = LK_TEXT_COLOR_GRAY;
         } errorHandler:^(LKAPIError *engineError) {
-            UIAlertView * alert = [[UIAlertView alloc]
-                                   initWithTitle:engineError.message
-                                   message:@""
-                                   delegate:self
-                                   cancelButtonTitle:@"取消"
-                                   otherButtonTitles:@"确定",
-                                   nil];
-            [self.view addSubview:alert];
-            [alert show];
+            [LKUOUtils showError:engineError.message];
         }];
     } else {
         [[LKAPIClient sharedClient] requestPOSTForOrder:@"order"
@@ -284,15 +268,7 @@
         [[UserInfoManager sharedManager] saveUserInfo:[LKUser sharedUser]];
         self.orderBtn.backgroundColor = BLUE_NEW_COLOR;
         } errorHandler:^(LKAPIError *engineError) {
-            UIAlertView * alert = [[UIAlertView alloc]
-                                   initWithTitle:engineError.message
-                                   message:@""
-                                   delegate:self
-                                   cancelButtonTitle:@"取消"
-                                   otherButtonTitles:@"确定",
-                                   nil];
-            [self.view addSubview:alert];
-            [alert show];
+            [LKUOUtils showError:engineError.message];
         }];
     }
 }

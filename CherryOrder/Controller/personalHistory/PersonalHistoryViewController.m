@@ -61,16 +61,7 @@
                                                self.view.frame.size.width, self.view.frame.size.height * 0.618);
         self.calendarPicker.calendarBlock = ^(NSInteger day, NSInteger month, NSInteger year){
         };
-        
-        UIAlertView * alert = [[UIAlertView alloc]
-                               initWithTitle:engineError.message
-                               message:@""
-                               delegate:self
-                               cancelButtonTitle:@"取消"
-                               otherButtonTitles:@"确定",
-                               nil];
-        [self.view addSubview:alert];
-        [alert show];
+        [LKUOUtils showError:engineError.message];
         
     }];
 }

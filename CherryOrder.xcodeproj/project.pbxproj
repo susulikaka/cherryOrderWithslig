@@ -43,6 +43,7 @@
 		846854781D49ACFE007592BF /* UserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 846854771D49ACFE007592BF /* UserInfoManager.m */; };
 		8468E3E81D4B3D0A00F52C79 /* AllHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468E3E71D4B3D0A00F52C79 /* AllHistory.m */; };
 		8468E3EB1D4B48A500F52C79 /* UserHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468E3EA1D4B48A500F52C79 /* UserHistory.m */; };
+		849506C81D51AFA100684BE5 /* LKUOUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 849506C71D51AFA100684BE5 /* LKUOUtils.m */; };
 		84D044BC1D49B32700E85B3E /* AllHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D044BA1D49B32700E85B3E /* AllHistoryViewController.m */; };
 		84D044BD1D49B32700E85B3E /* AllHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D044BB1D49B32700E85B3E /* AllHistoryViewController.xib */; };
 		84D044C41D49BDD000E85B3E /* SearchWordsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D044C01D49BDD000E85B3E /* SearchWordsCell.m */; };
@@ -151,6 +152,8 @@
 		8468E3E71D4B3D0A00F52C79 /* AllHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllHistory.m; path = Model/AllHistory.m; sourceTree = "<group>"; };
 		8468E3E91D4B48A500F52C79 /* UserHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserHistory.h; path = Model/UserHistory.h; sourceTree = "<group>"; };
 		8468E3EA1D4B48A500F52C79 /* UserHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserHistory.m; path = Model/UserHistory.m; sourceTree = "<group>"; };
+		849506C61D51AFA100684BE5 /* LKUOUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LKUOUtils.h; path = Base/LKUOUtils.h; sourceTree = "<group>"; };
+		849506C71D51AFA100684BE5 /* LKUOUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LKUOUtils.m; path = Base/LKUOUtils.m; sourceTree = "<group>"; };
 		84D044B91D49B32700E85B3E /* AllHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllHistoryViewController.h; path = Controller/AllHistory/AllHistoryViewController.h; sourceTree = "<group>"; };
 		84D044BA1D49B32700E85B3E /* AllHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllHistoryViewController.m; path = Controller/AllHistory/AllHistoryViewController.m; sourceTree = "<group>"; };
 		84D044BB1D49B32700E85B3E /* AllHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AllHistoryViewController.xib; path = Controller/AllHistory/AllHistoryViewController.xib; sourceTree = "<group>"; };
@@ -457,6 +460,8 @@
 				84DF1FBE1D48974700A583AC /* LKAPIError.h */,
 				84DF1FBF1D48974700A583AC /* LKAPIError.m */,
 				84DF1FC01D48974700A583AC /* LKJSONResult.h */,
+				849506C61D51AFA100684BE5 /* LKUOUtils.h */,
+				849506C71D51AFA100684BE5 /* LKUOUtils.m */,
 				84DF1FC11D48974700A583AC /* LKJSONResult.m */,
 				84DF1FC21D48974700A583AC /* LKOperation.h */,
 				84DF1FB91D48969F00A583AC /* LKJSonModel.h */,
@@ -726,6 +731,7 @@
 				84DF1F361D48684500A583AC /* PersonalHistoryViewController.m in Sources */,
 				84DF1F7B1D48891100A583AC /* SZCalendarPicker.m in Sources */,
 				8458A87F1D4F765E00694FAE /* PullToBounceWrapper.swift in Sources */,
+				849506C81D51AFA100684BE5 /* LKUOUtils.m in Sources */,
 				8468E3EB1D4B48A500F52C79 /* UserHistory.m in Sources */,
 				8458A8481D4EE68000694FAE /* UserOrderInfo.m in Sources */,
 				8458A87C1D4F765E00694FAE /* BounceView.swift in Sources */,
