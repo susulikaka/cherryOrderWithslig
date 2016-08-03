@@ -145,4 +145,8 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 @end

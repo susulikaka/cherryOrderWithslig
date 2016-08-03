@@ -82,16 +82,99 @@
     [self.orderBtn addGestureRecognizer:self.panGesture];
     [self.orderBtn addGestureRecognizer:self.longGsture];
     
+    [self addNoti];
+    if ([self getWeek] > 0 && [self getWeek] < 5) {
+        self.orderBtn.enabled = YES;
+    } else {
+        self.orderBtn.enabled = NO;
+        [self cancelNoti];
+    }
+    
     if ([LKUser sharedUser].has_ordered) {
         self.orderBtn.backgroundColor = BLUE_COLOR;
+        [self cancelNoti];
     } else {
         self.orderBtn.backgroundColor = LK_TEXT_COLOR_GRAY;
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveAndRefresh:) name:@"refreshOrderBtn" object:nil];
-
 }
 
 #pragma mark - private method
+
+- (void)addNoti {
+    [self setNotification];
+    [self setNotiAt4];
+    [self setNotiAt430];
+}
+
+- (void)cancelNoti {
+    NSArray * arr = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    for (UILocalNotification * noti in arr) {
+        [[UIApplication sharedApplication] cancelLocalNotification:noti];
+    }
+}
+
+- (void)setNotification {
+    UIApplication * application=[UIApplication sharedApplication];
+    if([application currentUserNotificationSettings].types==UIUserNotificationTypeNone){
+        UIUserNotificationSettings * setting=[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
+        [application registerUserNotificationSettings:setting];
+    }
+    [application cancelAllLocalNotifications];
+    UILocalNotification * noti=[[UILocalNotification alloc] init];
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm:ss"];
+    NSDate * notiDate = [formatter dateFromString:END_TIME_4];
+    noti.fireDate = notiDate;
+    noti.timeZone = [NSTimeZone defaultTimeZone];
+    noti.repeatInterval = NSDayCalendarUnit;
+    NSDictionary * params = @{@"name":@"vv"};
+    noti.userInfo = params;
+    noti.alertBody=@"4点啦，还没有点餐的快开启点餐模式";
+    noti.alertAction=@"解锁";
+    noti.soundName=UILocalNotificationDefaultSoundName;
+    [[UIApplication sharedApplication] scheduleLocalNotification:noti];
+}
+
+- (void)setNotiAt4 {
+    UIApplication * application=[UIApplication sharedApplication];
+    if([application currentUserNotificationSettings].types==UIUserNotificationTypeNone){
+        UIUserNotificationSettings * setting=[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
+        [application registerUserNotificationSettings:setting];
+    }
+    UILocalNotification * noti=[[UILocalNotification alloc] init];
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm:ss"];
+    NSDate * notiDate = [formatter dateFromString:END_TIME_430];
+    noti.fireDate = notiDate;
+    noti.timeZone = [NSTimeZone defaultTimeZone];
+    noti.repeatInterval = NSDayCalendarUnit;
+    noti.alertBody=@"最后十分钟，晚餐还没有着落的的快去点餐吧";
+    noti.alertAction=@"解锁";
+    noti.soundName=UILocalNotificationDefaultSoundName;
+    [[UIApplication sharedApplication] scheduleLocalNotification:noti];
+}
+
+- (void)setNotiAt430 {
+    UIApplication * application=[UIApplication sharedApplication];
+    if([application currentUserNotificationSettings].types==UIUserNotificationTypeNone){
+        UIUserNotificationSettings * setting=[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
+        [application registerUserNotificationSettings:setting];
+    }
+    UILocalNotification * noti=[[UILocalNotification alloc] init];
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm:ss"];
+    NSDate * notiDate = [formatter dateFromString:END_TIME_440];
+    noti.fireDate = notiDate;
+    noti.timeZone = [NSTimeZone defaultTimeZone];
+    noti.repeatInterval = NSDayCalendarUnit;
+    NSDictionary * params = @{@"name":@"vv"};
+    noti.userInfo = params;
+    noti.alertBody=@"亲爱的，今天的点餐结束啦";
+    noti.alertAction=@"解锁";
+    noti.soundName=UILocalNotificationDefaultSoundName;
+    [[UIApplication sharedApplication] scheduleLocalNotification:noti];
+}
 
 - (void)saveAndRefresh:(NSNotification *)noti {
     [LKUser sharedUser].email = noti.userInfo[@"email"];
@@ -160,11 +243,13 @@
         self.orderBtn.titleLabel.text = @"";
         return;
     }
-    self.orderBtn.selected = !self.orderBtn.selected;
-    if (!self.orderBtn.selected) {
+    
+    if (self.orderBtn.selected) {
         [[LKAPIClient sharedClient] requestDELETEForCancelOrder:@"order"
                                                      modelClass:[LKMSimpleMsg class]
                                               completionHandler:^(LKJSonModel *aModelBaseObject) {
+        [self addNoti];
+        self.orderBtn.selected = !self.orderBtn.selected;
         NSDictionary * dic = [NSDictionary dictionary];
         if ([aModelBaseObject isKindOfClass:[NSDictionary class]]) {
             dic = (NSDictionary *)aModelBaseObject;
@@ -187,6 +272,10 @@
         [[LKAPIClient sharedClient] requestPOSTForOrder:@"order"
                                              modelClass:[LKMSimpleMsg class]
                                       completionHandler:^(LKJSonModel *aModelBaseObject) {
+                                          
+         // add noti
+        [self cancelNoti];
+        self.orderBtn.selected = !self.orderBtn.selected;
         NSDictionary * dic = [NSDictionary dictionary];
         if ([aModelBaseObject isKindOfClass:[NSDictionary class]]) {
             dic = (NSDictionary *)aModelBaseObject;
@@ -275,6 +364,18 @@
     poiAnim.delegate = self;
     poiAnim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     return poiAnim;
+}
+
+- (NSInteger) getWeek {
+    NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate * date = [NSDate date];
+    NSDateComponents * comps = [[NSDateComponents alloc] init];
+    comps = [calendar components:NSWeekdayCalendarUnit fromDate:date];
+    return [comps weekday];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - getter

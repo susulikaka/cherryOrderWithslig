@@ -142,7 +142,6 @@ NSString *const SZCalendarCellIdentifier = @"cell";
     } else {
         NSInteger daysInThisMonth = [self totaldaysInMonth:_date];
         NSInteger firstWeekday = [self firstWeekdayInThisMonth:_date];
-        
         NSInteger day = 0;
         NSInteger i = indexPath.row;
         
@@ -167,8 +166,6 @@ NSString *const SZCalendarCellIdentifier = @"cell";
                 [cell.dateLabel setTextColor:[UIColor colorWithHexString:@"#6f6f6f"]];
                 cell.dateLabel.backgroundColor = [UIColor whiteColor];
             }
-            
-            
             //this month
             if ([_today isEqualToDate:_date]) {
                 if (day == [self day:_date]) {

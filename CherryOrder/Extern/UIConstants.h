@@ -36,6 +36,9 @@
 
 #define BEFORE_END_TIME @"16:30"
 #define END_TIME @"24:03"
+#define END_TIME_4 @"16:00:00"
+#define END_TIME_430 @"16:30:00"
+#define END_TIME_440 @"16:40:00"
 
 #define PX_1          (1 / [UIScreen mainScreen].scale)
 #define PX_2          (2 / [UIScreen mainScreen].scale)

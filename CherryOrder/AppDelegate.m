@@ -27,72 +27,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     [self appearance];
-    [self setNotification];
-    [self setNotiAt4];
-    [self setNotiAt430];
     return YES;
-}
-
-- (void)setNotification {
-    UIApplication * application=[UIApplication sharedApplication];
-    if([application currentUserNotificationSettings].types==UIUserNotificationTypeNone){
-        UIUserNotificationSettings * setting=[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
-        [application registerUserNotificationSettings:setting];
-    }
-    [application cancelAllLocalNotifications];
-    UILocalNotification * noti=[[UILocalNotification alloc] init];
-    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"HH:mm:ss"];
-    NSDate * notiDate = [formatter dateFromString:@"11:35:00"];
-    noti.fireDate = notiDate;
-    noti.timeZone = [NSTimeZone defaultTimeZone];
-    noti.repeatInterval = NSDayCalendarUnit;
-    NSDictionary * params = @{@"name":@"vv"};
-    noti.userInfo = params;
-    noti.alertBody=@"4点啦，快开启点餐模式";
-    noti.alertAction=@"解锁";
-    noti.soundName=UILocalNotificationDefaultSoundName;
-    [[UIApplication sharedApplication] scheduleLocalNotification:noti];
-}
-
-- (void)setNotiAt4 {
-    UIApplication * application=[UIApplication sharedApplication];
-    if([application currentUserNotificationSettings].types==UIUserNotificationTypeNone){
-        UIUserNotificationSettings * setting=[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
-        [application registerUserNotificationSettings:setting];
-    }
-    UILocalNotification * noti=[[UILocalNotification alloc] init];
-    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"HH:mm:ss"];
-    NSDate * notiDate = [formatter dateFromString:@"11:40:00"];
-    noti.fireDate = notiDate;
-    noti.timeZone = [NSTimeZone defaultTimeZone];
-    noti.repeatInterval = NSDayCalendarUnit;
-    noti.alertBody=@"4:30咯，最后十分钟，晚餐还没有着落的的快去点餐吧";
-    noti.alertAction=@"解锁";
-    noti.soundName=UILocalNotificationDefaultSoundName;
-    [[UIApplication sharedApplication] scheduleLocalNotification:noti];
-}
-
-- (void)setNotiAt430 {
-    UIApplication * application=[UIApplication sharedApplication];
-    if([application currentUserNotificationSettings].types==UIUserNotificationTypeNone){
-        UIUserNotificationSettings * setting=[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
-        [application registerUserNotificationSettings:setting];
-    }
-    UILocalNotification * noti=[[UILocalNotification alloc] init];
-    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"HH:mm:ss"];
-    NSDate * notiDate = [formatter dateFromString:@"11:45:00"];
-    noti.fireDate = notiDate;
-    noti.timeZone = [NSTimeZone defaultTimeZone];
-    noti.repeatInterval = NSDayCalendarUnit;
-    NSDictionary * params = @{@"name":@"vv"};
-    noti.userInfo = params;
-    noti.alertBody=@"亲爱的，今天的点餐结束啦";
-    noti.alertAction=@"解锁";
-    noti.soundName=UILocalNotificationDefaultSoundName;
-    [[UIApplication sharedApplication] scheduleLocalNotification:noti];
 }
 
 - (void)appearance {
@@ -108,6 +43,9 @@
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound categories:nil];
         [application registerUserNotificationSettings:settings];
     }
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"点餐咯" message:@"" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
+    
 }
 
 @end
