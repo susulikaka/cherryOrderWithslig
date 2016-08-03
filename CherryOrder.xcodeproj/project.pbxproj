@@ -42,6 +42,7 @@
 		8458A8801D4F765E00694FAE /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458A87A1D4F765E00694FAE /* WaveView.swift */; };
 		845A57981D51E27E008BC27B /* AllOrderHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A57961D51E27E008BC27B /* AllOrderHistoryViewController.m */; };
 		845A57991D51E27E008BC27B /* AllOrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845A57971D51E27E008BC27B /* AllOrderHistoryViewController.xib */; };
+		845A579D1D52226A008BC27B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 845A579C1D52226A008BC27B /* Default-568h@2x.png */; };
 		846854781D49ACFE007592BF /* UserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 846854771D49ACFE007592BF /* UserInfoManager.m */; };
 		8468E3E81D4B3D0A00F52C79 /* AllHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468E3E71D4B3D0A00F52C79 /* AllHistory.m */; };
 		8468E3EB1D4B48A500F52C79 /* UserHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468E3EA1D4B48A500F52C79 /* UserHistory.m */; };
@@ -151,6 +152,7 @@
 		845A57951D51E27E008BC27B /* AllOrderHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllOrderHistoryViewController.h; path = Controller/AllHistory/AllOrderHistoryViewController.h; sourceTree = "<group>"; };
 		845A57961D51E27E008BC27B /* AllOrderHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllOrderHistoryViewController.m; path = Controller/AllHistory/AllOrderHistoryViewController.m; sourceTree = "<group>"; };
 		845A57971D51E27E008BC27B /* AllOrderHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AllOrderHistoryViewController.xib; path = Controller/AllHistory/AllOrderHistoryViewController.xib; sourceTree = "<group>"; };
+		845A579C1D52226A008BC27B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		846854761D49ACFE007592BF /* UserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInfoManager.h; path = Model/UserInfoManager.h; sourceTree = "<group>"; };
 		846854771D49ACFE007592BF /* UserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfoManager.m; path = Model/UserInfoManager.m; sourceTree = "<group>"; };
 		8468E3E61D4B3D0A00F52C79 /* AllHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllHistory.h; path = Model/AllHistory.h; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 		84556A241D477C8400EE3E1C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				845A579C1D52226A008BC27B /* Default-568h@2x.png */,
 				84556A251D477C8400EE3E1C /* main.m */,
 			);
 			name = "Supporting Files";
@@ -635,6 +638,7 @@
 				84556A341D477C8400EE3E1C /* LaunchScreen.storyboard in Resources */,
 				845A57991D51E27E008BC27B /* AllOrderHistoryViewController.xib in Resources */,
 				84DF1F791D48891100A583AC /* bt_previous@2x.png in Resources */,
+				845A579D1D52226A008BC27B /* Default-568h@2x.png in Resources */,
 				84D044CE1D49DB2100E85B3E /* HistoryHeaderview.xib in Resources */,
 				84556A311D477C8400EE3E1C /* Assets.xcassets in Resources */,
 				84DF1F371D48684500A583AC /* PersonalHistoryViewController.xib in Resources */,

@@ -90,7 +90,7 @@
     NSString * tureYear = [NSString stringWithFormat:@"%@",[oldMonthStr substringWithRange:NSMakeRange(0, 5)]];
     NSString * monthStr = [NSString stringWithFormat:@"%@",[oldMonthStr substringWithRange:NSMakeRange(5, 2)]];
     NSInteger monthInt = [monthStr integerValue];
-    NSString * truemonth = [NSString stringWithFormat:@"%ld",monthInt + monthChange];
+    NSString * truemonth = [NSString stringWithFormat:@"%d",monthInt + monthChange];
     NSString * timeStr = [NSString stringWithFormat:@"%@%@-01",tureYear,truemonth];
     LKUser * user = [[UserInfoManager sharedManager] getUserInfo];
     return @{@"date":timeStr,@"name":user.name};
