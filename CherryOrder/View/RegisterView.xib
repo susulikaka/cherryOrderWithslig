@@ -128,9 +128,11 @@
                 <outlet property="backGroudImg" destination="VIp-92-7Jk" id="3IU-JD-RG6"/>
                 <outlet property="backView" destination="IWh-td-nEb" id="k05-PB-0uE"/>
                 <outlet property="doneBtn" destination="VIS-eT-AAu" id="gLx-le-8sJ"/>
+                <outlet property="heightConstrants" destination="z1I-pz-OLx" id="vY6-Va-Czy"/>
                 <outlet property="imageView" destination="rod-VQ-JTw" id="YRH-U7-ZGx"/>
                 <outlet property="mailText" destination="eKR-A3-kLh" id="HR2-cn-XRz"/>
                 <outlet property="nameText" destination="xnF-Pt-6WW" id="CdG-HZ-ltg"/>
+                <outlet property="widthConstriants" destination="xjS-Ve-3q7" id="1Xs-Pm-ox7"/>
             </connections>
             <point key="canvasLocation" x="-40" y="667"/>
         </view>

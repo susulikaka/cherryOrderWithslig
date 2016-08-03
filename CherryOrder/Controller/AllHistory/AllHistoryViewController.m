@@ -44,6 +44,10 @@
     self.title = @"所有历史";
     [self.tableView addSubview:self.PullToBounceWrapper];
     [self.PullToBounceWrapper didPullToRefresh];
+    [self requestDate];
+}
+
+- (void)requestDate {
     self.dataSource = [NSMutableArray array];
     self.cellDataSource = [NSMutableArray array];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([SearchWordsCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SearchWordsCell class])];
@@ -52,22 +56,22 @@
                                                        params:nil
                                                    modelClass:[AllHistory class]
                                             completionHandler:^(LKJSonModel *aModelBaseObject) {
-        AllHistory * dic;
-        if ([aModelBaseObject isKindOfClass:[AllHistory class]]) {
-            dic = (AllHistory *)aModelBaseObject;
-        }
-        if ([dic.end_time  isEqualToString:@"0"]) {
-            self.noMore = YES;
-        }
-        self.dataSource = [dic.list mutableCopy];
-        [LKUser sharedUser].end_time = dic.end_time;
-        [[UserInfoManager sharedManager] saveUserInfo:[LKUser sharedUser]];
-        self.cellDataSource = [self getCellDataSource];
-        [self.tableView reloadData];
-        [self.PullToBounceWrapper stopLoadingAnimation];
-    } errorHandler:^(LKAPIError *engineError) {
-        [LKUOUtils showError:engineError.message];
-    }];
+                                                AllHistory * dic;
+                                                if ([aModelBaseObject isKindOfClass:[AllHistory class]]) {
+                                                    dic = (AllHistory *)aModelBaseObject;
+                                                }
+                                                if ([dic.end_time  isEqualToString:@"0"]) {
+                                                    self.noMore = YES;
+                                                }
+                                                self.dataSource = [dic.list mutableCopy];
+                                                [LKUser sharedUser].end_time = dic.end_time;
+                                                [[UserInfoManager sharedManager] saveUserInfo:[LKUser sharedUser]];
+                                                self.cellDataSource = [self getCellDataSource];
+                                                [self.tableView reloadData];
+                                                [self.PullToBounceWrapper stopLoadingAnimation];
+                                            } errorHandler:^(LKAPIError *engineError) {
+                                                [LKUOUtils showError:engineError.message];
+                                            }];
 }
 
 - (NSArray *)getCellDataSource {

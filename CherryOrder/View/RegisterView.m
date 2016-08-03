@@ -52,6 +52,9 @@
     self.doneBtn.titleLabel.text = @"开始";
     self.doneBtn.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"register_btn"]];
     self.doneBtn.backgroundColor = [UIColor whiteColor];
+    
+    self.widthConstriants.constant = SCREEN_WIDTH * 0.85;
+    self.heightConstrants.constant = SCREEN_HEIGHT * 0.8  ;
 }
 
 #pragma mark - action

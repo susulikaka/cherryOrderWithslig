@@ -15,6 +15,7 @@
 #import "MenuView.h"
 #import "PersonalHistoryViewController.h"
 #import "AllHistoryViewController.h"
+#import "AllOrderHistoryViewController.h"
 #import "HelpOrderViewController.h"
 
 @interface MainViewController ()
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) UIPanGestureRecognizer * panGesture;
 @property (strong, nonatomic) PersonalHistoryViewController *historyVC;
 @property (strong, nonatomic) AllHistoryViewController *allHistoryVC;
+@property (strong, nonatomic) AllOrderHistoryViewController * allOrderHistoryVC;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (assign, nonatomic) BOOL isManager;
 @property (assign, nonatomic) BOOL isOrdered;
@@ -116,9 +118,11 @@
 
 - (void)setNotification {
     UIApplication * application=[UIApplication sharedApplication];
-    if([application currentUserNotificationSettings].types==UIUserNotificationTypeNone){
-        UIUserNotificationSettings * setting=[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
-        [application registerUserNotificationSettings:setting];
+    if (IS_iOS8) {
+        if([application currentUserNotificationSettings].types==UIUserNotificationTypeNone){
+            UIUserNotificationSettings * setting=[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
+            [application registerUserNotificationSettings:setting];
+        }
     }
     [application cancelAllLocalNotifications];
     UILocalNotification * noti=[[UILocalNotification alloc] init];
@@ -138,9 +142,11 @@
 
 - (void)setNotiAt4 {
     UIApplication * application=[UIApplication sharedApplication];
-    if([application currentUserNotificationSettings].types==UIUserNotificationTypeNone){
-        UIUserNotificationSettings * setting=[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
-        [application registerUserNotificationSettings:setting];
+    if (IS_iOS8) {
+        if([application currentUserNotificationSettings].types==UIUserNotificationTypeNone){
+            UIUserNotificationSettings * setting=[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
+            [application registerUserNotificationSettings:setting];
+        }
     }
     UILocalNotification * noti=[[UILocalNotification alloc] init];
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
@@ -157,9 +163,11 @@
 
 - (void)setNotiAt430 {
     UIApplication * application=[UIApplication sharedApplication];
-    if([application currentUserNotificationSettings].types==UIUserNotificationTypeNone){
-        UIUserNotificationSettings * setting=[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
-        [application registerUserNotificationSettings:setting];
+    if (IS_iOS8) {
+        if([application currentUserNotificationSettings].types==UIUserNotificationTypeNone){
+            UIUserNotificationSettings * setting=[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
+            [application registerUserNotificationSettings:setting];
+        }
     }
     UILocalNotification * noti=[[UILocalNotification alloc] init];
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
@@ -231,9 +239,10 @@
     NSString * currentTimeStr = [formatter stringFromDate:currentTime];
     NSComparisonResult result = [currentTimeStr compare:END_TIME options:NSNumericSearch];
     if (result >= 0) {
-        self.orderBtn.selected = NO;
-        self.orderBtn.titleLabel.text = @"";
+        self.orderBtn.enabled = NO;
         return;
+    } else {
+        self.orderBtn.enabled = YES;
     }
     
     if (self.orderBtn.selected) {
@@ -294,7 +303,7 @@
         
         [RACObserve(self.menuView.allHistory, selected) subscribeNext:^(id x) {
             if ([x integerValue] == 1) {
-                [self.navigationController pushViewController:self.allHistoryVC animated:YES];
+                [self.navigationController pushViewController:self.allOrderHistoryVC animated:YES];
             }
         }];
         
@@ -377,6 +386,13 @@
         _historyVC = [[PersonalHistoryViewController alloc] initWithNibName:@"PersonalHistoryViewController" bundle:nil];
     }
     return _historyVC;
+}
+
+- (AllOrderHistoryViewController *)allOrderHistoryVC {
+    if (!_allOrderHistoryVC) {
+        _allOrderHistoryVC = [[AllOrderHistoryViewController alloc] initWithNibName:@"AllOrderHistoryViewController" bundle:nil];
+    }
+    return _allOrderHistoryVC;
 }
 
 - (AllHistoryViewController *)allHistoryVC {

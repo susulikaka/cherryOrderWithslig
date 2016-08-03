@@ -35,7 +35,7 @@
 #define DEVICE_IS_IPAD         (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
 #define BEFORE_END_TIME @"16:30"
-#define END_TIME @"24:03"
+#define END_TIME @"16:00"
 #define END_TIME_4 @"16:00:00"
 #define END_TIME_430 @"16:30:00"
 #define END_TIME_440 @"16:40:00"
@@ -45,5 +45,6 @@
 
 #define ROOT_URL @"120.26.131.154:8080"
 #define API @"api"
+#define IS_iOS8 ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0)
 
 #endif

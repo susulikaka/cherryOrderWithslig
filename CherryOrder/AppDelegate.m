@@ -9,8 +9,6 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 
-#define IS_iOS8 ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0)
-
 @interface AppDelegate ()
 
 @end
@@ -38,14 +36,13 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    
     if (IS_iOS8) {
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound categories:nil];
         [application registerUserNotificationSettings:settings];
     }
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"点餐咯" message:@"" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    [alert show];
     
+    [alert show];
 }
 
 @end

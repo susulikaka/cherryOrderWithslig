@@ -14,5 +14,6 @@
 + (void)showProgressDialog:(NSString *)title;
 + (void)dismissProgressDialog;
 + (void)showError:(NSString *)errorMessage;
++ (void)showToast:(NSString *)title;
 
 @end

@@ -40,6 +40,8 @@
 		8458A87E1D4F765E00694FAE /* NSTimerEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458A8781D4F765E00694FAE /* NSTimerEx.swift */; };
 		8458A87F1D4F765E00694FAE /* PullToBounceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458A8791D4F765E00694FAE /* PullToBounceWrapper.swift */; };
 		8458A8801D4F765E00694FAE /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458A87A1D4F765E00694FAE /* WaveView.swift */; };
+		845A57981D51E27E008BC27B /* AllOrderHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A57961D51E27E008BC27B /* AllOrderHistoryViewController.m */; };
+		845A57991D51E27E008BC27B /* AllOrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845A57971D51E27E008BC27B /* AllOrderHistoryViewController.xib */; };
 		846854781D49ACFE007592BF /* UserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 846854771D49ACFE007592BF /* UserInfoManager.m */; };
 		8468E3E81D4B3D0A00F52C79 /* AllHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468E3E71D4B3D0A00F52C79 /* AllHistory.m */; };
 		8468E3EB1D4B48A500F52C79 /* UserHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468E3EA1D4B48A500F52C79 /* UserHistory.m */; };
@@ -146,6 +148,9 @@
 		8458A8781D4F765E00694FAE /* NSTimerEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTimerEx.swift; sourceTree = "<group>"; };
 		8458A8791D4F765E00694FAE /* PullToBounceWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullToBounceWrapper.swift; path = Extern/Refresh/PullToBounceWrapper.swift; sourceTree = "<group>"; };
 		8458A87A1D4F765E00694FAE /* WaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaveView.swift; path = Extern/Refresh/WaveView.swift; sourceTree = "<group>"; };
+		845A57951D51E27E008BC27B /* AllOrderHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllOrderHistoryViewController.h; path = Controller/AllHistory/AllOrderHistoryViewController.h; sourceTree = "<group>"; };
+		845A57961D51E27E008BC27B /* AllOrderHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllOrderHistoryViewController.m; path = Controller/AllHistory/AllOrderHistoryViewController.m; sourceTree = "<group>"; };
+		845A57971D51E27E008BC27B /* AllOrderHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AllOrderHistoryViewController.xib; path = Controller/AllHistory/AllOrderHistoryViewController.xib; sourceTree = "<group>"; };
 		846854761D49ACFE007592BF /* UserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInfoManager.h; path = Model/UserInfoManager.h; sourceTree = "<group>"; };
 		846854771D49ACFE007592BF /* UserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfoManager.m; path = Model/UserInfoManager.m; sourceTree = "<group>"; };
 		8468E3E61D4B3D0A00F52C79 /* AllHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllHistory.h; path = Model/AllHistory.h; sourceTree = "<group>"; };
@@ -234,8 +239,8 @@
 			children = (
 				8458A8511D4EF87B00694FAE /* UserList */,
 				8458A8551D4F1E3700694FAE /* NameSelView.h */,
-				8458A8561D4F1E3700694FAE /* NameSelView.xib */,
 				8458A8571D4F1E3700694FAE /* NameSelView.m */,
+				8458A8561D4F1E3700694FAE /* NameSelView.xib */,
 				8453157B1D4C943300B4A539 /* HelpOrderViewController.h */,
 				8453157C1D4C943300B4A539 /* HelpOrderViewController.m */,
 				8453157D1D4C943300B4A539 /* HelpOrderViewController.xib */,
@@ -407,6 +412,9 @@
 			isa = PBXGroup;
 			children = (
 				84D044BE1D49BCE600E85B3E /* view */,
+				845A57951D51E27E008BC27B /* AllOrderHistoryViewController.h */,
+				845A57961D51E27E008BC27B /* AllOrderHistoryViewController.m */,
+				845A57971D51E27E008BC27B /* AllOrderHistoryViewController.xib */,
 				84D044B91D49B32700E85B3E /* AllHistoryViewController.h */,
 				84D044BA1D49B32700E85B3E /* AllHistoryViewController.m */,
 				84D044BB1D49B32700E85B3E /* AllHistoryViewController.xib */,
@@ -625,6 +633,7 @@
 				8458A8681D4F662000694FAE /* InfoViewController.xib in Resources */,
 				84556A671D477F2B00EE3E1C /* RegisterView.xib in Resources */,
 				84556A341D477C8400EE3E1C /* LaunchScreen.storyboard in Resources */,
+				845A57991D51E27E008BC27B /* AllOrderHistoryViewController.xib in Resources */,
 				84DF1F791D48891100A583AC /* bt_previous@2x.png in Resources */,
 				84D044CE1D49DB2100E85B3E /* HistoryHeaderview.xib in Resources */,
 				84556A311D477C8400EE3E1C /* Assets.xcassets in Resources */,
@@ -743,6 +752,7 @@
 				84DF1FC51D48974700A583AC /* LKAPIError.m in Sources */,
 				8458A8671D4F662000694FAE /* InfoViewController.swift in Sources */,
 				84DF1FC61D48974700A583AC /* LKJSONResult.m in Sources */,
+				845A57981D51E27E008BC27B /* AllOrderHistoryViewController.m in Sources */,
 				8458A87E1D4F765E00694FAE /* NSTimerEx.swift in Sources */,
 				84556A5D1D477E9A00EE3E1C /* MainViewController.m in Sources */,
 				8458A87B1D4F765E00694FAE /* BallView.swift in Sources */,
