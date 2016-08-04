@@ -85,7 +85,7 @@
     [self.orderBtn addGestureRecognizer:self.longGsture];
     
     [self addNoti];
-    if ([self getWeek] > 0 && [self getWeek] < 5) {
+    if ([self getWeek] >= START_WEEKDAY && [self getWeek] <= END_WEEKDAY) {
         self.orderBtn.enabled = YES;
     } else {
         self.orderBtn.enabled = NO;
@@ -188,8 +188,8 @@
     [LKUser sharedUser].email = noti.userInfo[@"email"];
     [LKUser sharedUser].name = noti.userInfo[@"name"];
     [LKUser sharedUser].end_time = nil;
-    [LKUser sharedUser].has_ordered = noti.userInfo[@"has_ordered"];
-    [LKUser sharedUser].is_admin = noti.userInfo[@"is_admin"];
+    [LKUser sharedUser].has_ordered = [noti.userInfo[@"has_ordered"] boolValue];
+    [LKUser sharedUser].is_admin = [noti.userInfo[@"is_admin"] boolValue];
     [LKUser sharedUser].historyOrder = [NSMutableDictionary dictionary];
     [[UserInfoManager sharedManager] saveUserInfo:[LKUser sharedUser]];
     self.nameLabel.text = noti.userInfo[@"name"];
@@ -289,6 +289,12 @@
         [self.view addSubview:self.menuView];
         [self.menuView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
         
+//        if (!self.isManager) {
+//            self.menuView.allHistory.hidden = YES;
+//        } else {
+//            self.menuView.allHistory.hidden = NO;
+//        }
+        
         [RACObserve(self.menuView.accountChange, selected) subscribeNext:^(id x) {
             if ([x integerValue] == 1) {
                 [self addRegisterView];
@@ -297,20 +303,33 @@
         
         [RACObserve(self.menuView.accountHistory, selected) subscribeNext:^(id x) {
             if ([x integerValue] == 1) {
-                [self.navigationController pushViewController:self.historyVC animated:YES];
+                if ([[UserInfoManager sharedManager] getUserInfo].name == nil) {
+                    [LKUOUtils showError:@"请先进入账户"];
+                } else {
+                    [self.navigationController pushViewController:self.historyVC animated:YES];
+                }
+                
             }
         }];
         
         [RACObserve(self.menuView.allHistory, selected) subscribeNext:^(id x) {
             if ([x integerValue] == 1) {
-                [self.navigationController pushViewController:self.allOrderHistoryVC animated:YES];
+                if ([[UserInfoManager sharedManager] getUserInfo].name == nil) {
+                    [LKUOUtils showError:@"请先进入账户"];
+                } else {
+                    [self.navigationController pushViewController:self.allOrderHistoryVC animated:YES];
+                }
             }
         }];
         
         [RACObserve(self.menuView.helpOrder, selected) subscribeNext:^(id x) {
             if ([x integerValue] == 1) {
-                HelpOrderViewController * vc = [[HelpOrderViewController alloc] initWithNibName:@"HelpOrderViewController" bundle:nil];
-                [self.navigationController pushViewController:vc animated:YES];
+                if ([[UserInfoManager sharedManager] getUserInfo].name == nil) {
+                    [LKUOUtils showError:@"请先进入账户"];
+                } else {
+                    HelpOrderViewController * vc = [[HelpOrderViewController alloc] initWithNibName:@"HelpOrderViewController" bundle:nil];
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
             }
         }];
     }
@@ -354,9 +373,12 @@
 - (NSInteger) getWeek {
     NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDate * date = [NSDate date];
+    NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit |
+    
+    NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
     NSDateComponents * comps = [[NSDateComponents alloc] init];
-    comps = [calendar components:NSWeekdayCalendarUnit fromDate:date];
-    return [comps weekday];
+    comps = [calendar components:unitFlags fromDate:date];
+    return [comps weekday]-1;
 }
 
 - (void)dealloc {

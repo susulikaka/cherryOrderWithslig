@@ -17,8 +17,8 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="IF7-vc-5rZ">
-                    <rect key="frame" x="16" y="16" width="568" height="404"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="IF7-vc-5rZ">
+                    <rect key="frame" x="16" y="16" width="568" height="568"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="l9e-Zu-jzT">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -31,10 +31,10 @@
                     </connections>
                 </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6n-G8-L9C">
-                    <rect key="frame" x="200" y="450" width="200" height="50"/>
+                    <rect key="frame" x="200" y="540" width="200" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="eAS-AW-1Ms"/>
-                        <constraint firstAttribute="height" constant="50" id="kwq-OC-qTr"/>
+                        <constraint firstAttribute="height" constant="40" id="kwq-OC-qTr"/>
                     </constraints>
                     <state key="normal" title="代点"/>
                     <connections>
@@ -44,13 +44,19 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="M6n-G8-L9C" secondAttribute="bottom" constant="100" id="2Ow-f8-tWR"/>
+                <constraint firstAttribute="bottom" secondItem="IF7-vc-5rZ" secondAttribute="bottom" constant="16" id="0DA-q3-3nh"/>
+                <constraint firstAttribute="bottom" secondItem="M6n-G8-L9C" secondAttribute="bottom" constant="20" id="2Ow-f8-tWR"/>
                 <constraint firstAttribute="trailing" secondItem="IF7-vc-5rZ" secondAttribute="trailing" constant="16" id="CuH-26-IGq"/>
                 <constraint firstItem="IF7-vc-5rZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Eqc-jn-GBl"/>
                 <constraint firstItem="IF7-vc-5rZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="16" id="Z4k-n2-aaB"/>
                 <constraint firstItem="M6n-G8-L9C" firstAttribute="top" secondItem="IF7-vc-5rZ" secondAttribute="bottom" constant="30" id="rjf-Ce-lq7"/>
                 <constraint firstItem="M6n-G8-L9C" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xf6-UQ-bkA"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="rjf-Ce-lq7"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>

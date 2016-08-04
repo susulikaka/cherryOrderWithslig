@@ -34,9 +34,8 @@
 #pragma mark - private method 
 
 - (void)requestData {
-    
-    self.helpOrderDataSource = [[[UserInfoManager sharedManager] getUserList] mutableCopy];
 //    [[UserInfoManager sharedManager] removeUserList];
+    self.helpOrderDataSource = [[[[UserInfoManager sharedManager] getUserList] mutableCopy][[[UserInfoManager sharedManager] getUserInfo].name] mutableCopy];
 //    [self.helpOrderDataSource removeAllObjects];
     for (int i = 0; i < self.helpOrderDataSource.count; i ++) {
         id value = self.helpOrderDataSource[i];
@@ -80,10 +79,10 @@
     UIBarButtonItem * rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"plus-symbol"] style:UIBarButtonItemStylePlain target:self action:@selector(addUserList)];
     self.navigationItem.rightBarButtonItem = rightItem;
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
     self.title = @"帮人代点";
     self.collectionView.backgroundColor = [UIColor whiteColor];
-    self.helpOrderBtn.backgroundColor = DARK_MAIN_COLOR;
+    self.helpOrderBtn.backgroundColor = BLUE_COLOR;
     self.helpOrderBtn.layer.cornerRadius = self.helpOrderBtn.bounds.size.height/2;
     self.helpOrderBtn.layer.masksToBounds = YES;
     [self.collectionView reloadData];

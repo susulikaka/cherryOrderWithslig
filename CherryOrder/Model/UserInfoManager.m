@@ -62,17 +62,32 @@ static UserInfoManager *sharedInstance = nil;
     [[NSFileManager defaultManager] removeItemAtPath:[self pathForDataFile] error:nil];
 }
 
-- (NSArray *)getUserList {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"userList"];
+- (NSDictionary *)getUserList {
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userList"] != nil) {
+        return [[NSUserDefaults standardUserDefaults] objectForKey:@"userList"];
+    } else {
+        return [NSDictionary dictionary];
+    }
 }
 
 - (void)addUserList:(NSString *)userInfo {
-    NSMutableArray * arr = [[self getUserList] mutableCopy];
-    if (arr.count == 0) {
-        arr = [NSMutableArray array];
+    
+    NSMutableDictionary * userDic = [[self getUserList] mutableCopy];
+    if (userDic == nil) {
+        userDic = [NSMutableDictionary dictionary];
     }
-    [arr addObject:userInfo];
-    [[NSUserDefaults standardUserDefaults] setObject:arr forKey:@"userList"];
+    NSMutableArray * arr;
+    if (![userDic.allKeys containsObject:[self getUserInfo].name ]) {
+        arr = [NSMutableArray array];
+    } else {
+        arr = [[userDic objectForKey:[self getUserInfo].name] mutableCopy];
+    }
+    if (![arr containsObject:userInfo]) {
+        [arr addObject:userInfo];
+    }
+    [userDic setObject:arr forKey:[self getUserInfo].name];
+
+    [[NSUserDefaults standardUserDefaults] setObject:userDic forKey:@"userList"];
 }
 
 - (void)removeUserList {

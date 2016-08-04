@@ -26,10 +26,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="599" height="609"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2CI-hi-JQQ">
-                    <rect key="frame" x="0.0" y="0.0" width="599" height="70"/>
+                    <rect key="frame" x="0.0" y="0.0" width="599" height="80"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="E75-Xa-GCT"/>
-                        <constraint firstAttribute="height" constant="70" id="vEQ-li-Tgs"/>
+                        <constraint firstAttribute="height" constant="80" id="vEQ-li-Tgs"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="55"/>
                     <color key="textColor" red="0.98842567205429077" green="0.99614053964614868" blue="0.99603396654129028" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -51,7 +51,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pW9-C7-UXr">
-                    <rect key="frame" x="489" y="40" width="90" height="30"/>
+                    <rect key="frame" x="489" y="50" width="90" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="e5C-72-0cR"/>
                         <constraint firstAttribute="width" constant="90" id="fJ5-46-mMu"/>

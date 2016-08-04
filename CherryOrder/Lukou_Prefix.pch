@@ -9,7 +9,7 @@
 #ifndef Lukou_Prefix_pch
 #define Lukou_Prefix_pch
 
-#import "UIConstants.h"
+#import "Constants.h"
 #import "ColorConstants.h"
 
 #ifndef __IPHONE_5_0

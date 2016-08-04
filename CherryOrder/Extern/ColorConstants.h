@@ -29,6 +29,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 #define BLUE_COLOR ([UIColor colorWithRed:0.0/255 green:205.0/255 blue:185.0/255 alpha:1.0])
 #define DARK_MAIN_COLOR ([UIColor colorWithRed:236.0/255 green:125.0/255 blue:91.0/255 alpha:1.0])
 #define MAIN_ALPHA_COLOR(_A)  ([UIColor colorWithRed:245.0/255 green:102.0/255 blue:68.0/255 alpha:(_A)])
+#define BLUE_ALPHA_COLOR(_A) ([UIColor colorWithRed:0.0/255 green:205.0/255 blue:185.0/255 alpha:(_A)])
 #define BLUE_NEW_COLOR ([UIColor colorWithRed:114.0/255 green:201.0/255 blue:208.0/255 alpha:1.0])
 #define GRAY_COLOR ([UIColor colorWithRed:249.0/255 green:249.0/255 blue:249.0/255 alpha:1.0])
 

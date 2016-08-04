@@ -12,7 +12,7 @@
 - (UILabel *)dateLabel
 {
     if (!_dateLabel) {
-        _dateLabel = [[UILabel alloc] initWithFrame:self.bounds];
+        _dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width * 0.7,self.bounds.size.height * 0.7)];
         [_dateLabel setTextAlignment:NSTextAlignmentCenter];
         [_dateLabel setFont:[UIFont systemFontOfSize:17]];
         _dateLabel.layer.cornerRadius = _dateLabel.frame.size.height/2;

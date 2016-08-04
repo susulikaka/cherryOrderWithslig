@@ -20,7 +20,7 @@
 - (LKUser *)getUserInfo;
 
 - (void)addUserList:(NSString *)userInfo;
-- (NSArray *)getUserList;
+- (NSDictionary *)getUserList;
 - (void)removeUserList;
 
 - (void)saveFirstRun:(BOOL)run;
