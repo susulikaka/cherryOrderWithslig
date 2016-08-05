@@ -35,7 +35,7 @@
 #define DEVICE_IS_IPAD         (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
 #define BEFORE_END_TIME @"16:30"
-#define END_TIME @"16:00"
+#define END_TIME @"16:40"
 #define END_TIME_4 @"16:00:00"
 #define END_TIME_430 @"16:30:00"
 #define END_TIME_440 @"20:40:00"

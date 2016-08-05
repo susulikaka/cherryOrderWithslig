@@ -13,7 +13,6 @@
 // 绘制图片
 + (UIImage*)imageAddCornerWithRadius:(CGFloat)radius andSize:(CGSize)size fileMode:(CGPathDrawingMode)mode {
     CGRect rect = CGRectMake(0, 0, size.width, size.height);
-    
     UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     UIBezierPath * path = [UIBezierPath bezierPathWithRoundedRect:rect byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(radius, radius)];

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		840723C21D5310710022349E /* RefreshFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 840723C11D5310710022349E /* RefreshFootView.m */; };
 		840723C41D53108A0022349E /* RefreshFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840723C31D53108A0022349E /* RefreshFootView.xib */; };
+		845246F71D5468EC00B388C0 /* SSRadiusLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 845246F61D5468EC00B388C0 /* SSRadiusLabel.m */; };
+		845246F91D54691700B388C0 /* SSRadiusLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845246F81D54691700B388C0 /* SSRadiusLabel.xib */; };
 		8453157E1D4C943300B4A539 /* HelpOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8453157C1D4C943300B4A539 /* HelpOrderViewController.m */; };
 		8453157F1D4C943300B4A539 /* HelpOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8453157D1D4C943300B4A539 /* HelpOrderViewController.xib */; };
 		84556A261D477C8400EE3E1C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84556A251D477C8400EE3E1C /* main.m */; };
@@ -48,6 +50,8 @@
 		84D044D31D49E2EA00E85B3E /* SSBustomBtn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D044D21D49E2EA00E85B3E /* SSBustomBtn.xib */; };
 		84D044D61D49E7CE00E85B3E /* UIView+Nib.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D044D51D49E7CE00E85B3E /* UIView+Nib.m */; };
 		84D044D91D4A27A600E85B3E /* LKMSimpleMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D044D81D4A27A600E85B3E /* LKMSimpleMsg.m */; };
+		84D27C591D54829D00B81C22 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D27C571D54829D00B81C22 /* RegisterViewController.m */; };
+		84D27C5A1D54829D00B81C22 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D27C581D54829D00B81C22 /* RegisterViewController.xib */; };
 		84DF1F361D48684500A583AC /* PersonalHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DF1F341D48684500A583AC /* PersonalHistoryViewController.m */; };
 		84DF1F371D48684500A583AC /* PersonalHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DF1F351D48684500A583AC /* PersonalHistoryViewController.xib */; };
 		84DF1F781D48891100A583AC /* bt_next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DF1F6F1D48891000A583AC /* bt_next@2x.png */; };
@@ -87,6 +91,9 @@
 		840723C01D5310710022349E /* RefreshFootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RefreshFootView.h; path = Controller/AllHistory/view/RefreshFootView.h; sourceTree = "<group>"; };
 		840723C11D5310710022349E /* RefreshFootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RefreshFootView.m; path = Controller/AllHistory/view/RefreshFootView.m; sourceTree = "<group>"; };
 		840723C31D53108A0022349E /* RefreshFootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RefreshFootView.xib; path = Controller/AllHistory/view/RefreshFootView.xib; sourceTree = "<group>"; };
+		845246F51D5468EC00B388C0 /* SSRadiusLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSRadiusLabel.h; path = Base/SSRadiusLabel.h; sourceTree = "<group>"; };
+		845246F61D5468EC00B388C0 /* SSRadiusLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSRadiusLabel.m; path = Base/SSRadiusLabel.m; sourceTree = "<group>"; };
+		845246F81D54691700B388C0 /* SSRadiusLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSRadiusLabel.xib; path = Base/SSRadiusLabel.xib; sourceTree = "<group>"; };
 		8453157B1D4C943300B4A539 /* HelpOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpOrderViewController.h; path = Controller/HelpOrder/HelpOrderViewController.h; sourceTree = "<group>"; };
 		8453157C1D4C943300B4A539 /* HelpOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpOrderViewController.m; path = Controller/HelpOrder/HelpOrderViewController.m; sourceTree = "<group>"; };
 		8453157D1D4C943300B4A539 /* HelpOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HelpOrderViewController.xib; path = Controller/HelpOrder/HelpOrderViewController.xib; sourceTree = "<group>"; };
@@ -157,6 +164,9 @@
 		84D044D51D49E7CE00E85B3E /* UIView+Nib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Nib.m"; path = "Base/UIView+Nib.m"; sourceTree = "<group>"; };
 		84D044D71D4A27A600E85B3E /* LKMSimpleMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LKMSimpleMsg.h; path = Base/LKMSimpleMsg.h; sourceTree = "<group>"; };
 		84D044D81D4A27A600E85B3E /* LKMSimpleMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LKMSimpleMsg.m; path = Base/LKMSimpleMsg.m; sourceTree = "<group>"; };
+		84D27C561D54829D00B81C22 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterViewController.h; path = Controller/Register/RegisterViewController.h; sourceTree = "<group>"; };
+		84D27C571D54829D00B81C22 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = Controller/Register/RegisterViewController.m; sourceTree = "<group>"; };
+		84D27C581D54829D00B81C22 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegisterViewController.xib; path = Controller/Register/RegisterViewController.xib; sourceTree = "<group>"; };
 		84DF1F2B1D4855B200A583AC /* ColorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorConstants.h; path = Extern/ColorConstants.h; sourceTree = "<group>"; };
 		84DF1F331D48684500A583AC /* PersonalHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalHistoryViewController.h; path = Controller/personalHistory/PersonalHistoryViewController.h; sourceTree = "<group>"; };
 		84DF1F341D48684500A583AC /* PersonalHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalHistoryViewController.m; path = Controller/personalHistory/PersonalHistoryViewController.m; sourceTree = "<group>"; };
@@ -297,6 +307,7 @@
 		84556A5F1D477EA100EE3E1C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				84D27C551D54827000B81C22 /* register */,
 				8453157A1D4C940100B4A539 /* helpOrder */,
 				84D044B81D49B2F800E85B3E /* allHistory */,
 				84DF1F2F1D48673C00A583AC /* PersonalHistory */,
@@ -390,6 +401,16 @@
 			name = view;
 			sourceTree = "<group>";
 		};
+		84D27C551D54827000B81C22 /* register */ = {
+			isa = PBXGroup;
+			children = (
+				84D27C561D54829D00B81C22 /* RegisterViewController.h */,
+				84D27C571D54829D00B81C22 /* RegisterViewController.m */,
+				84D27C581D54829D00B81C22 /* RegisterViewController.xib */,
+			);
+			name = register;
+			sourceTree = "<group>";
+		};
 		84DF1F2F1D48673C00A583AC /* PersonalHistory */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +447,9 @@
 				84D044C81D49D1B000E85B3E /* LKNavViewController.m */,
 				848BFA651D5331B500D2C9F9 /* UIImage+CornerRadius.h */,
 				848BFA661D5331B500D2C9F9 /* UIImage+CornerRadius.m */,
+				845246F51D5468EC00B388C0 /* SSRadiusLabel.h */,
+				845246F61D5468EC00B388C0 /* SSRadiusLabel.m */,
+				845246F81D54691700B388C0 /* SSRadiusLabel.xib */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -581,6 +605,7 @@
 			files = (
 				84556A671D477F2B00EE3E1C /* RegisterView.xib in Resources */,
 				84556A341D477C8400EE3E1C /* LaunchScreen.storyboard in Resources */,
+				845246F91D54691700B388C0 /* SSRadiusLabel.xib in Resources */,
 				845A57991D51E27E008BC27B /* AllOrderHistoryViewController.xib in Resources */,
 				84DF1F791D48891100A583AC /* bt_previous@2x.png in Resources */,
 				840723C41D53108A0022349E /* RefreshFootView.xib in Resources */,
@@ -589,6 +614,7 @@
 				84DF1F371D48684500A583AC /* PersonalHistoryViewController.xib in Resources */,
 				84D044D31D49E2EA00E85B3E /* SSBustomBtn.xib in Resources */,
 				8458A8631D4F521A00694FAE /* OrderInfoViewController.xib in Resources */,
+				84D27C5A1D54829D00B81C22 /* RegisterViewController.xib in Resources */,
 				84556A6C1D4782AF00EE3E1C /* MenuView.xib in Resources */,
 				84DF1F7C1D48891100A583AC /* SZCalendarPicker.xib in Resources */,
 				84556A2F1D477C8400EE3E1C /* Main.storyboard in Resources */,
@@ -671,6 +697,7 @@
 			files = (
 				8458A84B1D4EF80C00694FAE /* UserList.m in Sources */,
 				840723C21D5310710022349E /* RefreshFootView.m in Sources */,
+				84D27C591D54829D00B81C22 /* RegisterViewController.m in Sources */,
 				8458A8591D4F1E3700694FAE /* NameSelView.m in Sources */,
 				8453157E1D4C943300B4A539 /* HelpOrderViewController.m in Sources */,
 				84D044D91D4A27A600E85B3E /* LKMSimpleMsg.m in Sources */,
@@ -697,6 +724,7 @@
 				845A57981D51E27E008BC27B /* AllOrderHistoryViewController.m in Sources */,
 				84556A5D1D477E9A00EE3E1C /* MainViewController.m in Sources */,
 				84556A631D477F0600EE3E1C /* RegisterView.m in Sources */,
+				845246F71D5468EC00B388C0 /* SSRadiusLabel.m in Sources */,
 				84D044D11D49E2C800E85B3E /* SSBustomBtn.m in Sources */,
 				8458A8541D4F11A100694FAE /* UIButton+stateColor.m in Sources */,
 				8458A8621D4F521A00694FAE /* OrderInfoViewController.m in Sources */,

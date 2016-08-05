@@ -16,6 +16,7 @@
 #import "PersonalHistoryViewController.h"
 #import "AllOrderHistoryViewController.h"
 #import "HelpOrderViewController.h"
+#import "RegisterViewController.h"
 
 @interface MainViewController ()
 
@@ -28,7 +29,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (assign, nonatomic) BOOL isManager;
 @property (assign, nonatomic) BOOL isOrdered;
-@property (assign, nonatomic) BOOL isFirstRun;
 @property (strong, nonatomic) UILongPressGestureRecognizer *longGsture;
 @property (strong, nonatomic) NSString *curDate;
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
@@ -53,17 +53,7 @@
 #pragma mark - init interface
 
 - (void)initInterface {
-    [self.view addGestureRecognizer:self.panGesture];
-    [self.orderBtn addGestureRecognizer:self.longGsture];
-//    [[UserInfoManager sharedManager] saveFirstRun:YES];
-//    [[UserInfoManager sharedManager] removeUSerInfo];
-    if ([[UserInfoManager sharedManager] getFirstRun] || [[UserInfoManager sharedManager] getUserInfo].name == nil || [[UserInfoManager sharedManager] getUserInfo].email == nil) {
-        self.panGesture.enabled = NO;
-        [self addRegisterView];
-        [[UserInfoManager sharedManager] saveFirstRun:NO];
-    } else {
-        self.panGesture.enabled = YES;
-    }
+    
     LKUser * user = [[UserInfoManager sharedManager] getUserInfo];
     [[LKUser sharedUser] merge:user];
     
@@ -86,7 +76,8 @@
     [self.orderBtn setTitle:@"点餐" forState:UIControlStateNormal];
     [self.orderBtn setBackgroundColor:BLUE_COLOR forState:UIControlStateNormal];
     [self.orderBtn setBackgroundColor:LK_TEXT_COLOR_GRAY forState:UIControlStateSelected];
-    
+    [self.view addGestureRecognizer:self.panGesture];
+    [self.orderBtn addGestureRecognizer:self.longGsture];
     [self addNoti];
     if ([self getWeek] >= START_WEEKDAY && [self getWeek] <= END_WEEKDAY) {
         self.orderBtn.enabled = YES;
@@ -200,7 +191,6 @@
 }
 
 - (void)refreshOrderBtn {
-    self.panGesture.enabled = YES;
     NSString * name = [[UserInfoManager sharedManager] getUserInfo].name;
     if (name.length != 0) {
         [[LKAPIClient sharedClient] requestPOSTForGetUserInfo:@"user" params:@{@"name":name} modelClass:[LKUser class] completionHandler:^(LKJSonModel *aModelBaseObject) {
@@ -293,8 +283,9 @@
         
         [RACObserve(self.menuView.accountChange, selected) subscribeNext:^(id x) {
             if ([x integerValue] == 1) {
-                self.panGesture.enabled = NO;
-                [self addRegisterView];
+                RegisterViewController * vc = [[RegisterViewController alloc] initWithNibName:nil bundle:nil];
+                [self.navigationController pushViewController:vc animated:YES];
+//                [self addRegisterView];
             }
         }];
         
@@ -303,7 +294,6 @@
                 if ([[UserInfoManager sharedManager] getUserInfo].name == nil) {
                     [LKUIUtils showError:@"请先进入账户"];
                 } else {
-                    self.panGesture.enabled = NO;
                     [self.navigationController pushViewController:self.historyVC animated:YES];
                 }
                 
@@ -315,7 +305,6 @@
                 if ([[UserInfoManager sharedManager] getUserInfo].name == nil) {
                     [LKUIUtils showError:@"请先进入账户"];
                 } else {
-                    self.panGesture.enabled = NO;
                     [self.navigationController pushViewController:self.allOrderHistoryVC animated:YES];
                 }
             }
@@ -326,7 +315,6 @@
                 if ([[UserInfoManager sharedManager] getUserInfo].name == nil) {
                     [LKUIUtils showError:@"请先进入账户"];
                 } else {
-                    self.panGesture.enabled = NO;
                     HelpOrderViewController * vc = [[HelpOrderViewController alloc] initWithNibName:@"HelpOrderViewController" bundle:nil];
                     [self.navigationController pushViewController:vc animated:YES];
                 }

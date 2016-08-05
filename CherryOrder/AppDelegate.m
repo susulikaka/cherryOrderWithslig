@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "RegisterViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,7 +18,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    MainViewController * vc = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+//    [[UserInfoManager sharedManager] removeUSerInfo];
+    NSString * str = [[UserInfoManager sharedManager] getUserInfo].name;
+    UIViewController * vc;
+    
+    if (str.length == 0) {
+        vc = [[RegisterViewController alloc] initWithNibName:@"RegisterViewController" bundle:nil];
+        
+    } else {
+        vc = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+    }
+    
     UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:vc];
     
     self.window.rootViewController = nvc;
