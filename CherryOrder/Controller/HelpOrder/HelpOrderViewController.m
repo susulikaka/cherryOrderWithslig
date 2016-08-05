@@ -67,7 +67,7 @@
         [self.collectionView reloadData];
     } errorHandler:^(LKAPIError *engineError) {
         self.helpOrderBtn.enabled = NO;
-        [LKUOUtils showError:engineError.message];
+        [LKUIUtils showError:engineError.message];
     }];
 }
 

@@ -15,7 +15,6 @@
 @property (weak, nonatomic, readonly) UIButton    * doneBtn;
 @property (weak, nonatomic, readonly) UIButton    * isManager;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstriants;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstrants;
 
 
 @end

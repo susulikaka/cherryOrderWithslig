@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SVProgressHUD.h"
 
-@interface LKUOUtils : NSObject
+@interface LKUIUtils : NSObject
 
 + (void)showProgressDialog:(NSString *)title;
 + (void)dismissProgressDialog;

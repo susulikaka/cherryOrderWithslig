@@ -50,7 +50,7 @@ NSString *const SZCalendarCellIdentifier = @"cell";
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
-    layout.minimumLineSpacing = 10;
+    layout.minimumLineSpacing = 0;
     layout.minimumInteritemSpacing = 0;
     [_collectionView setCollectionViewLayout:layout animated:YES];
 }

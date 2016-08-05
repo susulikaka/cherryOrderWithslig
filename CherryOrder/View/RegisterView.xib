@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -87,11 +88,13 @@
                         <constraint firstItem="VIS-eT-AAu" firstAttribute="leading" secondItem="IWh-td-nEb" secondAttribute="leading" constant="30" id="Dqh-7n-yuA"/>
                         <constraint firstAttribute="bottom" secondItem="rod-VQ-JTw" secondAttribute="bottom" constant="-50" id="Htz-i4-fIH"/>
                         <constraint firstAttribute="trailing" secondItem="eKR-A3-kLh" secondAttribute="trailing" constant="30" id="NpX-4Z-66U"/>
+                        <constraint firstAttribute="width" constant="340" id="OGk-3a-2hf"/>
                         <constraint firstItem="VIS-eT-AAu" firstAttribute="centerX" secondItem="IWh-td-nEb" secondAttribute="centerX" id="R4o-Ip-NdM"/>
                         <constraint firstItem="xnF-Pt-6WW" firstAttribute="centerX" secondItem="IWh-td-nEb" secondAttribute="centerX" id="XF2-RG-k6i"/>
                         <constraint firstItem="xnF-Pt-6WW" firstAttribute="leading" secondItem="IWh-td-nEb" secondAttribute="leading" constant="30" id="bQA-a7-1Qc"/>
                         <constraint firstItem="rod-VQ-JTw" firstAttribute="centerX" secondItem="IWh-td-nEb" secondAttribute="centerX" id="db6-81-UsA"/>
-                        <constraint firstAttribute="bottom" secondItem="VIS-eT-AAu" secondAttribute="bottom" constant="100" id="ipf-EX-xL2"/>
+                        <constraint firstAttribute="width" secondItem="IWh-td-nEb" secondAttribute="height" multiplier="17:20" id="hLD-AE-0mZ"/>
+                        <constraint firstAttribute="bottom" secondItem="VIS-eT-AAu" secondAttribute="bottom" constant="40" id="ipf-EX-xL2"/>
                         <constraint firstItem="rod-VQ-JTw" firstAttribute="top" secondItem="pl9-sY-ua1" secondAttribute="bottom" constant="-50" id="nNv-Yu-INz"/>
                         <constraint firstItem="rod-VQ-JTw" firstAttribute="top" secondItem="IWh-td-nEb" secondAttribute="top" constant="-50" id="pez-gb-raL"/>
                         <constraint firstAttribute="trailing" secondItem="VIS-eT-AAu" secondAttribute="trailing" constant="30" id="tKy-Jg-QjZ"/>
@@ -100,11 +103,11 @@
                         <constraint firstItem="pl9-sY-ua1" firstAttribute="centerX" secondItem="IWh-td-nEb" secondAttribute="centerX" id="yeR-5f-SDi"/>
                         <constraint firstItem="xnF-Pt-6WW" firstAttribute="centerY" secondItem="IWh-td-nEb" secondAttribute="centerY" constant="-10" id="ygg-19-3Oz"/>
                         <constraint firstItem="eKR-A3-kLh" firstAttribute="leading" secondItem="IWh-td-nEb" secondAttribute="leading" constant="30" id="yte-PB-MdS"/>
-                        <constraint firstAttribute="height" constant="400" id="z1I-pz-OLx"/>
                         <constraint firstItem="eKR-A3-kLh" firstAttribute="centerX" secondItem="IWh-td-nEb" secondAttribute="centerX" id="zvE-3n-4FE"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="xjS-Ve-3q7"/>
                             <exclude reference="Htz-i4-fIH"/>
                             <exclude reference="nNv-Yu-INz"/>
                         </mask>
@@ -128,11 +131,10 @@
                 <outlet property="backGroudImg" destination="VIp-92-7Jk" id="3IU-JD-RG6"/>
                 <outlet property="backView" destination="IWh-td-nEb" id="k05-PB-0uE"/>
                 <outlet property="doneBtn" destination="VIS-eT-AAu" id="gLx-le-8sJ"/>
-                <outlet property="heightConstrants" destination="z1I-pz-OLx" id="vY6-Va-Czy"/>
                 <outlet property="imageView" destination="rod-VQ-JTw" id="YRH-U7-ZGx"/>
                 <outlet property="mailText" destination="eKR-A3-kLh" id="HR2-cn-XRz"/>
                 <outlet property="nameText" destination="xnF-Pt-6WW" id="CdG-HZ-ltg"/>
-                <outlet property="widthConstriants" destination="xjS-Ve-3q7" id="1Xs-Pm-ox7"/>
+                <outlet property="widthConstriants" destination="OGk-3a-2hf" id="UT6-8Q-2vm"/>
             </connections>
             <point key="canvasLocation" x="-40" y="667"/>
         </view>

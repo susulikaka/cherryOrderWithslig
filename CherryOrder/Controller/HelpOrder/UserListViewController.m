@@ -92,7 +92,7 @@
         self.userListDataSource = [list.list mutableCopy];
         [self.UserListCollectionView reloadData];
     } errorHandler:^(LKAPIError *engineError) {
-        [LKUOUtils showError:engineError.message];
+        [LKUIUtils showError:engineError.message];
     }];
 }
 

@@ -31,7 +31,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 }
 
 #pragma mark - private method
@@ -86,7 +85,7 @@
                                                 [self.collectionView reloadData];
                                                 [self.refresh endRefreshing];
                                             } errorHandler:^(LKAPIError *engineError) {
-                                                [LKUOUtils showError:engineError.message];
+                                                [LKUIUtils showError:engineError.message];
                                             }];
 }
 

@@ -36,12 +36,11 @@
 		8458A8631D4F521A00694FAE /* OrderInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8458A8611D4F521A00694FAE /* OrderInfoViewController.xib */; };
 		845A57981D51E27E008BC27B /* AllOrderHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A57961D51E27E008BC27B /* AllOrderHistoryViewController.m */; };
 		845A57991D51E27E008BC27B /* AllOrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845A57971D51E27E008BC27B /* AllOrderHistoryViewController.xib */; };
-		845A579D1D52226A008BC27B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 845A579C1D52226A008BC27B /* Default-568h@2x.png */; };
 		846854781D49ACFE007592BF /* UserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 846854771D49ACFE007592BF /* UserInfoManager.m */; };
 		8468E3E81D4B3D0A00F52C79 /* AllHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468E3E71D4B3D0A00F52C79 /* AllHistory.m */; };
 		8468E3EB1D4B48A500F52C79 /* UserHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468E3EA1D4B48A500F52C79 /* UserHistory.m */; };
 		848BFA671D5331B500D2C9F9 /* UIImage+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 848BFA661D5331B500D2C9F9 /* UIImage+CornerRadius.m */; };
-		849506C81D51AFA100684BE5 /* LKUOUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 849506C71D51AFA100684BE5 /* LKUOUtils.m */; };
+		849506C81D51AFA100684BE5 /* LKUIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 849506C71D51AFA100684BE5 /* LKUIUtils.m */; };
 		84D044C91D49D1B000E85B3E /* LKNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D044C81D49D1B000E85B3E /* LKNavViewController.m */; };
 		84D044CC1D49DB1100E85B3E /* HistoryHeaderview.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D044CB1D49DB1100E85B3E /* HistoryHeaderview.m */; };
 		84D044CE1D49DB2100E85B3E /* HistoryHeaderview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D044CD1D49DB2100E85B3E /* HistoryHeaderview.xib */; };
@@ -136,7 +135,6 @@
 		845A57951D51E27E008BC27B /* AllOrderHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllOrderHistoryViewController.h; path = Controller/AllHistory/AllOrderHistoryViewController.h; sourceTree = "<group>"; };
 		845A57961D51E27E008BC27B /* AllOrderHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllOrderHistoryViewController.m; path = Controller/AllHistory/AllOrderHistoryViewController.m; sourceTree = "<group>"; };
 		845A57971D51E27E008BC27B /* AllOrderHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AllOrderHistoryViewController.xib; path = Controller/AllHistory/AllOrderHistoryViewController.xib; sourceTree = "<group>"; };
-		845A579C1D52226A008BC27B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		846854761D49ACFE007592BF /* UserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInfoManager.h; path = Model/UserInfoManager.h; sourceTree = "<group>"; };
 		846854771D49ACFE007592BF /* UserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfoManager.m; path = Model/UserInfoManager.m; sourceTree = "<group>"; };
 		8468E3E61D4B3D0A00F52C79 /* AllHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllHistory.h; path = Model/AllHistory.h; sourceTree = "<group>"; };
@@ -145,8 +143,8 @@
 		8468E3EA1D4B48A500F52C79 /* UserHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserHistory.m; path = Model/UserHistory.m; sourceTree = "<group>"; };
 		848BFA651D5331B500D2C9F9 /* UIImage+CornerRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CornerRadius.h"; sourceTree = "<group>"; };
 		848BFA661D5331B500D2C9F9 /* UIImage+CornerRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CornerRadius.m"; sourceTree = "<group>"; };
-		849506C61D51AFA100684BE5 /* LKUOUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LKUOUtils.h; path = Base/LKUOUtils.h; sourceTree = "<group>"; };
-		849506C71D51AFA100684BE5 /* LKUOUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LKUOUtils.m; path = Base/LKUOUtils.m; sourceTree = "<group>"; };
+		849506C61D51AFA100684BE5 /* LKUIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LKUIUtils.h; path = Base/LKUIUtils.h; sourceTree = "<group>"; };
+		849506C71D51AFA100684BE5 /* LKUIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LKUIUtils.m; path = Base/LKUIUtils.m; sourceTree = "<group>"; };
 		84D044C71D49D1B000E85B3E /* LKNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LKNavViewController.h; path = Base/LKNavViewController.h; sourceTree = "<group>"; };
 		84D044C81D49D1B000E85B3E /* LKNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LKNavViewController.m; path = Base/LKNavViewController.m; sourceTree = "<group>"; };
 		84D044CA1D49DB1100E85B3E /* HistoryHeaderview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryHeaderview.h; path = Controller/AllHistory/view/HistoryHeaderview.h; sourceTree = "<group>"; };
@@ -273,7 +271,6 @@
 		84556A241D477C8400EE3E1C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				845A579C1D52226A008BC27B /* Default-568h@2x.png */,
 				84556A251D477C8400EE3E1C /* main.m */,
 			);
 			name = "Supporting Files";
@@ -418,8 +415,8 @@
 				84DF1FBE1D48974700A583AC /* LKAPIError.h */,
 				84DF1FBF1D48974700A583AC /* LKAPIError.m */,
 				84DF1FC01D48974700A583AC /* LKJSONResult.h */,
-				849506C61D51AFA100684BE5 /* LKUOUtils.h */,
-				849506C71D51AFA100684BE5 /* LKUOUtils.m */,
+				849506C61D51AFA100684BE5 /* LKUIUtils.h */,
+				849506C71D51AFA100684BE5 /* LKUIUtils.m */,
 				84DF1FC11D48974700A583AC /* LKJSONResult.m */,
 				84DF1FC21D48974700A583AC /* LKOperation.h */,
 				84DF1FB91D48969F00A583AC /* LKJSonModel.h */,
@@ -587,7 +584,6 @@
 				845A57991D51E27E008BC27B /* AllOrderHistoryViewController.xib in Resources */,
 				84DF1F791D48891100A583AC /* bt_previous@2x.png in Resources */,
 				840723C41D53108A0022349E /* RefreshFootView.xib in Resources */,
-				845A579D1D52226A008BC27B /* Default-568h@2x.png in Resources */,
 				84D044CE1D49DB2100E85B3E /* HistoryHeaderview.xib in Resources */,
 				84556A311D477C8400EE3E1C /* Assets.xcassets in Resources */,
 				84DF1F371D48684500A583AC /* PersonalHistoryViewController.xib in Resources */,
@@ -688,7 +684,7 @@
 				8458A84F1D4EF87300694FAE /* UserListViewController.m in Sources */,
 				84DF1F361D48684500A583AC /* PersonalHistoryViewController.m in Sources */,
 				84DF1F7B1D48891100A583AC /* SZCalendarPicker.m in Sources */,
-				849506C81D51AFA100684BE5 /* LKUOUtils.m in Sources */,
+				849506C81D51AFA100684BE5 /* LKUIUtils.m in Sources */,
 				8468E3EB1D4B48A500F52C79 /* UserHistory.m in Sources */,
 				8458A8481D4EE68000694FAE /* UserOrderInfo.m in Sources */,
 				84DF1F7A1D48891100A583AC /* SZCalendarCell.m in Sources */,
@@ -851,6 +847,7 @@
 			baseConfigurationReference = 241DA418294B166E8CCD0979 /* Pods-CherryOrder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -873,6 +870,7 @@
 			baseConfigurationReference = BA82E41C30D079DB1D413DF8 /* Pods-CherryOrder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

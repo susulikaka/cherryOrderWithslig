@@ -41,23 +41,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initInterface];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+    [self initInterface];
     [self refreshOrderBtn];
 }
 
 #pragma mark - init interface
 
 - (void)initInterface {
+    [self.view addGestureRecognizer:self.panGesture];
+    [self.orderBtn addGestureRecognizer:self.longGsture];
 //    [[UserInfoManager sharedManager] saveFirstRun:YES];
 //    [[UserInfoManager sharedManager] removeUSerInfo];
     if ([[UserInfoManager sharedManager] getFirstRun] || [[UserInfoManager sharedManager] getUserInfo].name == nil || [[UserInfoManager sharedManager] getUserInfo].email == nil) {
+        self.panGesture.enabled = NO;
         [self addRegisterView];
         [[UserInfoManager sharedManager] saveFirstRun:NO];
+    } else {
+        self.panGesture.enabled = YES;
     }
     LKUser * user = [[UserInfoManager sharedManager] getUserInfo];
     [[LKUser sharedUser] merge:user];
@@ -81,8 +86,6 @@
     [self.orderBtn setTitle:@"点餐" forState:UIControlStateNormal];
     [self.orderBtn setBackgroundColor:BLUE_COLOR forState:UIControlStateNormal];
     [self.orderBtn setBackgroundColor:LK_TEXT_COLOR_GRAY forState:UIControlStateSelected];
-    [self.view addGestureRecognizer:self.panGesture];
-    [self.orderBtn addGestureRecognizer:self.longGsture];
     
     [self addNoti];
     if ([self getWeek] >= START_WEEKDAY && [self getWeek] <= END_WEEKDAY) {
@@ -197,6 +200,7 @@
 }
 
 - (void)refreshOrderBtn {
+    self.panGesture.enabled = YES;
     NSString * name = [[UserInfoManager sharedManager] getUserInfo].name;
     if (name.length != 0) {
         [[LKAPIClient sharedClient] requestPOSTForGetUserInfo:@"user" params:@{@"name":name} modelClass:[LKUser class] completionHandler:^(LKJSonModel *aModelBaseObject) {
@@ -212,7 +216,7 @@
             self.orderBtn.selected = [LKUser sharedUser].has_ordered;
             self.isManager = [LKUser sharedUser].is_admin;
         } errorHandler:^(LKAPIError *engineError) {
-            [LKUOUtils showError:engineError.message];
+            [LKUIUtils showError:engineError.message];
         }];
     }
 }
@@ -252,7 +256,7 @@
         [[LKUser sharedUser].historyOrder setValue:@(self.orderBtn.selected) forKey:self.curDate];
         [[UserInfoManager sharedManager] saveUserInfo:[LKUser sharedUser]];
         } errorHandler:^(LKAPIError *engineError) {
-            [LKUOUtils showError:engineError.message];
+            [LKUIUtils showError:engineError.message];
         }];
     } else {
         [[LKAPIClient sharedClient] requestPOSTForOrder:@"order"
@@ -269,7 +273,7 @@
         [[LKUser sharedUser].historyOrder setValue:@(self.orderBtn.selected) forKey:self.curDate];
         [[UserInfoManager sharedManager] saveUserInfo:[LKUser sharedUser]];
         } errorHandler:^(LKAPIError *engineError) {
-            [LKUOUtils showError:engineError.message];
+            [LKUIUtils showError:engineError.message];
         }];
     }
 }
@@ -289,6 +293,7 @@
         
         [RACObserve(self.menuView.accountChange, selected) subscribeNext:^(id x) {
             if ([x integerValue] == 1) {
+                self.panGesture.enabled = NO;
                 [self addRegisterView];
             }
         }];
@@ -296,8 +301,9 @@
         [RACObserve(self.menuView.accountHistory, selected) subscribeNext:^(id x) {
             if ([x integerValue] == 1) {
                 if ([[UserInfoManager sharedManager] getUserInfo].name == nil) {
-                    [LKUOUtils showError:@"请先进入账户"];
+                    [LKUIUtils showError:@"请先进入账户"];
                 } else {
+                    self.panGesture.enabled = NO;
                     [self.navigationController pushViewController:self.historyVC animated:YES];
                 }
                 
@@ -307,8 +313,9 @@
         [RACObserve(self.menuView.allHistory, selected) subscribeNext:^(id x) {
             if ([x integerValue] == 1) {
                 if ([[UserInfoManager sharedManager] getUserInfo].name == nil) {
-                    [LKUOUtils showError:@"请先进入账户"];
+                    [LKUIUtils showError:@"请先进入账户"];
                 } else {
+                    self.panGesture.enabled = NO;
                     [self.navigationController pushViewController:self.allOrderHistoryVC animated:YES];
                 }
             }
@@ -317,8 +324,9 @@
         [RACObserve(self.menuView.helpOrder, selected) subscribeNext:^(id x) {
             if ([x integerValue] == 1) {
                 if ([[UserInfoManager sharedManager] getUserInfo].name == nil) {
-                    [LKUOUtils showError:@"请先进入账户"];
+                    [LKUIUtils showError:@"请先进入账户"];
                 } else {
+                    self.panGesture.enabled = NO;
                     HelpOrderViewController * vc = [[HelpOrderViewController alloc] initWithNibName:@"HelpOrderViewController" bundle:nil];
                     [self.navigationController pushViewController:vc animated:YES];
                 }

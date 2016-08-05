@@ -30,7 +30,7 @@
         self.helperName.text = dic.agent;
         
     } errorHandler:^(LKAPIError *engineError) {
-        [LKUOUtils showError:engineError.message];
+        [LKUIUtils showError:engineError.message];
     }];
     
 }

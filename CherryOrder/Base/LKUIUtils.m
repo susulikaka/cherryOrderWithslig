@@ -6,9 +6,9 @@
 //  Copyright © 2016年 SupingLi. All rights reserved.
 //
 
-#import "LKUOUtils.h"
+#import "LKUIUtils.h"
 
-@implementation LKUOUtils
+@implementation LKUIUtils
 
 + (void)showProgressDialog:(NSString *)title {
     [SVProgressHUD showWithStatus:title maskType:SVProgressHUDMaskTypeClear];
