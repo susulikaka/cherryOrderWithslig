@@ -8,37 +8,53 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view userInteractionEnabled="NO" contentMode="scaleToFill" id="iN0-l3-epB" customClass="NameSelView">
-            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+            <rect key="frame" x="0.0" y="0.0" width="400" height="377"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KO0-bv-bS3">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FMQ-Ee-I0g">
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="377"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KO0-bv-bS3">
                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_pic_mark" highlightedImage="icon_pic_mark_selected" translatesAutoresizingMaskIntoConstraints="NO" id="obR-g8-8Yc">
-                    <rect key="frame" x="52" y="8" width="20" height="20"/>
+                    <rect key="frame" x="372" y="8" width="20" height="20"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="KO0-bv-bS3" secondAttribute="trailing" id="392-8e-BoF"/>
                 <constraint firstItem="obR-g8-8Yc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="B93-OW-nbr"/>
+                <constraint firstAttribute="trailing" secondItem="FMQ-Ee-I0g" secondAttribute="trailing" id="CBo-jE-BU9"/>
+                <constraint firstItem="obR-g8-8Yc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="FjF-CB-EA3"/>
                 <constraint firstAttribute="trailing" secondItem="obR-g8-8Yc" secondAttribute="trailing" constant="8" id="GSV-Ca-3Ue"/>
                 <constraint firstItem="KO0-bv-bS3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Hp2-TJ-h5B"/>
                 <constraint firstAttribute="bottom" secondItem="KO0-bv-bS3" secondAttribute="bottom" id="QLz-P2-gDf"/>
+                <constraint firstItem="FMQ-Ee-I0g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XHV-Ns-XtS"/>
+                <constraint firstItem="FMQ-Ee-I0g" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YAO-Nr-XAR"/>
                 <constraint firstItem="KO0-bv-bS3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="lcJ-KQ-oUn"/>
+                <constraint firstAttribute="trailing" secondItem="obR-g8-8Yc" secondAttribute="trailing" constant="8" id="x2d-Ub-1hf"/>
+                <constraint firstAttribute="bottom" secondItem="FMQ-Ee-I0g" secondAttribute="bottom" id="xCg-ao-m5n"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="B93-OW-nbr"/>
+                    <exclude reference="GSV-Ca-3Ue"/>
+                </mask>
+            </variation>
             <connections>
+                <outlet property="backImgView" destination="FMQ-Ee-I0g" id="HEl-b9-IJx"/>
                 <outlet property="mark" destination="obR-g8-8Yc" id="igH-uo-CaL"/>
                 <outlet property="name" destination="KO0-bv-bS3" id="VhV-xl-uLH"/>
             </connections>
-            <point key="canvasLocation" x="26" y="300"/>
+            <point key="canvasLocation" x="186" y="448.5"/>
         </view>
     </objects>
     <resources>

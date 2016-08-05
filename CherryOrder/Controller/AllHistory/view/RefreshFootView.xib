@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="j0s-e9-2kZ" customClass="RefreshFootView">
+            <rect key="frame" x="0.0" y="0.0" width="565" height="187"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gRt-37-Eac">
+                    <rect key="frame" x="162" y="30" width="240" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="FUE-ly-erh"/>
+                        <constraint firstAttribute="width" constant="200" id="p4J-D0-LNW"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVD-Re-E20">
+                    <rect key="frame" x="182" y="74" width="200" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="6Ne-nQ-smc"/>
+                        <constraint firstAttribute="height" constant="40" id="fIi-wY-jek"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="MVD-Re-E20" firstAttribute="centerX" secondItem="j0s-e9-2kZ" secondAttribute="centerX" id="Cm1-SF-n6h"/>
+                <constraint firstItem="gRt-37-Eac" firstAttribute="centerY" secondItem="j0s-e9-2kZ" secondAttribute="centerY" id="HwX-Wi-qmG"/>
+                <constraint firstItem="MVD-Re-E20" firstAttribute="centerY" secondItem="j0s-e9-2kZ" secondAttribute="centerY" id="ev3-uE-C1I"/>
+                <constraint firstItem="gRt-37-Eac" firstAttribute="centerX" secondItem="j0s-e9-2kZ" secondAttribute="centerX" id="o8r-By-g2b"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imageView" destination="gRt-37-Eac" id="EP7-lP-Vy1"/>
+                <outlet property="msgLabel" destination="MVD-Re-E20" id="L4E-9G-YDy"/>
+            </connections>
+            <point key="canvasLocation" x="632.5" y="742.5"/>
+        </view>
+    </objects>
+</document>

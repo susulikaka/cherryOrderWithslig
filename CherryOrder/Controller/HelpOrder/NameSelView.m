@@ -24,19 +24,17 @@
 }
 
 - (void)renderWithName:(NSString *)name enabled:(BOOL)enabled {
-    self.layer.borderWidth = 0.5;
-    self.layer.cornerRadius = self.bounds.size.height/2;
-    self.layer.masksToBounds = YES;
+    
     self.name.textColor = LK_BACK_COLOR_LIGHT_GRAY;
     self.name.text = name;
     self.enabled = enabled;
     if (self.enabled) {
-        self.layer.borderColor = DARK_MAIN_COLOR.CGColor;
-        self.backgroundColor = DARK_MAIN_COLOR;
+        self.backImgView.image = [UIImage imageAddCornerWithRadius:self.bounds.size.height/2 andSize:self.bounds.size fileMode:kCGPathFillStroke];
         self.name.textColor = [UIColor whiteColor];
     } else {
-        self.layer.borderColor = LK_BACK_COLOR_LIGHT_GRAY.CGColor;
+        self.backImgView.image = [UIImage imageAddCornerWithRadius:self.bounds.size.height/2 andSize:self.bounds.size fileMode:kCGPathStroke];
     }
+    [self bringSubviewToFront:self.mark];
 }
 
 @end

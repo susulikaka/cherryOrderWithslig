@@ -8,13 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NameSelView : UICollectionViewCell
+@interface NameSelView : UIView
 
 @property (weak, nonatomic) IBOutlet UILabel     * name;
-
+@property (weak, nonatomic) IBOutlet UIImageView *backImgView;
 @property (nonatomic, weak) IBOutlet UIImageView * mark;
-
-//@property (nonatomic) BOOL isSelected;
 
 @property (nonatomic) BOOL enabled;
 

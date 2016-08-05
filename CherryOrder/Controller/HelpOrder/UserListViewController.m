@@ -15,7 +15,6 @@
 @interface UserListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, strong)NSArray        * userListDataSource;
-@property (nonatomic, strong)NSMutableArray * addOrderList;
 
 @end
 
@@ -30,7 +29,7 @@
     [super viewWillAppear:animated];
     self.title = @"添加代点用户";
     self.UserListCollectionView.backgroundColor = [UIColor whiteColor];
-    [self.UserListCollectionView registerClass:[NameSelView class] forCellWithReuseIdentifier:NSStringFromClass([NameSelView class])];
+    [self.UserListCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class])];
     self.navigationController.navigationBarHidden = NO;
     UIBarButtonItem * leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left-arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = leftItem;
@@ -59,7 +58,7 @@
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString *name = [self.userListDataSource objectAtIndex:indexPath.row][@"name"];
-    NameSelView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([NameSelView class])
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class])
                                                                   forIndexPath:indexPath];
     
     NameSelView * view = [NameSelView viewFromNib];
@@ -80,23 +79,10 @@
     return cell;
 }
 
-#pragma mark - UICollectionViewDelegate
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self.addOrderList addObject:self.userListDataSource[indexPath.row][@"name"]];
-    NameSelView * cell = (NameSelView *)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.mark.highlighted = YES;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self.addOrderList removeObject:self.userListDataSource[indexPath.row][@"name"]];
-}
-
 #pragma mark - private method
 
 - (void)requestData {
     self.userListDataSource = [NSMutableArray array];
-    self.addOrderList = [NSMutableArray array];
     [[LKAPIClient sharedClient] requestGETForUserList:@"user/all" params:nil modelClass:[UserList class] completionHandler:^(LKJSonModel *aModelBaseObject) {
         
         UserList * list ;

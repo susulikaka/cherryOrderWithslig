@@ -38,10 +38,10 @@
 #define END_TIME @"16:00"
 #define END_TIME_4 @"16:00:00"
 #define END_TIME_430 @"16:30:00"
-#define END_TIME_440 @"16:40:00"
+#define END_TIME_440 @"20:40:00"
 
 #define START_WEEKDAY 1
-#define END_WEEKDAY 4
+#define END_WEEKDAY 5
 
 #define PX_1          (1 / [UIScreen mainScreen].scale)
 #define PX_2          (2 / [UIScreen mainScreen].scale)

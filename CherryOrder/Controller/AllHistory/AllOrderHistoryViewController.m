@@ -9,6 +9,8 @@
 #import "AllOrderHistoryViewController.h"
 #import "AllHistory.h"
 #import "HistoryHeaderview.h"
+#import "OrderInfoViewController.h"
+#import "RefreshFootView.h"
 
 @interface AllOrderHistoryViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -16,6 +18,7 @@
 @property (nonatomic, strong)NSMutableArray * dataSource;
 @property (assign, nonatomic) BOOL noMore;
 @property (strong, nonatomic) UIRefreshControl * refresh;
+@property (strong, nonatomic) RefreshFootView * refreshFoot;
 
 @end
 
@@ -43,17 +46,29 @@
     self.navigationItem.rightBarButtonItem = rightItem;
     self.view.backgroundColor = [UIColor whiteColor];
     
-    
     self.view.backgroundColor = [UIColor whiteColor];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class])];
     [self.collectionView registerClass:[UICollectionViewCell class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:UICollectionElementKindSectionHeader];
     [self requestDate];
+    [self.collectionView addSubview:self.refreshFoot];
     [self.collectionView addSubview:self.refresh];
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 60, 0);
+    [RACObserve(self.collectionView, contentSize) subscribeNext:^(id x) {
+        CGFloat pointY = [x CGPointValue].y;
+        [self.refreshFoot setFrame:CGRectMake(0, pointY, SCREEN_WIDTH, 80)];
+    }];
 }
 
 - (void)requestDate {
     self.dataSource = [NSMutableArray array];
+    
+//    NSDictionary * arr = @{@"name":@"11",@"count":@(12),@"list":@[@{@"name":@"name",@"list":@"na",@"data":@"date"},@{@"name":@"name",@"list":@"na",@"data":@"date"}]};
+//    for (int i = 0; i < 10; i ++) {
+//        [self.dataSource addObject:arr];
+//    }
+//    [self.collectionView reloadData];
+    
     [[LKAPIClient sharedClient] requestGETForcurDateOrderList:@"order/all"
                                                        params:nil
                                                    modelClass:[AllHistory class]
@@ -88,16 +103,18 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class]) forIndexPath:indexPath];
     NSString * name = self.dataSource[self.dataSource.count-1-indexPath.section][@"list"][indexPath.row][@"name"];
+    
+    UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, NAME_COLLECTION_CELL_WIDTH, NAME_COLLECTION_CELL_WIDTH)];
+    UIImage * image = [UIImage imageAddCornerWithRadius:NAME_COLLECTION_CELL_WIDTH/2 andSize:CGSizeMake(NAME_COLLECTION_CELL_WIDTH, NAME_COLLECTION_CELL_WIDTH) fileMode:kCGPathStroke];
+    imageView.image = image;
+    
     UILabel *label = [[UILabel alloc] init];
     label.bounds = CGRectMake(0, 0, NAME_COLLECTION_CELL_WIDTH, NAME_COLLECTION_CELL_WIDTH);
     label.textAlignment = NSTextAlignmentCenter;
-    label.layer.borderWidth = 0.5;
-    label.layer.borderColor = DARK_MAIN_COLOR.CGColor;
-    label.layer.cornerRadius = label.bounds.size.height/2;
-    label.layer.masksToBounds = YES;
     label.textColor = LK_TEXT_COLOR_GRAY;
     label.font = [UIFont systemFontOfSize:16];
-    label.backgroundColor = [UIColor whiteColor];
+    label.center = imageView.center;
+    label.backgroundColor = [UIColor clearColor];
     if (name.length > 2) {
         label.text = [name substringWithRange:NSMakeRange(name.length - 2, 2)];
     } else {
@@ -108,8 +125,8 @@
         [subView removeFromSuperview];
     }
     
+    [cell.contentView addSubview:imageView];
     [cell.contentView addSubview:label];
-    [label autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     
     return cell;
 }
@@ -148,6 +165,14 @@
     return view;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    OrderInfoViewController * vc = [[OrderInfoViewController alloc] initWithNibName:nil bundle:nil];
+    NSString * name = self.dataSource[self.dataSource.count-1-indexPath.section][@"list"][indexPath.row][@"name"];
+    vc.dataDic = @{@"name":name,@"date":self.dataSource[self.dataSource.count-1-indexPath.section][@"date"]};
+    [self.navigationController pushViewController:vc animated:YES];
+
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView.contentOffset.y < SCREEN_HEIGHT) {
         return;
@@ -162,6 +187,13 @@
 }
 
 - (void)more {
+//    
+//    NSDictionary * arr = @{@"name":@"11",@"count":@(12),@"list":@[@{@"name":@"name",@"list":@"na",@"data":@"date"},@{@"name":@"name",@"list":@"na",@"data":@"date"}]};
+//    for (int i = 0; i < 10; i ++) {
+//        [self.dataSource addObject:arr];
+//    }
+//    [self.collectionView reloadData];
+    
     [[LKAPIClient sharedClient] requestGETForcurDateOrderList:@"order/all"
                                                        params:@{@"end_time":[LKUser sharedUser].end_time}
                                                    modelClass:[AllHistory class]
@@ -177,11 +209,18 @@
                                                 }
                                                 [self.collectionView reloadData];
                                             } errorHandler:^(LKAPIError *engineError) {
-                                                [LKUOUtils showToast:@"没有更多数据啦"];
                                             }];
 }
 
 #pragma mark - getter
+
+- (RefreshFootView *)refreshFoot {
+    if (!_refreshFoot) {
+        _refreshFoot = [RefreshFootView viewFromNib];
+        self.refreshFoot.frame = CGRectMake(0, self.collectionView.frame.size.height, SCREEN_WIDTH, 80);
+    }
+    return _refreshFoot;
+}
 
 - (UIRefreshControl *)refresh {
     if (!_refresh) {

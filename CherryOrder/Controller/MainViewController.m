@@ -14,7 +14,6 @@
 #import "ReactiveCocoa.h"
 #import "MenuView.h"
 #import "PersonalHistoryViewController.h"
-#import "AllHistoryViewController.h"
 #import "AllOrderHistoryViewController.h"
 #import "HelpOrderViewController.h"
 
@@ -25,7 +24,6 @@
 @property (strong, nonatomic) IBOutlet MenuView *menuView;
 @property (strong, nonatomic) UIPanGestureRecognizer * panGesture;
 @property (strong, nonatomic) PersonalHistoryViewController *historyVC;
-@property (strong, nonatomic) AllHistoryViewController *allHistoryVC;
 @property (strong, nonatomic) AllOrderHistoryViewController * allOrderHistoryVC;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (assign, nonatomic) BOOL isManager;
@@ -81,7 +79,9 @@
     self.orderBtn.layer.masksToBounds = YES;
     [self.orderBtn setTitle:@"取消" forState:UIControlStateSelected];
     [self.orderBtn setTitle:@"点餐" forState:UIControlStateNormal];
-    [self.orderBtn addGestureRecognizer:self.panGesture];
+    [self.orderBtn setBackgroundColor:BLUE_COLOR forState:UIControlStateNormal];
+    [self.orderBtn setBackgroundColor:LK_TEXT_COLOR_GRAY forState:UIControlStateSelected];
+    [self.view addGestureRecognizer:self.panGesture];
     [self.orderBtn addGestureRecognizer:self.longGsture];
     
     [self addNoti];
@@ -92,11 +92,11 @@
         [self cancelNoti];
     }
     
-    if ([LKUser sharedUser].has_ordered) {
-        self.orderBtn.backgroundColor = BLUE_COLOR;
+    if (![LKUser sharedUser].has_ordered) {
+        self.orderBtn.selected = NO;
         [self cancelNoti];
     } else {
-        self.orderBtn.backgroundColor = LK_TEXT_COLOR_GRAY;
+        self.orderBtn.selected = YES;
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveAndRefresh:) name:@"refreshOrderBtn" object:nil];
 }
@@ -211,11 +211,6 @@
             self.nameLabel.text = infoDic.name;
             self.orderBtn.selected = [LKUser sharedUser].has_ordered;
             self.isManager = [LKUser sharedUser].is_admin;
-            if (self.orderBtn.selected) {
-                self.orderBtn.backgroundColor = BLUE_COLOR;
-            } else {
-                self.orderBtn.backgroundColor = LK_TEXT_COLOR_GRAY;
-            }
         } errorHandler:^(LKAPIError *engineError) {
             [LKUOUtils showError:engineError.message];
         }];
@@ -244,7 +239,6 @@
     } else {
         self.orderBtn.enabled = YES;
     }
-    
     if (self.orderBtn.selected) {
         [[LKAPIClient sharedClient] requestDELETEForCancelOrder:@"order"
                                                      modelClass:[LKMSimpleMsg class]
@@ -257,7 +251,6 @@
         }
         [[LKUser sharedUser].historyOrder setValue:@(self.orderBtn.selected) forKey:self.curDate];
         [[UserInfoManager sharedManager] saveUserInfo:[LKUser sharedUser]];
-        self.orderBtn.backgroundColor = LK_TEXT_COLOR_GRAY;
         } errorHandler:^(LKAPIError *engineError) {
             [LKUOUtils showError:engineError.message];
         }];
@@ -275,7 +268,6 @@
         }
         [[LKUser sharedUser].historyOrder setValue:@(self.orderBtn.selected) forKey:self.curDate];
         [[UserInfoManager sharedManager] saveUserInfo:[LKUser sharedUser]];
-        self.orderBtn.backgroundColor = BLUE_NEW_COLOR;
         } errorHandler:^(LKAPIError *engineError) {
             [LKUOUtils showError:engineError.message];
         }];
@@ -415,13 +407,6 @@
         _allOrderHistoryVC = [[AllOrderHistoryViewController alloc] initWithNibName:@"AllOrderHistoryViewController" bundle:nil];
     }
     return _allOrderHistoryVC;
-}
-
-- (AllHistoryViewController *)allHistoryVC {
-    if (!_allHistoryVC) {
-        _allHistoryVC = [[AllHistoryViewController alloc] initWithNibName:@"AllHistoryViewController" bundle:nil];
-    }
-    return _allHistoryVC;
 }
 
 - (NSString *)curDate {

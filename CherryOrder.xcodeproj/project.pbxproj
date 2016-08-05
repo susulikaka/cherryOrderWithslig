@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840723C21D5310710022349E /* RefreshFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 840723C11D5310710022349E /* RefreshFootView.m */; };
+		840723C41D53108A0022349E /* RefreshFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840723C31D53108A0022349E /* RefreshFootView.xib */; };
 		8453157E1D4C943300B4A539 /* HelpOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8453157C1D4C943300B4A539 /* HelpOrderViewController.m */; };
 		8453157F1D4C943300B4A539 /* HelpOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8453157D1D4C943300B4A539 /* HelpOrderViewController.xib */; };
 		84556A261D477C8400EE3E1C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84556A251D477C8400EE3E1C /* main.m */; };
@@ -32,26 +34,14 @@
 		8458A8591D4F1E3700694FAE /* NameSelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458A8571D4F1E3700694FAE /* NameSelView.m */; };
 		8458A8621D4F521A00694FAE /* OrderInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458A8601D4F521A00694FAE /* OrderInfoViewController.m */; };
 		8458A8631D4F521A00694FAE /* OrderInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8458A8611D4F521A00694FAE /* OrderInfoViewController.xib */; };
-		8458A8671D4F662000694FAE /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458A8651D4F662000694FAE /* InfoViewController.swift */; };
-		8458A8681D4F662000694FAE /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8458A8661D4F662000694FAE /* InfoViewController.xib */; };
-		8458A87B1D4F765E00694FAE /* BallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458A8741D4F765E00694FAE /* BallView.swift */; };
-		8458A87C1D4F765E00694FAE /* BounceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458A8751D4F765E00694FAE /* BounceView.swift */; };
-		8458A87D1D4F765E00694FAE /* CGRectEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458A8771D4F765E00694FAE /* CGRectEx.swift */; };
-		8458A87E1D4F765E00694FAE /* NSTimerEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458A8781D4F765E00694FAE /* NSTimerEx.swift */; };
-		8458A87F1D4F765E00694FAE /* PullToBounceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458A8791D4F765E00694FAE /* PullToBounceWrapper.swift */; };
-		8458A8801D4F765E00694FAE /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458A87A1D4F765E00694FAE /* WaveView.swift */; };
 		845A57981D51E27E008BC27B /* AllOrderHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A57961D51E27E008BC27B /* AllOrderHistoryViewController.m */; };
 		845A57991D51E27E008BC27B /* AllOrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845A57971D51E27E008BC27B /* AllOrderHistoryViewController.xib */; };
 		845A579D1D52226A008BC27B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 845A579C1D52226A008BC27B /* Default-568h@2x.png */; };
 		846854781D49ACFE007592BF /* UserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 846854771D49ACFE007592BF /* UserInfoManager.m */; };
 		8468E3E81D4B3D0A00F52C79 /* AllHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468E3E71D4B3D0A00F52C79 /* AllHistory.m */; };
 		8468E3EB1D4B48A500F52C79 /* UserHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468E3EA1D4B48A500F52C79 /* UserHistory.m */; };
+		848BFA671D5331B500D2C9F9 /* UIImage+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 848BFA661D5331B500D2C9F9 /* UIImage+CornerRadius.m */; };
 		849506C81D51AFA100684BE5 /* LKUOUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 849506C71D51AFA100684BE5 /* LKUOUtils.m */; };
-		84D044BC1D49B32700E85B3E /* AllHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D044BA1D49B32700E85B3E /* AllHistoryViewController.m */; };
-		84D044BD1D49B32700E85B3E /* AllHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D044BB1D49B32700E85B3E /* AllHistoryViewController.xib */; };
-		84D044C41D49BDD000E85B3E /* SearchWordsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D044C01D49BDD000E85B3E /* SearchWordsCell.m */; };
-		84D044C51D49BDD000E85B3E /* SearchWordsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D044C11D49BDD000E85B3E /* SearchWordsCell.xib */; };
-		84D044C61D49BDD000E85B3E /* SearchWordsLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D044C31D49BDD000E85B3E /* SearchWordsLayout.m */; };
 		84D044C91D49D1B000E85B3E /* LKNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D044C81D49D1B000E85B3E /* LKNavViewController.m */; };
 		84D044CC1D49DB1100E85B3E /* HistoryHeaderview.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D044CB1D49DB1100E85B3E /* HistoryHeaderview.m */; };
 		84D044CE1D49DB2100E85B3E /* HistoryHeaderview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D044CD1D49DB2100E85B3E /* HistoryHeaderview.xib */; };
@@ -95,6 +85,9 @@
 
 /* Begin PBXFileReference section */
 		241DA418294B166E8CCD0979 /* Pods-CherryOrder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CherryOrder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CherryOrder/Pods-CherryOrder.debug.xcconfig"; sourceTree = "<group>"; };
+		840723C01D5310710022349E /* RefreshFootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RefreshFootView.h; path = Controller/AllHistory/view/RefreshFootView.h; sourceTree = "<group>"; };
+		840723C11D5310710022349E /* RefreshFootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RefreshFootView.m; path = Controller/AllHistory/view/RefreshFootView.m; sourceTree = "<group>"; };
+		840723C31D53108A0022349E /* RefreshFootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RefreshFootView.xib; path = Controller/AllHistory/view/RefreshFootView.xib; sourceTree = "<group>"; };
 		8453157B1D4C943300B4A539 /* HelpOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpOrderViewController.h; path = Controller/HelpOrder/HelpOrderViewController.h; sourceTree = "<group>"; };
 		8453157C1D4C943300B4A539 /* HelpOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpOrderViewController.m; path = Controller/HelpOrder/HelpOrderViewController.m; sourceTree = "<group>"; };
 		8453157D1D4C943300B4A539 /* HelpOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HelpOrderViewController.xib; path = Controller/HelpOrder/HelpOrderViewController.xib; sourceTree = "<group>"; };
@@ -140,15 +133,6 @@
 		8458A85F1D4F521A00694FAE /* OrderInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderInfoViewController.h; path = Controller/AllHistory/OrderInfoViewController.h; sourceTree = "<group>"; };
 		8458A8601D4F521A00694FAE /* OrderInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderInfoViewController.m; path = Controller/AllHistory/OrderInfoViewController.m; sourceTree = "<group>"; };
 		8458A8611D4F521A00694FAE /* OrderInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderInfoViewController.xib; path = Controller/AllHistory/OrderInfoViewController.xib; sourceTree = "<group>"; };
-		8458A8641D4F661F00694FAE /* CherryOrder-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CherryOrder-Bridging-Header.h"; sourceTree = "<group>"; };
-		8458A8651D4F662000694FAE /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoViewController.swift; path = Controller/AllHistory/InfoViewController.swift; sourceTree = "<group>"; };
-		8458A8661D4F662000694FAE /* InfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InfoViewController.xib; path = Controller/AllHistory/InfoViewController.xib; sourceTree = "<group>"; };
-		8458A8741D4F765E00694FAE /* BallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BallView.swift; path = Extern/Refresh/BallView.swift; sourceTree = "<group>"; };
-		8458A8751D4F765E00694FAE /* BounceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BounceView.swift; path = Extern/Refresh/BounceView.swift; sourceTree = "<group>"; };
-		8458A8771D4F765E00694FAE /* CGRectEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectEx.swift; sourceTree = "<group>"; };
-		8458A8781D4F765E00694FAE /* NSTimerEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTimerEx.swift; sourceTree = "<group>"; };
-		8458A8791D4F765E00694FAE /* PullToBounceWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullToBounceWrapper.swift; path = Extern/Refresh/PullToBounceWrapper.swift; sourceTree = "<group>"; };
-		8458A87A1D4F765E00694FAE /* WaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaveView.swift; path = Extern/Refresh/WaveView.swift; sourceTree = "<group>"; };
 		845A57951D51E27E008BC27B /* AllOrderHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllOrderHistoryViewController.h; path = Controller/AllHistory/AllOrderHistoryViewController.h; sourceTree = "<group>"; };
 		845A57961D51E27E008BC27B /* AllOrderHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllOrderHistoryViewController.m; path = Controller/AllHistory/AllOrderHistoryViewController.m; sourceTree = "<group>"; };
 		845A57971D51E27E008BC27B /* AllOrderHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AllOrderHistoryViewController.xib; path = Controller/AllHistory/AllOrderHistoryViewController.xib; sourceTree = "<group>"; };
@@ -159,16 +143,10 @@
 		8468E3E71D4B3D0A00F52C79 /* AllHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllHistory.m; path = Model/AllHistory.m; sourceTree = "<group>"; };
 		8468E3E91D4B48A500F52C79 /* UserHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserHistory.h; path = Model/UserHistory.h; sourceTree = "<group>"; };
 		8468E3EA1D4B48A500F52C79 /* UserHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserHistory.m; path = Model/UserHistory.m; sourceTree = "<group>"; };
+		848BFA651D5331B500D2C9F9 /* UIImage+CornerRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CornerRadius.h"; sourceTree = "<group>"; };
+		848BFA661D5331B500D2C9F9 /* UIImage+CornerRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CornerRadius.m"; sourceTree = "<group>"; };
 		849506C61D51AFA100684BE5 /* LKUOUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LKUOUtils.h; path = Base/LKUOUtils.h; sourceTree = "<group>"; };
 		849506C71D51AFA100684BE5 /* LKUOUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LKUOUtils.m; path = Base/LKUOUtils.m; sourceTree = "<group>"; };
-		84D044B91D49B32700E85B3E /* AllHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllHistoryViewController.h; path = Controller/AllHistory/AllHistoryViewController.h; sourceTree = "<group>"; };
-		84D044BA1D49B32700E85B3E /* AllHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllHistoryViewController.m; path = Controller/AllHistory/AllHistoryViewController.m; sourceTree = "<group>"; };
-		84D044BB1D49B32700E85B3E /* AllHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AllHistoryViewController.xib; path = Controller/AllHistory/AllHistoryViewController.xib; sourceTree = "<group>"; };
-		84D044BF1D49BDD000E85B3E /* SearchWordsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchWordsCell.h; path = Controller/AllHistory/view/SearchWordsCell.h; sourceTree = "<group>"; };
-		84D044C01D49BDD000E85B3E /* SearchWordsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchWordsCell.m; path = Controller/AllHistory/view/SearchWordsCell.m; sourceTree = "<group>"; };
-		84D044C11D49BDD000E85B3E /* SearchWordsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchWordsCell.xib; path = Controller/AllHistory/view/SearchWordsCell.xib; sourceTree = "<group>"; };
-		84D044C21D49BDD000E85B3E /* SearchWordsLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchWordsLayout.h; path = Controller/AllHistory/view/SearchWordsLayout.h; sourceTree = "<group>"; };
-		84D044C31D49BDD000E85B3E /* SearchWordsLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchWordsLayout.m; path = Controller/AllHistory/view/SearchWordsLayout.m; sourceTree = "<group>"; };
 		84D044C71D49D1B000E85B3E /* LKNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LKNavViewController.h; path = Base/LKNavViewController.h; sourceTree = "<group>"; };
 		84D044C81D49D1B000E85B3E /* LKNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LKNavViewController.m; path = Base/LKNavViewController.m; sourceTree = "<group>"; };
 		84D044CA1D49DB1100E85B3E /* HistoryHeaderview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryHeaderview.h; path = Controller/AllHistory/view/HistoryHeaderview.h; sourceTree = "<group>"; };
@@ -367,7 +345,6 @@
 		84556A6E1D47903800EE3E1C /* Extern */ = {
 			isa = PBXGroup;
 			children = (
-				8458A8731D4F761D00694FAE /* refresh */,
 				84DF1F6D1D48891000A583AC /* Calendar */,
 				84556A6F1D47907000EE3E1C /* UIView+Nib.h */,
 				84556A851D47975D00EE3E1C /* Constants.h */,
@@ -389,28 +366,6 @@
 			name = UserList;
 			sourceTree = "<group>";
 		};
-		8458A8731D4F761D00694FAE /* refresh */ = {
-			isa = PBXGroup;
-			children = (
-				8458A8741D4F765E00694FAE /* BallView.swift */,
-				8458A8751D4F765E00694FAE /* BounceView.swift */,
-				8458A8761D4F765E00694FAE /* helper */,
-				8458A8791D4F765E00694FAE /* PullToBounceWrapper.swift */,
-				8458A87A1D4F765E00694FAE /* WaveView.swift */,
-			);
-			name = refresh;
-			sourceTree = "<group>";
-		};
-		8458A8761D4F765E00694FAE /* helper */ = {
-			isa = PBXGroup;
-			children = (
-				8458A8771D4F765E00694FAE /* CGRectEx.swift */,
-				8458A8781D4F765E00694FAE /* NSTimerEx.swift */,
-			);
-			name = helper;
-			path = Extern/Refresh/helper;
-			sourceTree = "<group>";
-		};
 		84D044B81D49B2F800E85B3E /* allHistory */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,9 +373,6 @@
 				845A57951D51E27E008BC27B /* AllOrderHistoryViewController.h */,
 				845A57961D51E27E008BC27B /* AllOrderHistoryViewController.m */,
 				845A57971D51E27E008BC27B /* AllOrderHistoryViewController.xib */,
-				84D044B91D49B32700E85B3E /* AllHistoryViewController.h */,
-				84D044BA1D49B32700E85B3E /* AllHistoryViewController.m */,
-				84D044BB1D49B32700E85B3E /* AllHistoryViewController.xib */,
 			);
 			name = allHistory;
 			sourceTree = "<group>";
@@ -430,18 +382,13 @@
 			children = (
 				8458A85F1D4F521A00694FAE /* OrderInfoViewController.h */,
 				8458A8601D4F521A00694FAE /* OrderInfoViewController.m */,
-				8458A8651D4F662000694FAE /* InfoViewController.swift */,
-				8458A8661D4F662000694FAE /* InfoViewController.xib */,
 				8458A8611D4F521A00694FAE /* OrderInfoViewController.xib */,
-				84D044BF1D49BDD000E85B3E /* SearchWordsCell.h */,
-				84D044C01D49BDD000E85B3E /* SearchWordsCell.m */,
 				84D044CA1D49DB1100E85B3E /* HistoryHeaderview.h */,
 				84D044CB1D49DB1100E85B3E /* HistoryHeaderview.m */,
 				84D044CD1D49DB2100E85B3E /* HistoryHeaderview.xib */,
-				84D044C11D49BDD000E85B3E /* SearchWordsCell.xib */,
-				84D044C21D49BDD000E85B3E /* SearchWordsLayout.h */,
-				84D044C31D49BDD000E85B3E /* SearchWordsLayout.m */,
-				8458A8641D4F661F00694FAE /* CherryOrder-Bridging-Header.h */,
+				840723C01D5310710022349E /* RefreshFootView.h */,
+				840723C11D5310710022349E /* RefreshFootView.m */,
+				840723C31D53108A0022349E /* RefreshFootView.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -480,6 +427,8 @@
 				84DF1FC31D48974700A583AC /* LKOperation.m */,
 				84D044C71D49D1B000E85B3E /* LKNavViewController.h */,
 				84D044C81D49D1B000E85B3E /* LKNavViewController.m */,
+				848BFA651D5331B500D2C9F9 /* UIImage+CornerRadius.h */,
+				848BFA661D5331B500D2C9F9 /* UIImage+CornerRadius.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -633,11 +582,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8458A8681D4F662000694FAE /* InfoViewController.xib in Resources */,
 				84556A671D477F2B00EE3E1C /* RegisterView.xib in Resources */,
 				84556A341D477C8400EE3E1C /* LaunchScreen.storyboard in Resources */,
 				845A57991D51E27E008BC27B /* AllOrderHistoryViewController.xib in Resources */,
 				84DF1F791D48891100A583AC /* bt_previous@2x.png in Resources */,
+				840723C41D53108A0022349E /* RefreshFootView.xib in Resources */,
 				845A579D1D52226A008BC27B /* Default-568h@2x.png in Resources */,
 				84D044CE1D49DB2100E85B3E /* HistoryHeaderview.xib in Resources */,
 				84556A311D477C8400EE3E1C /* Assets.xcassets in Resources */,
@@ -651,8 +600,6 @@
 				8453157F1D4C943300B4A539 /* HelpOrderViewController.xib in Resources */,
 				84556A5E1D477E9A00EE3E1C /* MainViewController.xib in Resources */,
 				8458A8501D4EF87300694FAE /* UserListViewController.xib in Resources */,
-				84D044C51D49BDD000E85B3E /* SearchWordsCell.xib in Resources */,
-				84D044BD1D49B32700E85B3E /* AllHistoryViewController.xib in Resources */,
 				84DF1F781D48891100A583AC /* bt_next@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -727,44 +674,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				8458A84B1D4EF80C00694FAE /* UserList.m in Sources */,
+				840723C21D5310710022349E /* RefreshFootView.m in Sources */,
 				8458A8591D4F1E3700694FAE /* NameSelView.m in Sources */,
 				8453157E1D4C943300B4A539 /* HelpOrderViewController.m in Sources */,
 				84D044D91D4A27A600E85B3E /* LKMSimpleMsg.m in Sources */,
 				84DF1FC71D48974700A583AC /* LKOperation.m in Sources */,
 				8468E3E81D4B3D0A00F52C79 /* AllHistory.m in Sources */,
-				84D044C61D49BDD000E85B3E /* SearchWordsLayout.m in Sources */,
 				84556A711D47907000EE3E1C /* UIView+Nib.m in Sources */,
 				84DF1FB81D48966900A583AC /* LKUser.m in Sources */,
 				846854781D49ACFE007592BF /* UserInfoManager.m in Sources */,
 				84556A291D477C8400EE3E1C /* AppDelegate.m in Sources */,
 				84D044C91D49D1B000E85B3E /* LKNavViewController.m in Sources */,
-				8458A87D1D4F765E00694FAE /* CGRectEx.swift in Sources */,
-				84D044C41D49BDD000E85B3E /* SearchWordsCell.m in Sources */,
 				8458A84F1D4EF87300694FAE /* UserListViewController.m in Sources */,
 				84DF1F361D48684500A583AC /* PersonalHistoryViewController.m in Sources */,
 				84DF1F7B1D48891100A583AC /* SZCalendarPicker.m in Sources */,
-				8458A87F1D4F765E00694FAE /* PullToBounceWrapper.swift in Sources */,
 				849506C81D51AFA100684BE5 /* LKUOUtils.m in Sources */,
 				8468E3EB1D4B48A500F52C79 /* UserHistory.m in Sources */,
 				8458A8481D4EE68000694FAE /* UserOrderInfo.m in Sources */,
-				8458A87C1D4F765E00694FAE /* BounceView.swift in Sources */,
 				84DF1F7A1D48891100A583AC /* SZCalendarCell.m in Sources */,
 				84DF1FC41D48974700A583AC /* LKAPIClient.m in Sources */,
-				84D044BC1D49B32700E85B3E /* AllHistoryViewController.m in Sources */,
+				848BFA671D5331B500D2C9F9 /* UIImage+CornerRadius.m in Sources */,
 				84556A261D477C8400EE3E1C /* main.m in Sources */,
 				84D044CC1D49DB1100E85B3E /* HistoryHeaderview.m in Sources */,
 				84DF1FC51D48974700A583AC /* LKAPIError.m in Sources */,
-				8458A8671D4F662000694FAE /* InfoViewController.swift in Sources */,
 				84DF1FC61D48974700A583AC /* LKJSONResult.m in Sources */,
 				845A57981D51E27E008BC27B /* AllOrderHistoryViewController.m in Sources */,
-				8458A87E1D4F765E00694FAE /* NSTimerEx.swift in Sources */,
 				84556A5D1D477E9A00EE3E1C /* MainViewController.m in Sources */,
-				8458A87B1D4F765E00694FAE /* BallView.swift in Sources */,
 				84556A631D477F0600EE3E1C /* RegisterView.m in Sources */,
 				84D044D11D49E2C800E85B3E /* SSBustomBtn.m in Sources */,
 				8458A8541D4F11A100694FAE /* UIButton+stateColor.m in Sources */,
 				8458A8621D4F521A00694FAE /* OrderInfoViewController.m in Sources */,
-				8458A8801D4F765E00694FAE /* WaveView.swift in Sources */,
 				84D044D61D49E7CE00E85B3E /* UIView+Nib.m in Sources */,
 				84DF1F7D1D48891100A583AC /* UIColor+ZXLazy.m in Sources */,
 				84DF1FBB1D48969F00A583AC /* LKJSonModel.m in Sources */,

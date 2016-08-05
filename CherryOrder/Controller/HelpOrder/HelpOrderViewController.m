@@ -86,7 +86,7 @@
     self.helpOrderBtn.layer.cornerRadius = self.helpOrderBtn.bounds.size.height/2;
     self.helpOrderBtn.layer.masksToBounds = YES;
     [self.collectionView reloadData];
-    [self.collectionView registerClass:[NameSelView class] forCellWithReuseIdentifier:NSStringFromClass([NameSelView class])];
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class])];
     self.collectionView.allowsMultipleSelection = YES;
 }
 
@@ -115,7 +115,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *name = [self.helpOrderDataSource objectAtIndex:indexPath.row][@"name"];
-    NameSelView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([NameSelView class])
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class])
                                                                            forIndexPath:indexPath];
     
     NameSelView * view = [NameSelView viewFromNib];
@@ -143,11 +143,6 @@
     } else {
         return YES;
     }
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NameSelView * cell = (NameSelView *)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.mark.highlighted = YES;
 }
 
 #pragma mark - action
