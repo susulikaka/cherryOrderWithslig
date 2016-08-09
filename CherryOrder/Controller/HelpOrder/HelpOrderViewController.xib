@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HelpOrderViewController">
             <connections>
+                <outlet property="addBtn" destination="WzY-iI-opi" id="rXd-AH-zRO"/>
                 <outlet property="collectionView" destination="IF7-vc-5rZ" id="KC7-wa-RHc"/>
                 <outlet property="helpOrderBtn" destination="M6n-G8-L9C" id="qca-aq-y0a"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -31,7 +32,7 @@
                     </connections>
                 </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6n-G8-L9C">
-                    <rect key="frame" x="200" y="540" width="200" height="40"/>
+                    <rect key="frame" x="200" y="520" width="200" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="eAS-AW-1Ms"/>
                         <constraint firstAttribute="height" constant="40" id="kwq-OC-qTr"/>
@@ -41,16 +42,29 @@
                         <action selector="helpOderAction:" destination="-1" eventType="touchUpInside" id="cXx-nm-33P"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WzY-iI-opi">
+                    <rect key="frame" x="544" y="520" width="16" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="16" id="2Zu-nI-7ZF"/>
+                        <constraint firstAttribute="height" constant="40" id="ZUU-vq-GbQ"/>
+                    </constraints>
+                    <state key="normal" image="plus-symbol"/>
+                    <connections>
+                        <action selector="addUserAction:" destination="-1" eventType="touchUpInside" id="Be1-ei-vms"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="IF7-vc-5rZ" secondAttribute="bottom" constant="16" id="0DA-q3-3nh"/>
-                <constraint firstAttribute="bottom" secondItem="M6n-G8-L9C" secondAttribute="bottom" constant="20" id="2Ow-f8-tWR"/>
+                <constraint firstAttribute="bottom" secondItem="M6n-G8-L9C" secondAttribute="bottom" constant="40" id="2Ow-f8-tWR"/>
                 <constraint firstAttribute="trailing" secondItem="IF7-vc-5rZ" secondAttribute="trailing" constant="16" id="CuH-26-IGq"/>
                 <constraint firstItem="IF7-vc-5rZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Eqc-jn-GBl"/>
                 <constraint firstItem="IF7-vc-5rZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="16" id="Z4k-n2-aaB"/>
                 <constraint firstItem="M6n-G8-L9C" firstAttribute="top" secondItem="IF7-vc-5rZ" secondAttribute="bottom" constant="30" id="rjf-Ce-lq7"/>
+                <constraint firstItem="WzY-iI-opi" firstAttribute="centerY" secondItem="M6n-G8-L9C" secondAttribute="centerY" id="sfY-FX-Yie"/>
                 <constraint firstItem="M6n-G8-L9C" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xf6-UQ-bkA"/>
+                <constraint firstAttribute="trailing" secondItem="WzY-iI-opi" secondAttribute="trailing" constant="40" id="zF4-Vg-StY"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">
@@ -59,4 +73,7 @@
             </variation>
         </view>
     </objects>
+    <resources>
+        <image name="plus-symbol" width="16" height="16"/>
+    </resources>
 </document>

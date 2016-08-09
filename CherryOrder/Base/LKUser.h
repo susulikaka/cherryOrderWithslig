@@ -11,6 +11,7 @@
 @interface LKUser : LKJSonModel
 
 @property (nonatomic, assign) NSInteger  uid;
+@property (nonatomic, strong) NSData * image;
 @property (nonatomic, strong) NSString * name;
 @property (nonatomic, strong) NSString * email;
 @property (nonatomic, assign) BOOL       has_ordered;

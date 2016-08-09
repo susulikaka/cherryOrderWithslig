@@ -11,6 +11,7 @@
 #import "UIColor+ZXLazy.h"
 #import "UserHistory.h"
 #import "ReactiveCocoa.h"
+#import "NameSelView.h"
 
 NSString *const SZCalendarCellIdentifier = @"cell";
 
@@ -20,11 +21,9 @@ NSString *const SZCalendarCellIdentifier = @"cell";
 @property (nonatomic , weak) IBOutlet UIButton *previousButton;
 @property (nonatomic , weak) IBOutlet UIButton *nextButton;
 @property (nonatomic , strong) NSArray *weekDayArray;
-@property (nonatomic , strong) UIView *mask;
 @end
 
 @implementation SZCalendarPicker
-
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -39,6 +38,7 @@ NSString *const SZCalendarCellIdentifier = @"cell";
 {
     self.backgroundColor = [UIColor whiteColor];
     [_collectionView registerClass:[SZCalendarCell class] forCellWithReuseIdentifier:SZCalendarCellIdentifier];
+    [_collectionView registerNib:[NameSelView nib] forCellWithReuseIdentifier:NSStringFromClass([NameSelView class])];
      _weekDayArray = @[@"S",@"M",@"T",@"W",@"T",@"F",@"S"];
 }
 
@@ -183,31 +183,38 @@ NSString *const SZCalendarCellIdentifier = @"cell";
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1) {
-        NSInteger daysInThisMonth = [self totaldaysInMonth:_date];
-        NSInteger firstWeekday = [self firstWeekdayInThisMonth:_date];
-        
-        NSInteger day = 0;
-        NSInteger i = indexPath.row;
-        
-        if (i >= firstWeekday && i <= firstWeekday + daysInThisMonth - 1) {
-            day = i - firstWeekday + 1;
-            
-            //this month
-            if ([_today isEqualToDate:_date]) {
-                if (day <= [self day:_date]) {
-                    return YES;
-                }
-            } else if ([_today compare:_date] == NSOrderedDescending) {
-                return YES;
-            }
-        }
-    }
-    return NO;
+//    if (indexPath.section == 1) {
+//        NSInteger daysInThisMonth = [self totaldaysInMonth:_date];
+//        NSInteger firstWeekday = [self firstWeekdayInThisMonth:_date];
+//        
+//        NSInteger day = 0;
+//        NSInteger i = indexPath.row;
+//        
+//        if (i >= firstWeekday && i <= firstWeekday + daysInThisMonth - 1) {
+//            day = i - firstWeekday + 1;
+//            
+//            //this month
+//            if ([_today isEqualToDate:_date]) {
+//                if (day <= [self day:_date]) {
+//                    return YES;
+//                }
+//            } else if ([_today compare:_date] == NSOrderedDescending) {
+//                return YES;
+//            }
+//        }
+//    }
+//    return NO;
+    return YES;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    SZCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:SZCalendarCellIdentifier forIndexPath:indexPath];
+    if (self.canSelected) {
+        [cell.dateLabel setBackgroundColor:MAIN_COLOR];
+    } else {
+        cell.dateLabel.backgroundColor = [UIColor whiteColor];
+    }
     NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:self.date];
     NSInteger firstWeekday = [self firstWeekdayInThisMonth:_date];
     
@@ -262,10 +269,6 @@ NSString *const SZCalendarCellIdentifier = @"cell";
 + (instancetype)showOnView:(UIView *)view
 {
     SZCalendarPicker *calendarPicker = [[[NSBundle mainBundle] loadNibNamed:@"SZCalendarPicker" owner:self options:nil] firstObject];
-    calendarPicker.mask = [[UIView alloc] initWithFrame:view.bounds];
-    calendarPicker.mask.backgroundColor = [UIColor whiteColor];
-    calendarPicker.mask.alpha = 0.3;
-    [view addSubview:calendarPicker.mask];
     [view addSubview:calendarPicker];
     return calendarPicker;
 }
@@ -277,8 +280,6 @@ NSString *const SZCalendarCellIdentifier = @"cell";
 
 - (void)hide
 {
-    self.mask.alpha = 0;
-    [self.mask removeFromSuperview];
     [self removeFromSuperview];
 }
 

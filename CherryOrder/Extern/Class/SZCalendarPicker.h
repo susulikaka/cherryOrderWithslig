@@ -17,6 +17,7 @@
 @property (nonatomic , weak, readonly) UIButton *previousButton;
 @property (nonatomic , weak, readonly) UIButton *nextButton;
 @property (nonatomic , weak, readonly) UILabel *monthLabel;
+@property (nonatomic, assign) BOOL canSelected;
 
 + (instancetype)showOnView:(UIView *)view;
 - (void)hide;

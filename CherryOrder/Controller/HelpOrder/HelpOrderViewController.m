@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong)NSMutableArray * helpOrderDataSource;
 
+
 @end
 
 @implementation HelpOrderViewController
@@ -29,6 +30,11 @@
     [super viewWillAppear:animated];
     [self requestData];
     [self initInterface];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 #pragma mark - private method 
@@ -72,12 +78,6 @@
 }
 
 -(void)initInterface {
-    self.navigationController.navigationBarHidden = NO;
-    UIBarButtonItem * leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left-arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
-    self.navigationItem.leftBarButtonItem = leftItem;
-    
-    UIBarButtonItem * rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"plus-symbol"] style:UIBarButtonItemStylePlain target:self action:@selector(addUserList)];
-    self.navigationItem.rightBarButtonItem = rightItem;
     self.view.backgroundColor = [UIColor whiteColor];
     self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
     self.title = @"帮人代点";
@@ -195,13 +195,10 @@
     }];
 }
 
-- (void)addUserList {
+- (IBAction)addUserAction:(id)sender {
     UserListViewController * vc = [[UserListViewController alloc] initWithNibName:@"UserListViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:nil];
 }
 
-- (void)back {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 @end

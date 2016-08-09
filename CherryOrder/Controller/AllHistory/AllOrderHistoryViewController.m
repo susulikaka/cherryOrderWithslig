@@ -11,15 +11,17 @@
 #import "HistoryHeaderview.h"
 #import "OrderInfoViewController.h"
 #import "RefreshFootView.h"
+#import "JYSlideSegmentController.h"
 
-@interface AllOrderHistoryViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface AllOrderHistoryViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,JYSlideSegmentDelegate,JYSlideSegmentDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView * collectionView;
 @property (nonatomic, strong)NSMutableArray * dataSource;
 @property (assign, nonatomic) BOOL noMore;
 @property (strong, nonatomic) UIRefreshControl * refresh;
 @property (strong, nonatomic) RefreshFootView * refreshFoot;
-
+@property (strong, nonatomic) JYSlideSegmentController * segmentVC;
+@property (strong, nonatomic) NSArray * VCs;
 @end
 
 @implementation AllOrderHistoryViewController
@@ -37,19 +39,12 @@
 
 - (void)initInterface {
     self.title = @"全部历史";
-    self.navigationController.navigationBarHidden = NO;
-    UIBarButtonItem * leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left-arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
-    self.navigationItem.leftBarButtonItem = leftItem;
-    
-    UIBarButtonItem * rightItem = [[UIBarButtonItem alloc] initWithTitle:@"更多" style:UIBarButtonItemStylePlain target:self action:@selector(more)];
-    self.navigationItem.rightBarButtonItem = rightItem;
-    self.view.backgroundColor = [UIColor whiteColor];
-    
     self.view.backgroundColor = [UIColor whiteColor];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class])];
     [self.collectionView registerClass:[UICollectionViewCell class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:UICollectionElementKindSectionHeader];
     [self requestDate];
+//    [self setUpSegment];
     [self.collectionView addSubview:self.refreshFoot];
     [self.collectionView addSubview:self.refresh];
     self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 60, 0);
@@ -57,6 +52,15 @@
         CGFloat pointY = [x CGPointValue].y;
         [self.refreshFoot setFrame:CGRectMake(0, pointY, SCREEN_WIDTH, 80)];
     }];
+}
+
+- (void)setUpSegment {
+    CGRect frame = self.view.bounds;
+    self.segmentVC.view.frame = frame;
+    self.segmentVC.indicator.backgroundColor = MAIN_COLOR;
+    [self.view addSubview:self.segmentVC.view];
+    [self addChildViewController:self.segmentVC];
+    [self.segmentVC didMoveToParentViewController:self];
 }
 
 - (void)requestDate {
@@ -87,6 +91,21 @@
                                             } errorHandler:^(LKAPIError *engineError) {
                                                 [LKUIUtils showError:engineError.message];
                                             }];
+}
+
+#pragma mark - segment
+
+- (NSInteger)slideSegment:(UICollectionView *)segmentBar
+   numberOfItemsInSection:(NSInteger)section {
+    return 2;
+    
+}
+
+- (UICollectionViewCell *)slideSegment:(UICollectionView *)segmentBar
+                cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    JYSegmentBarItem * item = [segmentBar dequeueReusableCellWithReuseIdentifier:NSStringFromClass([JYSegmentBarItem class]) forIndexPath:indexPath];
+    return item;
 }
 
 #pragma mark - delegate
@@ -181,8 +200,8 @@
     }
 }
 
-- (void)back {
-    [self.navigationController popViewControllerAnimated:YES];
+- (void)search {
+    
 }
 
 - (void)more {
@@ -212,6 +231,28 @@
 }
 
 #pragma mark - getter
+
+- (NSArray *)VCs {
+    if (!_VCs) {
+        _VCs = ({
+            NSArray * arr = [NSArray arrayWithObjects:nil count:0];
+            arr;
+        });
+    }
+    return _VCs;
+}
+
+- (JYSlideSegmentController *)segmentVC {
+    if (!_segmentVC) {
+        _segmentVC = ({
+            JYSlideSegmentController * vc = [[JYSlideSegmentController alloc] initWithViewControllers:self.VCs];
+            vc.delegate = self;
+            vc.dataSource = self;
+            vc;
+        });
+    }
+    return _segmentVC;
+}
 
 - (RefreshFootView *)refreshFoot {
     if (!_refreshFoot) {

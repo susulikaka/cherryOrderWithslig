@@ -18,6 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"订餐详情";
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    UIBarButtonItem * leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left-arrow"]
+                                                                   style:UIBarButtonItemStylePlain
+                                                                  target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = leftItem;
     
     [[LKAPIClient sharedClient] requestPOSTForGetUserInfo:@"order" params:self.dataDic modelClass:[UserOrderInfo class] completionHandler:^(LKJSonModel *aModelBaseObject) {
         
@@ -32,7 +37,11 @@
     } errorHandler:^(LKAPIError *engineError) {
         [LKUIUtils showError:engineError.message];
     }];
-    
+}
+
+- (void)back {
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)initInterface {

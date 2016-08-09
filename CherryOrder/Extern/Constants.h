@@ -49,5 +49,5 @@
 #define ROOT_URL @"120.26.131.154:8080"
 #define API @"api"
 #define IS_iOS8 ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0)
-
+#define IS_iOS9 ([[UIDevice currentDevice].systemVersion floatValue] >= 9.0)
 #endif

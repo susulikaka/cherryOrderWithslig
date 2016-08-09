@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView * collectionView;
 @property (weak, nonatomic) IBOutlet UIButton         * helpOrderBtn;
+@property (weak, nonatomic) IBOutlet UIButton *addBtn;
 
 
 @end

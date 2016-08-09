@@ -23,6 +23,7 @@
 }
 
 - (LKUser *)merge:(LKUser *)user {
+    self.image = user.image;
     self.uid = user.uid;
     self.name = user.name;
     self.email = user.email;
@@ -37,6 +38,7 @@
     [super encodeWithCoder:aCoder];
     [aCoder encodeInteger:self.uid forKey:@"uid"];
     [aCoder encodeObject:self.name forKey:@"name"];
+    [aCoder encodeObject:self.image forKey:@"image"];
     [aCoder encodeBool:self.is_admin forKey:@"is_admin"];
     [aCoder encodeBool:self.has_ordered forKey:@"has_ordered"];
     [aCoder encodeObject:self.email forKey:@"email"];
@@ -51,6 +53,9 @@
         }
         if ([aDecoder containsValueForKey:@"name"]) {
             _name = [aDecoder decodeObjectForKey:@"name"];
+        }
+        if ([aDecoder containsValueForKey:@"image"]) {
+            _image = [aDecoder decodeObjectForKey:@"image"];
         }
         if ([aDecoder containsValueForKey:@"email"]) {
             _email = [aDecoder decodeObjectForKey:@"email"];
@@ -79,12 +84,14 @@
     [copy setHas_ordered:self.has_ordered];
     [copy setHistoryOrder:[self.historyOrder copy]];
     [copy setHistoryOrder:[self.end_time copy]];
+    [copy setImage:[self.image copy]];
     return copy;
 }
 
 - (NSDictionary *)toDic {
     return @{@"name":self.name ? :@"",
              @"email":self.email ? :@"",
+             @"image":self.image ?:@"",
              @"isOrdered":self.has_ordered ? @(self.has_ordered):@(!self.has_ordered),
              @"isAdmin":self.is_admin ? @(self.is_admin):@(self.is_admin),
              @"historyOrder":self.historyOrder ? :@"",

@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SSBustomBtn.h"
+
+typedef void(^tapBtnBlock)();
 
 @interface SZCalendarCell : UICollectionViewCell
 
 @property (nonatomic , strong) UILabel *dateLabel;
-@property (nonatomic, assign) BOOL selected;
+@property (nonatomic, strong) SSBustomBtn * dateBtn;
+@property (nonatomic, copy) tapBtnBlock tapBlock;
 
 @end

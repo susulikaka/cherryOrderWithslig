@@ -17,6 +17,8 @@
 #import "AllOrderHistoryViewController.h"
 #import "HelpOrderViewController.h"
 #import "RegisterViewController.h"
+#import "moreViewController.h"
+#import "LKSSTabViewController.h"
 
 @interface MainViewController ()
 
@@ -26,7 +28,6 @@
 @property (strong, nonatomic) UIPanGestureRecognizer * panGesture;
 @property (strong, nonatomic) PersonalHistoryViewController *historyVC;
 @property (strong, nonatomic) AllOrderHistoryViewController * allOrderHistoryVC;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (assign, nonatomic) BOOL isManager;
 @property (assign, nonatomic) BOOL isOrdered;
 @property (strong, nonatomic) UILongPressGestureRecognizer *longGsture;
@@ -34,6 +35,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *monthLabel;
 @property (weak, nonatomic) IBOutlet UILabel *topLabel;
+@property (weak, nonatomic) IBOutlet UIButton *nameBtn;
+@property (weak, nonatomic) IBOutlet UIButton *moreBtn;
 
 @end
 
@@ -60,10 +63,10 @@
     self.dayLabel.textColor = [UIColor whiteColor];
     self.topLabel.textColor = [UIColor whiteColor];
     self.monthLabel.textColor = [UIColor whiteColor];
-    self.nameLabel.textColor = [UIColor whiteColor];
     self.view.backgroundColor = MAIN_COLOR;
     self.topLabel.backgroundColor = DARK_MAIN_COLOR;
-    self.nameLabel.text = [[UserInfoManager sharedManager] getUserInfo].name;
+    [self.nameBtn setTitle:[[UserInfoManager sharedManager] getUserInfo].name forState:UIControlStateNormal];
+    [self.moreBtn setTitle:@"更多" forState:UIControlStateNormal];
     self.dayLabel.text = [self.curDate substringFromIndex:8];
     NSString * monthStr = [self.curDate substringWithRange:NSMakeRange(5, 2)];
     NSString * yearStr = [self.curDate substringWithRange:NSMakeRange(0, 4)];
@@ -92,15 +95,25 @@
     } else {
         self.orderBtn.selected = YES;
     }
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveAndRefresh:) name:@"refreshOrderBtn" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alarmNoti:) name:@"alarmNoti" object:nil];
 }
 
 #pragma mark - private method
 
+- (void)alarmNoti:(NSNotification *)noti {
+    if ([noti.userInfo[@"on"] boolValue]) {
+        [self addNoti];
+    } else {
+        [self cancelNoti];
+    }
+}
+
 - (void)addNoti {
-    [self setNotification];
-    [self setNotiAt4];
-    [self setNotiAt430];
+    if ([LKUser sharedUser].has_ordered) {
+        [self setNotification];
+        [self setNotiAt4];
+        [self setNotiAt430];
+    }
 }
 
 - (void)cancelNoti {
@@ -178,18 +191,6 @@
     [[UIApplication sharedApplication] scheduleLocalNotification:noti];
 }
 
-- (void)saveAndRefresh:(NSNotification *)noti {
-    [LKUser sharedUser].email = noti.userInfo[@"email"];
-    [LKUser sharedUser].name = noti.userInfo[@"name"];
-    [LKUser sharedUser].end_time = nil;
-    [LKUser sharedUser].has_ordered = [noti.userInfo[@"has_ordered"] boolValue];
-    [LKUser sharedUser].is_admin = [noti.userInfo[@"is_admin"] boolValue];
-    [LKUser sharedUser].historyOrder = [NSMutableDictionary dictionary];
-    [[UserInfoManager sharedManager] saveUserInfo:[LKUser sharedUser]];
-    self.nameLabel.text = noti.userInfo[@"name"];
-    [self refreshOrderBtn];
-}
-
 - (void)refreshOrderBtn {
     NSString * name = [[UserInfoManager sharedManager] getUserInfo].name;
     if (name.length != 0) {
@@ -198,17 +199,21 @@
             if ([aModelBaseObject isKindOfClass:[LKUser class]]) {
                 infoDic = (LKUser *)aModelBaseObject;
             }
-            [LKUser sharedUser].has_ordered = infoDic.has_ordered;
-            [LKUser sharedUser].is_admin = infoDic.is_admin;
-            [LKUser sharedUser].name = infoDic.name;
-            [[UserInfoManager sharedManager] saveUserInfo:[LKUser sharedUser]];
-            self.nameLabel.text = infoDic.name;
+            [self saveUser:infoDic];
+            [self.nameBtn setTitle:infoDic.name forState:UIControlStateNormal];
             self.orderBtn.selected = [LKUser sharedUser].has_ordered;
             self.isManager = [LKUser sharedUser].is_admin;
         } errorHandler:^(LKAPIError *engineError) {
             [LKUIUtils showError:engineError.message];
         }];
     }
+}
+
+- (void)saveUser:(LKUser *)userInfo {
+    [LKUser sharedUser].has_ordered = userInfo.has_ordered;
+    [LKUser sharedUser].is_admin = userInfo.is_admin;
+    [LKUser sharedUser].name = userInfo.name;
+    [[UserInfoManager sharedManager] saveUserInfo:[LKUser sharedUser]];
 }
 
 - (void)addRegisterView {
@@ -219,6 +224,16 @@
 }
 
 #pragma mark - action
+
+- (IBAction)moreAction:(id)sender {
+    LKSSTabViewController * vc = [[LKSSTabViewController alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (IBAction)accountAction:(id)sender {
+    moreViewController * vc = [[moreViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (IBAction)orderAction:(id)sender {
     // get current time

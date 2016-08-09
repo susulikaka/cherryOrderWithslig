@@ -30,7 +30,7 @@
     self.title = @"添加代点用户";
     self.UserListCollectionView.backgroundColor = [UIColor whiteColor];
     [self.UserListCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class])];
-    self.navigationController.navigationBarHidden = NO;
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     UIBarButtonItem * leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left-arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = leftItem;
     
@@ -39,6 +39,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.UserListCollectionView.allowsMultipleSelection = YES;
     [self requestData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 #pragma mark - delegate

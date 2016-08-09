@@ -19,6 +19,15 @@ typedef NS_ENUM(NSUInteger,SSButtonType)
 @interface SSBustomBtn : UIButton
 
 @property (nonatomic, assign) CGFloat cordius;
+@property (nonatomic, copy) tapBtnBlock tapBlock;
+
+- (instancetype)initWithFrame:(CGRect)frame
+                        title:(NSString *)title
+                        image:(UIImage *)image
+                       selImg:(UIImage *)selImg
+                      cordius:(CGFloat)cordius
+                         Type:(SSButtonType)type
+                     tapBlock:(tapBtnBlock)block;
 
 - (instancetype)initWithFrame:(CGRect)frame
                         title:(NSString *)title

@@ -15,6 +15,9 @@
 
 @property (nonatomic, strong)SZCalendarPicker *calendarPicker;
 @property (nonatomic, strong)NSMutableArray *orderHistoryArr;
+@property (weak, nonatomic) IBOutlet UIButton *orderHistory;
+@property (weak, nonatomic) IBOutlet UIButton *feeHistory;
+
 @end
 
 @implementation PersonalHistoryViewController
@@ -27,6 +30,11 @@
     self.title = @"点餐历史";
     [self initInterface];
     [self requestDate];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.calendarPicker hide];
 }
 
 - (void) requestDate {
@@ -42,12 +50,9 @@
         self.calendarPicker = [SZCalendarPicker showOnView:self.view];
         [self.calendarPicker refreshViewWIthOrderDataArr:self.orderHistoryArr];
         
-        
         self.calendarPicker.today = [NSDate date];
         self.calendarPicker.date = self.calendarPicker.today;
-        CGFloat statHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
-        self.calendarPicker.frame = CGRectMake(0, self.navigationController.navigationBar.frame.size.height+statHeight,
-                                               self.view.frame.size.width, self.view.frame.size.height * 0.618);
+        self.calendarPicker.frame = CGRectMake(0, 0,self.view.frame.size.width, self.view.frame.size.height * 0.618);
         self.calendarPicker.calendarBlock = ^(NSInteger day, NSInteger month, NSInteger year){
         };
     } errorHandler:^(LKAPIError *engineError) {
@@ -56,8 +61,7 @@
         
         self.calendarPicker.today = [NSDate date];
         self.calendarPicker.date = self.calendarPicker.today;
-        CGFloat statHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
-        self.calendarPicker.frame = CGRectMake(0, self.navigationController.navigationBar.frame.size.height+statHeight,
+        self.calendarPicker.frame = CGRectMake(0, 0,
                                                self.view.frame.size.width, self.view.frame.size.height * 0.618);
         self.calendarPicker.calendarBlock = ^(NSInteger day, NSInteger month, NSInteger year){
         };
@@ -67,17 +71,21 @@
 }
 
 - (void)initInterface {
-    self.navigationController.navigationBarHidden = NO;
-    UIBarButtonItem * leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left-arrow"]
-                                                                  style:UIBarButtonItemStylePlain
-                                                                 target:self action:@selector(back)];
-    self.navigationItem.leftBarButtonItem = leftItem;
-
-    UIBarButtonItem * rightItem = [[UIBarButtonItem alloc] initWithTitle:@"这个月"
+    
+    UIBarButtonItem * rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search-btn"]
+                                                                   style:UIBarButtonItemStylePlain
+                                                                  target:self action:@selector(search)];
+    UIBarButtonItem * leftItem = [[UIBarButtonItem alloc] initWithTitle:@"本月"
                                                                    style:UIBarButtonItemStylePlain
                                                                   target:self action:@selector(backToToday)];
     self.navigationItem.rightBarButtonItem = rightItem;
+    self.navigationItem.leftBarButtonItem = leftItem;
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self.orderHistory setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.feeHistory setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.orderHistory setTitleEdgeInsets:UIEdgeInsetsMake(0, self.orderHistory.imageView.bounds.size.width, 0, 0)];
+    [self.feeHistory setTitleEdgeInsets:UIEdgeInsetsMake(0, self.feeHistory.imageView.bounds.size.width, 0, 0)];
 }
 
 - (NSDictionary *)paramsWithCurDateFromOne:(NSInteger)monthChange {
@@ -115,9 +123,8 @@
 
 #pragma mark - action
 
-- (void)back {
-    [self.navigationController popViewControllerAnimated:YES];
-    [self.calendarPicker hide];
+- (void)search {
+    
 }
 
 - (void)backToToday {

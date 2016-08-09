@@ -7,6 +7,7 @@
 //
 
 #import "RegisterViewController.h"
+#import "MainViewController.h"
 
 @interface RegisterViewController ()
 
@@ -71,7 +72,6 @@
         [alert show];
         return;
     }
-    
     self.doneBtn.selected = !self.doneBtn.selected;
     [[LKAPIClient sharedClient] requestPOSTForAddUser:@"register"
                                                params:[self paramsWithNameAndEmail]
@@ -81,28 +81,28 @@
         if ([aModelBaseObject isKindOfClass:[NSDictionary class]]) {
             dic = (NSDictionary *)aModelBaseObject;
         }
-        [[LKAPIClient sharedClient] requestPOSTForGetUserInfo:@"user"
-                                                       params:@{@"name":self.nameText.text}
-                                                   modelClass:[LKUser class]
-                                            completionHandler:^(LKJSonModel *aModelBaseObject) {
-                LKUser * infoDic;
-                if ([aModelBaseObject isKindOfClass:[LKUser class]]) {
-                    infoDic = (LKUser *)aModelBaseObject;
-                }
-                
-                [self.navigationController popViewControllerAnimated:YES];
-                NSDictionary * dic = @{@"email":self.mailText.text,@"name":self.nameText.text,
-                                       @"is_admin":@(infoDic.is_admin),
-                                       @"has_ordered":@(infoDic.has_ordered)};
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshOrderBtn"
-                                                                    object:nil userInfo:dic];
-            } errorHandler:^(LKAPIError *engineError) {
-                [LKUIUtils showError:engineError.message];
-            }];
-                                        
+        
+        NSDictionary * aDic = @{@"email":self.mailText.text,
+                               @"name":self.nameText.text};
+        [self saveUser:aDic];
+        MainViewController * vc = [[MainViewController alloc] initWithNibName:nil bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+                       
     } errorHandler:^(LKAPIError *engineError) {
         [LKUIUtils showError:engineError.message];
+        MainViewController * vc = [[MainViewController alloc] initWithNibName:nil bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
     }];
+}
+
+- (void)saveUser:(NSDictionary *)userInfo {
+    [LKUser sharedUser].email = userInfo[@"email"];
+    [LKUser sharedUser].name = userInfo[@"name"];
+    [LKUser sharedUser].end_time = nil;
+    [LKUser sharedUser].has_ordered = [userInfo[@"has_ordered"] boolValue];
+    [LKUser sharedUser].is_admin = [userInfo[@"is_admin"] boolValue];
+    [LKUser sharedUser].historyOrder = [NSMutableDictionary dictionary];
+    [[UserInfoManager sharedManager] saveUserInfo:[LKUser sharedUser]];
 }
 
 - (NSDictionary *)paramsWithNameAndEmail {
@@ -111,7 +111,7 @@
 
 - (CABasicAnimation *)outAnimationFromPoint:(CGPoint)fromPoint ToPoint:(CGPoint)toPoint duration:(NSTimeInterval)duration {
     CABasicAnimation * poiAnim = [CABasicAnimation animationWithKeyPath:@"position"];
-    poiAnim.duration = 0.5;
+    poiAnim.duration = duration;
     poiAnim.repeatCount = 1;
     poiAnim.fromValue = [NSValue valueWithCGPoint:fromPoint];
     poiAnim.toValue = [NSValue valueWithCGPoint:toPoint];
@@ -123,22 +123,21 @@
 }
 
 #pragma mark - keyboard
+
 - (void)keyboardShowAction:(NSNotification *)noti {
     CGRect keyBoardBounds;
     [[noti.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyBoardBounds];
     NSNumber * duration = [noti.userInfo valueForKey:UIKeyboardAnimationDurationUserInfoKey];
 //    NSNumber * curve = [noti.userInfo valueForKey:UIKeyboardAnimationCurveUserInfoKey];
 //    keyBoardBounds.size.height
-    [self.backView.layer addAnimation:[self outAnimationFromPoint:CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2) ToPoint:CGPointMake(SCREEN_WIDTH/2, SCREEN_WIDTH/2-50) duration:[duration doubleValue]] forKey:@"upAnimation"];
+    [self.backView.layer addAnimation:[self outAnimationFromPoint:CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2) ToPoint:CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2-60) duration:[duration doubleValue]] forKey:@"upAnimation"];
 }
 
 - (void)keyboardDissMissAction:(NSNotification *)noti {
     CGRect keyBoardBounds;
     [[noti.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyBoardBounds];
     NSNumber * duration = [noti.userInfo valueForKey:UIKeyboardAnimationDurationUserInfoKey];
-//    NSNumber * curve = [noti.userInfo valueForKey:UIKeyboardAnimationCurveUserInfoKey];
-    
-    [self.backView.layer addAnimation:[self outAnimationFromPoint:CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2-50) ToPoint:CGPointMake(SCREEN_WIDTH/2, SCREEN_WIDTH/2) duration:[duration doubleValue]] forKey:@"upAnimation"];
+    [self.backView.layer addAnimation:[self outAnimationFromPoint:CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2-60) ToPoint:CGPointMake(SCREEN_WIDTH/2,SCREEN_HEIGHT/2) duration:[duration doubleValue]] forKey:@"upAnimation"];
 
 }
 

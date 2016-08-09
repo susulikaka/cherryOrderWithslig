@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonalHistoryViewController">
             <connections>
+                <outlet property="feeHistory" destination="gz7-O6-q7a" id="mE4-hE-PBs"/>
+                <outlet property="orderHistory" destination="oMQ-7k-5pm" id="9Zz-GF-VRc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,7 +16,43 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMQ-7k-5pm">
+                    <rect key="frame" x="75" y="440" width="70" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="KDq-dv-DzA"/>
+                        <constraint firstAttribute="width" constant="100" id="o5c-5X-UJA"/>
+                    </constraints>
+                    <state key="normal" title="已点餐" image="mark_orderHistory"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gz7-O6-q7a">
+                    <rect key="frame" x="75" y="490" width="70" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="3Yd-On-QBU"/>
+                        <constraint firstAttribute="height" constant="40" id="h0n-CM-dxg"/>
+                    </constraints>
+                    <state key="normal" title="已报销" image="mark_feeHistory"/>
+                </button>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="gz7-O6-q7a" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3J2-QB-XVo"/>
+                <constraint firstItem="oMQ-7k-5pm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="JrB-l9-VKi"/>
+                <constraint firstItem="gz7-O6-q7a" firstAttribute="top" secondItem="oMQ-7k-5pm" secondAttribute="bottom" constant="5" id="N7V-5I-Qmc"/>
+                <constraint firstItem="oMQ-7k-5pm" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NmJ-rt-zu4"/>
+                <constraint firstItem="gz7-O6-q7a" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="aw0-rc-BZj"/>
+                <constraint firstAttribute="bottom" secondItem="gz7-O6-q7a" secondAttribute="bottom" constant="80" id="u63-kE-2vF"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="NmJ-rt-zu4"/>
+                    <exclude reference="3J2-QB-XVo"/>
+                </mask>
+            </variation>
         </view>
     </objects>
+    <resources>
+        <image name="mark_feeHistory" width="16" height="16"/>
+        <image name="mark_orderHistory" width="16" height="16"/>
+    </resources>
 </document>
