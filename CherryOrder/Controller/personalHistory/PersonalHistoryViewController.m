@@ -15,8 +15,6 @@
 
 @property (nonatomic, strong)SZCalendarPicker *calendarPicker;
 @property (nonatomic, strong)NSMutableArray *orderHistoryArr;
-@property (weak, nonatomic) IBOutlet UIButton *orderHistory;
-@property (weak, nonatomic) IBOutlet UIButton *feeHistory;
 
 @end
 
@@ -52,7 +50,7 @@
         
         self.calendarPicker.today = [NSDate date];
         self.calendarPicker.date = self.calendarPicker.today;
-        self.calendarPicker.frame = CGRectMake(0, 0,self.view.frame.size.width, self.view.frame.size.height * 0.618);
+        self.calendarPicker.frame = CGRectMake(0, 0,self.view.frame.size.width, self.view.frame.size.width+70);
         self.calendarPicker.calendarBlock = ^(NSInteger day, NSInteger month, NSInteger year){
         };
     } errorHandler:^(LKAPIError *engineError) {
@@ -62,7 +60,7 @@
         self.calendarPicker.today = [NSDate date];
         self.calendarPicker.date = self.calendarPicker.today;
         self.calendarPicker.frame = CGRectMake(0, 0,
-                                               self.view.frame.size.width, self.view.frame.size.height * 0.618);
+                                               self.view.frame.size.width, self.view.frame.size.width+70);
         self.calendarPicker.calendarBlock = ^(NSInteger day, NSInteger month, NSInteger year){
         };
         [LKUIUtils showError:engineError.message];
@@ -81,11 +79,6 @@
     self.navigationItem.rightBarButtonItem = rightItem;
     self.navigationItem.leftBarButtonItem = leftItem;
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    [self.orderHistory setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.feeHistory setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.orderHistory setTitleEdgeInsets:UIEdgeInsetsMake(0, self.orderHistory.imageView.bounds.size.width, 0, 0)];
-    [self.feeHistory setTitleEdgeInsets:UIEdgeInsetsMake(0, self.feeHistory.imageView.bounds.size.width, 0, 0)];
 }
 
 - (NSDictionary *)paramsWithCurDateFromOne:(NSInteger)monthChange {

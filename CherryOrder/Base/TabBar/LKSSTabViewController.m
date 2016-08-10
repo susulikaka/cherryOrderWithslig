@@ -11,7 +11,8 @@
 #import "HelpOrderViewController.h"
 #import "PersonalHistoryViewController.h"
 #import "AllOrderHistoryViewController.h"
-#import "moreViewController.h"
+#import "SettingViewController.h"
+#import "AllHistoryViewController.h"
 
 const NSInteger BTNTAG = 1000;
 const CGFloat TABHEIGHT = 50;
@@ -84,14 +85,15 @@ const CGFloat VIEWORIGIN = 80;
             break;
         case 2:
         {
-            AllOrderHistoryViewController * allVC = [[AllOrderHistoryViewController alloc] initWithNibName:nil bundle:nil];
+            AllHistoryViewController * allVC = [[AllHistoryViewController alloc] initWithNibName:nil bundle:nil];
+//            AllOrderHistoryViewController * allVC = [[AllOrderHistoryViewController alloc] initWithNibName:nil bundle:nil];
             curVC = allVC;
         }
             
             break;
         case 3:
         {
-            moreViewController * accVC = [[moreViewController alloc] initWithNibName:nil bundle:nil];
+            SettingViewController * accVC = [[SettingViewController alloc] initWithNibName:nil bundle:nil];
             curVC = accVC;
         }
             break;
@@ -133,9 +135,9 @@ const CGFloat VIEWORIGIN = 80;
     if (!_VCArr) {
         _VCArr = ({
             HelpOrderViewController * helpVC = [[HelpOrderViewController alloc] initWithNibName:nil bundle:nil];
-            AllOrderHistoryViewController * allVC = [[AllOrderHistoryViewController alloc] initWithNibName:nil bundle:nil];
+            AllHistoryViewController * allVC = [[AllHistoryViewController alloc] initWithNibName:nil bundle:nil];
             PersonalHistoryViewController * perVC = [[PersonalHistoryViewController alloc] initWithNibName:nil bundle:nil];
-            moreViewController * accVC = [[moreViewController alloc] initWithNibName:nil bundle:nil];
+            SettingViewController * accVC = [[SettingViewController alloc] initWithNibName:nil bundle:nil];
             
             UINavigationController * nHelpVC = [[UINavigationController alloc] initWithRootViewController:helpVC];
             UINavigationController * nAllVC = [[UINavigationController alloc] initWithRootViewController:allVC];

@@ -18,6 +18,9 @@
 @property (nonatomic , weak, readonly) UIButton *nextButton;
 @property (nonatomic , weak, readonly) UILabel *monthLabel;
 @property (nonatomic, assign) BOOL canSelected;
+@property (weak, nonatomic) IBOutlet UIButton *orderHistory;
+@property (weak, nonatomic) IBOutlet UIButton *feeHistory;
+
 
 + (instancetype)showOnView:(UIView *)view;
 - (void)hide;

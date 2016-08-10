@@ -1,20 +1,20 @@
 //
-//  AllOrderViewController.m
+//  AllCouldExpenseViewController.m
 //  CherryOrder
 //
-//  Created by admin on 16/8/3.
+//  Created by admin on 16/8/10.
 //  Copyright © 2016年 SupingLi. All rights reserved.
 //
 
-#import "AllOrderHistoryViewController.h"
+#import "AllCouldExpenseViewController.h"
 #import "AllHistory.h"
 #import "HistoryHeaderview.h"
 #import "OrderInfoViewController.h"
 #import "RefreshFootView.h"
 
-@interface AllOrderHistoryViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface AllCouldExpenseViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
-@property (weak, nonatomic) IBOutlet UICollectionView * collectionView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong)NSMutableArray * dataSource;
 @property (assign, nonatomic) BOOL noMore;
 @property (strong, nonatomic) UIRefreshControl * refresh;
@@ -22,15 +22,16 @@
 
 @end
 
-@implementation AllOrderHistoryViewController
+@implementation AllCouldExpenseViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self initInterface];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
 }
 
 #pragma mark - private method
@@ -50,14 +51,15 @@
         [self.refreshFoot setFrame:CGRectMake(0, pointY, SCREEN_WIDTH, 80)];
     }];
 }
+
 - (void)requestDate {
     self.dataSource = [NSMutableArray array];
     
-//    NSDictionary * arr = @{@"name":@"11",@"count":@(12),@"list":@[@{@"name":@"name",@"list":@"na",@"data":@"date"},@{@"name":@"name",@"list":@"na",@"data":@"date"}]};
-//    for (int i = 0; i < 10; i ++) {
-//        [self.dataSource addObject:arr];
-//    }
-//    [self.collectionView reloadData];
+    //    NSDictionary * arr = @{@"name":@"11",@"count":@(12),@"list":@[@{@"name":@"name",@"list":@"na",@"data":@"date"},@{@"name":@"name",@"list":@"na",@"data":@"date"}]};
+    //    for (int i = 0; i < 10; i ++) {
+    //        [self.dataSource addObject:arr];
+    //    }
+    //    [self.collectionView reloadData];
     
     [[LKAPIClient sharedClient] requestGETForcurDateOrderList:@"order/all"
                                                        params:nil
@@ -160,7 +162,7 @@
     NSString * name = self.dataSource[self.dataSource.count-1-indexPath.section][@"list"][indexPath.row][@"name"];
     vc.dataDic = @{@"name":name,@"date":self.dataSource[self.dataSource.count-1-indexPath.section][@"date"]};
     [self.navigationController pushViewController:vc animated:YES];
-
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -177,12 +179,12 @@
 }
 
 - (void)more {
-//    
-//    NSDictionary * arr = @{@"name":@"11",@"count":@(12),@"list":@[@{@"name":@"name",@"list":@"na",@"data":@"date"},@{@"name":@"name",@"list":@"na",@"data":@"date"}]};
-//    for (int i = 0; i < 10; i ++) {
-//        [self.dataSource addObject:arr];
-//    }
-//    [self.collectionView reloadData];
+    //
+    //    NSDictionary * arr = @{@"name":@"11",@"count":@(12),@"list":@[@{@"name":@"name",@"list":@"na",@"data":@"date"},@{@"name":@"name",@"list":@"na",@"data":@"date"}]};
+    //    for (int i = 0; i < 10; i ++) {
+    //        [self.dataSource addObject:arr];
+    //    }
+    //    [self.collectionView reloadData];
     
     [[LKAPIClient sharedClient] requestGETForcurDateOrderList:@"order/all"
                                                        params:@{@"end_time":[LKUser sharedUser].end_time}
@@ -219,5 +221,6 @@
     }
     return _refresh;
 }
+
 
 @end

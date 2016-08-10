@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LKNavigationController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) LKNavigationController *navigationVC;
 
 @end
 

@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^okBlock)();
+typedef void (^okBlock)(NSString * value);
 typedef void (^cancelBlock)();
 
 @interface SSAlertView : UIView
 
 @property (nonatomic, strong)NSString * curValue;
+@property (nonatomic, strong)NSArray * pickArr;
 @property (weak, nonatomic) IBOutlet UIView *backview;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
@@ -22,18 +23,21 @@ typedef void (^cancelBlock)();
 @property (nonatomic, copy) okBlock okBlock;
 @property (nonatomic, copy) cancelBlock cancelBlock;
 
-- (instancetype)initWithText:(NSString *)name
+- (void)rendWithText:(NSString *)name
                        value:(NSString *)value
+           superView:(UIView *)superView
                      okBlock:(okBlock)okBlock
                  cancelBlock:(cancelBlock)cancelBlock;
 
-- (instancetype)initWithDatePicker:(NSString *)name
+- (void)rendWithDatePicker:(NSString *)name
                               date:(NSDate *)date
+                         superView:(UIView *)superView
                            okBlock:(okBlock)okBlock
                        cancelBlock:(cancelBlock)cancelBlock;;
 
-- (instancetype)initWithValuePicker:(NSString *)name
+- (void)rendWithValuePicker:(NSString *)name
                             pickArr:(NSArray *)pickArr
+                          superView:(UIView *)superView
                             okBlock:(okBlock)okBlock
                         cancelBlock:(cancelBlock)cancelBlock;;
 

@@ -53,6 +53,13 @@
     navigationBackgroundView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:navigationBackgroundView];
     
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    label.center = CGPointMake(SCREEN_WIDTH/2, navigationBackgroundView.center.y);
+    label.text = @"照片详情";
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = LK_TEXT_COLOR_GRAY;
+    [navigationBackgroundView addSubview:label];
+    
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setImage:[UIImage imageNamed:@"left-arrow"] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(_lk_back) forControlEvents:UIControlEventTouchUpInside];

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "RegisterViewController.h"
+#import "AccountInfoViewController.h"
 
 @interface AppDelegate ()
 
@@ -27,8 +28,9 @@
         
     } else {
         vc = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+        
     }
-    
+    self.navigationVC = [[LKNavigationController alloc] initWithRootViewController:vc];
     UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:vc];
     
     self.window.rootViewController = nvc;

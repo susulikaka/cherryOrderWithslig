@@ -53,6 +53,11 @@ NSString *const SZCalendarCellIdentifier = @"cell";
     layout.minimumLineSpacing = 0;
     layout.minimumInteritemSpacing = 0;
     [_collectionView setCollectionViewLayout:layout animated:YES];
+    
+    [self.orderHistory setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.feeHistory setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.orderHistory setTitleEdgeInsets:UIEdgeInsetsMake(0, self.orderHistory.imageView.bounds.size.width, 0, 0)];
+    [self.feeHistory setTitleEdgeInsets:UIEdgeInsetsMake(0, self.feeHistory.imageView.bounds.size.width, 0, 0)];
 }
 
 - (void)setDate:(NSDate *)date
@@ -147,9 +152,11 @@ NSString *const SZCalendarCellIdentifier = @"cell";
         
         if (i < firstWeekday) {
             [cell.dateLabel setText:@""];
+            cell.dateLabel.backgroundColor = [UIColor whiteColor];
             
         }else if (i > firstWeekday + daysInThisMonth - 1){
             [cell.dateLabel setText:@""];
+            cell.dateLabel.backgroundColor = [UIColor whiteColor];
         }else{
             day = i - firstWeekday + 1;
             if (day < 10) {

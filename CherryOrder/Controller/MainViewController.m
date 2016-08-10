@@ -17,7 +17,7 @@
 #import "AllOrderHistoryViewController.h"
 #import "HelpOrderViewController.h"
 #import "RegisterViewController.h"
-#import "moreViewController.h"
+#import "SettingViewController.h"
 #import "LKSSTabViewController.h"
 
 @interface MainViewController ()
@@ -226,12 +226,16 @@
 #pragma mark - action
 
 - (IBAction)moreAction:(id)sender {
+    if ([LKUser sharedUser] == nil) {
+        [LKUIUtils showError:@"网络错误"];
+        return;
+    }
     LKSSTabViewController * vc = [[LKSSTabViewController alloc] initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)accountAction:(id)sender {
-    moreViewController * vc = [[moreViewController alloc] init];
+    SettingViewController * vc = [[SettingViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -6,7 +6,7 @@
 //  Copyright © 2016年 SupingLi. All rights reserved.
 //
 
-#import "moreViewController.h"
+#import "SettingViewController.h"
 #import "MyOrderSettingViewController.h"
 #import "MyNewsViewController.h"
 #import "LeiFengThingViewController.h"
@@ -16,14 +16,14 @@
 #import "AccountInfoTableViewCell.h"
 #import "AlarmSettingTableViewCell.h"
 
-@interface moreViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray * datasource;
 
 @end
 
-@implementation moreViewController
+@implementation SettingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

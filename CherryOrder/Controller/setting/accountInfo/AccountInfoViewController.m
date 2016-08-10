@@ -13,11 +13,12 @@
 #import "PhotoAsset.h"
 #import "RSKImageCropViewController.h"
 #import "AccountInfoTableViewCell.h"
+#import "SSAlertView.h"
 
 @interface AccountInfoViewController ()<RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray * datasource;
+@property (nonatomic, strong) NSMutableArray * datasource;
 
 @end
 
@@ -27,13 +28,16 @@
     [super viewDidLoad];
     self.title = @"个人资料";
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    UIBarButtonItem * leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left-arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = leftItem;
     [self initInterface];
 }
 
 #pragma mark - private method
 
 - (void)initInterface {
-    self.datasource = @[@[@"头像",@"昵称",@"生日",@"名片",@"电话",@"邮箱",@"部门"]];
+//    self.datasource = @[@[@"头像"],@[@"昵称",@"生日",@"名片",@"电话",@"邮箱",@"部门"]];
+    self.datasource = [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithObject:@"touxiang"],[NSMutableArray arrayWithObjects:@"昵称",@"生日",@"名片",@"电话",@"邮箱",@"部门", nil], nil];
     [self.tableView registerNib:[InfoItemCell nib] forCellReuseIdentifier:NSStringFromClass([InfoItemCell class])];
     [self.tableView registerNib:[AccountInfoTableViewCell nib] forCellReuseIdentifier:NSStringFromClass([AccountInfoTableViewCell class])];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
@@ -59,7 +63,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0 && indexPath.row == 0) {
         AccountInfoTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([AccountInfoTableViewCell class])];
         NSData * imgData = [[UserInfoManager sharedManager] getUserInfo].image;
         UIImage * img = [UIImage imageWithData:imgData];
@@ -80,7 +84,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0 && indexPath.row == 0) {
         PhotoPickerViewController * vc = [[PhotoPickerViewController alloc] init];
         vc.viewCompact = YES;
         @weakify(vc);
@@ -98,11 +102,47 @@
             }
         };
         [self.navigationController pushViewController:vc animated:YES];
+    } else if (indexPath.section ==1) {
+        if (indexPath.row != 1 && indexPath.row != 2) {
+            SSAlertView * alert = [SSAlertView viewFromNib];
+            [alert rendWithText:self.datasource[indexPath.section][indexPath.row]
+                          value:self.datasource[indexPath.section][indexPath.row]
+                      superView:self.view
+                        okBlock:^(NSString *value) {
+                [self reloadDateAtIndexPath:indexPath value:value];
+            } cancelBlock:^{}];
+        } else if (indexPath.row == 1) {
+            SSAlertView * alert = [SSAlertView viewFromNib];
+            [alert rendWithDatePicker:self.datasource[indexPath.section][indexPath.row]
+                                 date:[NSDate date]
+                            superView:self.view
+                              okBlock:^(NSString *value) {
+                [self reloadDateAtIndexPath:indexPath value:value];
+            } cancelBlock:^{}];
+        } else if (indexPath.row == 2) {
+            SSAlertView * alert = [SSAlertView viewFromNib];
+            [alert rendWithValuePicker:self.datasource[indexPath.section][indexPath.row]
+                               pickArr:self.datasource[1]
+                             superView:self.view
+                               okBlock:^(NSString *value) {
+               [self reloadDateAtIndexPath:indexPath value:value];
+            } cancelBlock:^{}];
+        }
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+#pragma mark - private method
+
+- (void)reloadDateAtIndexPath:(NSIndexPath *)indexPath value:(NSString *)value {
+    if (value == nil) {
+        return ;
+    }
+    [self.datasource[indexPath.section] replaceObjectAtIndex:indexPath.row withObject:value];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
+}
+
+- (void)back {
+    [self.navigationController popViewControllerAnimated:YES];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 

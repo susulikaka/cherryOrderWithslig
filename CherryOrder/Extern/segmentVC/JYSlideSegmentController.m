@@ -11,6 +11,7 @@
 //#import "LKCollectionViewFlowController.h"
 //#import "LKAnimationRefreshController.h"
 #import "UIScrollView+AllowPanGestureEventPass.h"
+#import "AppDelegate.h"
 
 #define SEGMENT_BAR_HEIGHT 40
 #define INDICATOR_HEIGHT 2
@@ -37,6 +38,8 @@ NSString * const segmentBarItemID = @"JYSegmentBarItem";
 {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] initWithFrame:self.contentView.bounds];
+        _titleLabel.bounds = CGRectMake(0, 0, self.contentView.bounds.size.width * 0.6,  self.contentView.bounds.size.height * 0.6);
+        _titleLabel.center = self.contentView.center;
         _titleLabel.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
         _titleLabel.textAlignment = NSTextAlignmentCenter;
     }
@@ -91,7 +94,7 @@ NSString * const segmentBarItemID = @"JYSegmentBarItem";
         self.saparator.frame = originFrame;
     }];
     
-    UIGestureRecognizer *gestureRecognizer = self.navigationController.interactivePopGestureRecognizer;
+    UIGestureRecognizer *gestureRecognizer = ((AppDelegate *)[UIApplication sharedApplication].delegate).navigationVC.interactivePopGestureRecognizer;
     [self.slideView.panGestureRecognizer requireGestureRecognizerToFail:gestureRecognizer];
 } 
 
@@ -109,7 +112,6 @@ NSString * const segmentBarItemID = @"JYSegmentBarItem";
         self.automaticallyAdjustsScrollViewInsets = NO;
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
-    
     [self.view addSubview:self.segmentBar];
     [self.segmentBar addSubview:self.saparator];
     [self.segmentBar addSubview:self.indicator];

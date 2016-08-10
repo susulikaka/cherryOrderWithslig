@@ -32,9 +32,9 @@
                     </connections>
                 </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6n-G8-L9C">
-                    <rect key="frame" x="200" y="520" width="200" height="40"/>
+                    <rect key="frame" x="225" y="520" width="150" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="200" id="eAS-AW-1Ms"/>
+                        <constraint firstAttribute="width" constant="150" id="eAS-AW-1Ms"/>
                         <constraint firstAttribute="height" constant="40" id="kwq-OC-qTr"/>
                     </constraints>
                     <state key="normal" title="代点"/>

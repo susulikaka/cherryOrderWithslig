@@ -32,6 +32,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 #define BLUE_ALPHA_COLOR(_A) ([UIColor colorWithRed:0.0/255 green:205.0/255 blue:185.0/255 alpha:(_A)])
 #define BLUE_NEW_COLOR ([UIColor colorWithRed:114.0/255 green:201.0/255 blue:208.0/255 alpha:1.0])
 #define GRAY_COLOR ([UIColor colorWithRed:249.0/255 green:249.0/255 blue:249.0/255 alpha:1.0])
+#define GRAY_ALPHA_COLOR(_A) ([UIColor colorWithRed:0.0/255 green:0.0/255 blue:0.0/255 alpha:(_A)])
 
 #define ITEM_SPACING 20.0f
 #define NAME_COLLECTION_CELL_WIDTH 60.0f

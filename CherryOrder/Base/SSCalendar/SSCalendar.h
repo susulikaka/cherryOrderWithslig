@@ -1,13 +1,13 @@
 //
-//  AccountInfoViewController.h
+//  SSCalendar.h
 //  CherryOrder
 //
-//  Created by admin on 16/8/8.
+//  Created by admin on 16/8/10.
 //  Copyright © 2016年 SupingLi. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface moreViewController : UIViewController
+@interface SSCalendar : UIView
 
 @end

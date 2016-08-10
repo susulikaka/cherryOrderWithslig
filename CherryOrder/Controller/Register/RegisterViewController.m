@@ -90,6 +90,10 @@
                        
     } errorHandler:^(LKAPIError *engineError) {
         [LKUIUtils showError:engineError.message];
+        
+        NSDictionary * aDic = @{@"email":self.mailText.text,
+                                @"name":self.nameText.text};
+        [self saveUser:aDic];
         MainViewController * vc = [[MainViewController alloc] initWithNibName:nil bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
     }];
