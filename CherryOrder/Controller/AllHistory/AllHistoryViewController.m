@@ -47,7 +47,6 @@
 - (UICollectionViewCell *)slideSegment:(UICollectionView *)segmentBar
                 cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     JYSegmentBarItem * item = [segmentBar dequeueReusableCellWithReuseIdentifier:NSStringFromClass([JYSegmentBarItem class]) forIndexPath:indexPath];
-    
     [self configSegmentItem:item withTitle:self.titleArr[indexPath.row] atIndexPath:indexPath];
     return item;
 }

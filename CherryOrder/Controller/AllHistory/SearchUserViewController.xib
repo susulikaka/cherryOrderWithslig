@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchUserViewController">
             <connections>
+                <outlet property="searchDisplayController" destination="b15-UU-ksx" id="fT7-1o-lsP"/>
+                <outlet property="tableView" destination="kpl-wq-J0Q" id="dzd-sG-Jbv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,7 +16,39 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kpl-wq-J0Q">
+                    <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="v2d-Yi-7sL"/>
+                        <outlet property="delegate" destination="-1" id="iug-J0-oQu"/>
+                    </connections>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="kpl-wq-J0Q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CJJ-2T-QP6"/>
+                <constraint firstAttribute="bottom" secondItem="kpl-wq-J0Q" secondAttribute="bottom" id="S8s-1J-5SQ"/>
+                <constraint firstAttribute="trailing" secondItem="kpl-wq-J0Q" secondAttribute="trailing" id="gUq-QU-fAT"/>
+                <constraint firstItem="kpl-wq-J0Q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="x5N-a0-fi5"/>
+            </constraints>
         </view>
+        <searchDisplayController id="W4y-r0-44D">
+            <connections>
+                <outlet property="delegate" destination="-1" id="Dlt-iF-3Pc"/>
+                <outlet property="searchContentsController" destination="-1" id="k1s-ZN-Btv"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="lB4-fX-XVQ"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="aZe-4i-Xr6"/>
+            </connections>
+        </searchDisplayController>
+        <searchDisplayController id="b15-UU-ksx">
+            <connections>
+                <outlet property="delegate" destination="-1" id="geW-cM-a1s"/>
+                <outlet property="searchContentsController" destination="-1" id="i4O-fH-O0e"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="NOc-An-x9I"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="Ghv-7k-fF9"/>
+            </connections>
+        </searchDisplayController>
     </objects>
 </document>
