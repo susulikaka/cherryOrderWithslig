@@ -35,4 +35,8 @@ typedef NS_ENUM(NSUInteger,SSButtonType)
                          Type:(SSButtonType)type
                      tapBlock:(tapBtnBlock)block;
 
+- (instancetype)initWithFrame:(CGRect)frame
+                        title:(NSString *)title
+                      cordius:(CGFloat)cordius;
+
 @end

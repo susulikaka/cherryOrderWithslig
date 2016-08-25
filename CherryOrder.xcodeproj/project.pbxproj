@@ -83,6 +83,8 @@
 		8468E3EB1D4B48A500F52C79 /* UserHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468E3EA1D4B48A500F52C79 /* UserHistory.m */; };
 		84690A291D5986FF00D1806C /* JYSlideSegmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84690A281D5986FF00D1806C /* JYSlideSegmentController.m */; };
 		84690A2C1D598C3A00D1806C /* UIScrollView+AllowPanGestureEventPass.m in Sources */ = {isa = PBXBuildFile; fileRef = 84690A2B1D598C3A00D1806C /* UIScrollView+AllowPanGestureEventPass.m */; };
+		84741B8F1D62DAB000710505 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84741B8D1D62DAB000710505 /* UserInfoViewController.m */; };
+		84741B901D62DAB000710505 /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84741B8E1D62DAB000710505 /* UserInfoViewController.xib */; };
 		849506C81D51AFA100684BE5 /* LKUIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 849506C71D51AFA100684BE5 /* LKUIUtils.m */; };
 		84D044C91D49D1B000E85B3E /* LKNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D044C81D49D1B000E85B3E /* LKNavViewController.m */; };
 		84D044CC1D49DB1100E85B3E /* HistoryHeaderview.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D044CB1D49DB1100E85B3E /* HistoryHeaderview.m */; };
@@ -265,6 +267,9 @@
 		84690A281D5986FF00D1806C /* JYSlideSegmentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JYSlideSegmentController.m; path = Extern/segmentVC/JYSlideSegmentController.m; sourceTree = "<group>"; };
 		84690A2A1D598C3A00D1806C /* UIScrollView+AllowPanGestureEventPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+AllowPanGestureEventPass.h"; path = "Base/UIScrollView+AllowPanGestureEventPass.h"; sourceTree = "<group>"; };
 		84690A2B1D598C3A00D1806C /* UIScrollView+AllowPanGestureEventPass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+AllowPanGestureEventPass.m"; path = "Base/UIScrollView+AllowPanGestureEventPass.m"; sourceTree = "<group>"; };
+		84741B8C1D62DAB000710505 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInfoViewController.h; path = Controller/AllHistory/UserInfoViewController.h; sourceTree = "<group>"; };
+		84741B8D1D62DAB000710505 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfoViewController.m; path = Controller/AllHistory/UserInfoViewController.m; sourceTree = "<group>"; };
+		84741B8E1D62DAB000710505 /* UserInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserInfoViewController.xib; path = Controller/AllHistory/UserInfoViewController.xib; sourceTree = "<group>"; };
 		849506C61D51AFA100684BE5 /* LKUIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LKUIUtils.h; path = Base/LKUIUtils.h; sourceTree = "<group>"; };
 		849506C71D51AFA100684BE5 /* LKUIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LKUIUtils.m; path = Base/LKUIUtils.m; sourceTree = "<group>"; };
 		84D044C71D49D1B000E85B3E /* LKNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LKNavViewController.h; path = Base/LKNavViewController.h; sourceTree = "<group>"; };
@@ -651,6 +656,9 @@
 				840743D51D5B2A7D00DF4227 /* SearchUserViewController.h */,
 				840743D61D5B2A7D00DF4227 /* SearchUserViewController.m */,
 				840743D71D5B2A7D00DF4227 /* SearchUserViewController.xib */,
+				84741B8C1D62DAB000710505 /* UserInfoViewController.h */,
+				84741B8D1D62DAB000710505 /* UserInfoViewController.m */,
+				84741B8E1D62DAB000710505 /* UserInfoViewController.xib */,
 			);
 			name = allHistory;
 			sourceTree = "<group>";
@@ -927,6 +935,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84556A671D477F2B00EE3E1C /* RegisterView.xib in Resources */,
+				84741B901D62DAB000710505 /* UserInfoViewController.xib in Resources */,
 				84DA200E1D59DE870023983A /* SSAlertView.xib in Resources */,
 				84556A341D477C8400EE3E1C /* LaunchScreen.storyboard in Resources */,
 				845246F91D54691700B388C0 /* SSRadiusLabel.xib in Resources */,
@@ -1040,6 +1049,7 @@
 				8458A84B1D4EF80C00694FAE /* UserList.m in Sources */,
 				840723C21D5310710022349E /* RefreshFootView.m in Sources */,
 				840743D81D5B2A7D00DF4227 /* SearchUserViewController.m in Sources */,
+				84741B8F1D62DAB000710505 /* UserInfoViewController.m in Sources */,
 				84D27C591D54829D00B81C22 /* RegisterViewController.m in Sources */,
 				840743C61D5B1C0A00DF4227 /* LKSSTabViewController.m in Sources */,
 				8458A8591D4F1E3700694FAE /* NameSelView.m in Sources */,

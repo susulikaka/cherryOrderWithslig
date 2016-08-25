@@ -26,20 +26,22 @@
 - (SSBustomBtn *)dateBtn {
     if (!_dateBtn) {
         _dateBtn = ({
-            SSBustomBtn * btn = [[SSBustomBtn alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width * 0.7,self.bounds.size.height * 0.7) title:@"" cordius:0 Type:0 tapBlock:^{
-                self.tapBlock();
-            }];
-            [btn setBackgroundColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            SSBustomBtn * btn = [[SSBustomBtn alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width * 0.7,self.bounds.size.height * 0.7) title:@"" cordius:0];
             [btn setBackgroundColor:MAIN_COLOR forState:UIControlStateSelected];
+            [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+            btn.layer.cornerRadius = btn.frame.size.height/2;
+            btn.layer.masksToBounds = YES;
             [self.contentView addSubview:btn];
-//            [btn addTarget:self action:@selector(tapAction) forControlEvents:UIControlEventTouchUpInside];
+            [btn addTarget:self action:@selector(tapAction:) forControlEvents:UIControlEventTouchUpInside];
             btn;
         });
     }
     return _dateBtn;
 }
 
-- (void)tapAction {
+- (void)tapAction:(UIButton *)btn {
+    btn.selected = !btn.selected;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"addSelNoti" object:nil userInfo:@{@"day":btn.titleLabel.text}];
     if (self.tapBlock) {
         self.tapBlock();
     }

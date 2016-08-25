@@ -7,6 +7,8 @@
 //
 
 #import "SearchUserViewController.h"
+#import "UserList.h"
+#import "UserInfoViewController.h"
 
 @interface SearchUserViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchControllerDelegate,UISearchResultsUpdating>
 
@@ -23,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initInterface];
-    [self initDataSource];
+    [self requestData];
 }
 
 #pragma mark - private method
@@ -31,17 +33,24 @@
 - (void)initInterface {
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([UITableViewCell class])];
     self.tableView.tableHeaderView = self.searchVC.searchBar;
+    self.tableView.tableFooterView = [UIView new];
 }
 
-- (void)initDataSource {
-    NSString * name = @"dd";
-    NSMutableArray * arr = [@[@"aa",@"bb",@"cc"] mutableCopy];
-    for (int i = 0; i < 10; i ++) {
-        [arr addObject:name];
-    }
-    
-    self.oldList = arr;
-    [self refreshDataSource:self.oldList];
+- (void)requestData {
+    self.oldList = [NSMutableArray array];
+    [[LKAPIClient sharedClient] requestGETForUserList:@"user/all" params:nil modelClass:[UserList class] completionHandler:^(LKJSonModel *aModelBaseObject) {
+        
+        UserList * list ;
+        if ([aModelBaseObject isKindOfClass:[UserList class]]) {
+            list = (UserList *)aModelBaseObject;
+        }
+        for (NSDictionary * dic in list.list) {
+            [self.oldList addObject:dic[@"name"]];
+        }
+        [self refreshDataSource:self.oldList];
+    } errorHandler:^(LKAPIError *engineError) {
+        [LKUIUtils showError:engineError.message];
+    }];
 }
 
 - (void)refreshDataSource:(NSArray *)list {
@@ -58,13 +67,19 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UITableViewCell class])];
     cell.textLabel.text = self.dataSource[indexPath.row];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UserInfoViewController * vc = [[UserInfoViewController alloc] initWithNibName:nil bundle:nil];
+    vc.name = self.dataSource[indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - search result
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
-    NSLog(@"----active:%d",self.searchVC.isActive);
     if (self.searchVC.isActive) {
         NSString * value = [self.searchVC.searchBar.text lowercaseString];
         NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS %@",value];

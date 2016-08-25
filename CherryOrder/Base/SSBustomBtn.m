@@ -68,6 +68,23 @@
     return self;
 }
 
+- (instancetype)initWithFrame:(CGRect)frame
+                        title:(NSString *)title
+                      cordius:(CGFloat)cordius {
+    if (self = [super initWithFrame:frame]) {
+        self.backgroundColor = [UIColor whiteColor];
+        self.layer.cornerRadius = cordius;
+        self.layer.masksToBounds = YES;
+        self.titleLabel.textColor = [UIColor whiteColor];
+        [self setTitle:title forState:UIControlStateNormal];
+        [self setTitleColor:LK_TEXT_COLOR_GRAY forState:UIControlStateNormal];
+        [self setTitleColor:MAIN_COLOR forState:UIControlStateSelected];
+        self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+        self.titleLabel.font = [UIFont systemFontOfSize:16];
+    }
+    return self;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self addTarget:self action:@selector(tapAction) forControlEvents:UIControlEventTouchUpInside];

@@ -10,6 +10,7 @@
 #import "SZCalendarPicker.h"
 #import "ReactiveCocoa.h"
 #import "UserHistory.h"
+#import "OrderInfoViewController.h"
 
 @interface PersonalHistoryViewController ()
 
@@ -47,21 +48,37 @@
         self.orderHistoryArr = [[self getOrderDataArr:dic.list] mutableCopy];
         self.calendarPicker = [SZCalendarPicker showOnView:self.view];
         [self.calendarPicker refreshViewWIthOrderDataArr:self.orderHistoryArr];
-        
+        self.calendarPicker.canSelected = NO;
         self.calendarPicker.today = [NSDate date];
         self.calendarPicker.date = self.calendarPicker.today;
         self.calendarPicker.frame = CGRectMake(0, 0,self.view.frame.size.width, self.view.frame.size.width+70);
+        @weakify(self);
         self.calendarPicker.calendarBlock = ^(NSInteger day, NSInteger month, NSInteger year){
+            NSString * name = [LKUser sharedUser].name;
+            NSString * timeStr = [NSString stringWithFormat:@"%d-%d-%d",year,month,day];
+            OrderInfoViewController * vc = [[OrderInfoViewController alloc] initWithNibName:nil bundle:nil];
+            vc.dataDic = @{@"name":name,@"date":timeStr};
+            @strongify(self);
+            [self.navigationController pushViewController:vc animated:YES];
         };
+
     } errorHandler:^(LKAPIError *engineError) {
         self.calendarPicker = [SZCalendarPicker showOnView:self.view];
         [self.calendarPicker refreshViewWIthOrderDataArr:self.orderHistoryArr];
-        
+        self.calendarPicker.canSelected = NO;
         self.calendarPicker.today = [NSDate date];
         self.calendarPicker.date = self.calendarPicker.today;
         self.calendarPicker.frame = CGRectMake(0, 0,
                                                self.view.frame.size.width, self.view.frame.size.width+70);
+        @weakify(self);
         self.calendarPicker.calendarBlock = ^(NSInteger day, NSInteger month, NSInteger year){
+            NSString * name = [LKUser sharedUser].name;
+            NSString * timeStr = [NSString stringWithFormat:@"%d-%d-%d",year,month,day];
+            OrderInfoViewController * vc = [[OrderInfoViewController alloc] initWithNibName:nil bundle:nil];
+            vc.dataDic = @{@"name":name,@"date":timeStr};
+            @strongify(self);
+            [self.navigationController pushViewController:vc animated:YES];
+
         };
         [LKUIUtils showError:engineError.message];
         

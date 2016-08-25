@@ -67,12 +67,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         AccountInfoTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([AccountInfoTableViewCell class])];
-        NSData * imgData = [[UserInfoManager sharedManager] getUserInfo].image;
-        UIImage * img = [UIImage imageWithData:imgData];
-        if (img == nil) {
-            cell.accountImg.image = [UIImage imageNamed:@"personals"];
-        }
-        cell.accountImg.image = img;
+//        NSData * imgData = [[UserInfoManager sharedManager] getUserInfo].image;
+//        UIImage * img = [UIImage imageWithData:imgData];
+//        if (img == nil) {
+            cell.accountImg.image = [UIImage imageNamed:@"lukou"];
+//        }
+//        cell.accountImg.image = img;
         cell.titleView.text = [[UserInfoManager sharedManager] getUserInfo].name;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;

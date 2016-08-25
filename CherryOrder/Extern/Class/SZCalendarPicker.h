@@ -17,7 +17,7 @@
 @property (nonatomic , weak, readonly) UIButton *previousButton;
 @property (nonatomic , weak, readonly) UIButton *nextButton;
 @property (nonatomic , weak, readonly) UILabel *monthLabel;
-@property (nonatomic, assign) BOOL canSelected;
+@property (nonatomic, assign) BOOL canSelected;// if = 1:btn.enable=1; if = 0:btn.enable=0
 @property (weak, nonatomic) IBOutlet UIButton *orderHistory;
 @property (weak, nonatomic) IBOutlet UIButton *feeHistory;
 

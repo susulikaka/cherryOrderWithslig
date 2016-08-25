@@ -40,6 +40,15 @@ NSString *const SZCalendarCellIdentifier = @"cell";
     [_collectionView registerClass:[SZCalendarCell class] forCellWithReuseIdentifier:SZCalendarCellIdentifier];
     [_collectionView registerNib:[NameSelView nib] forCellWithReuseIdentifier:NSStringFromClass([NameSelView class])];
      _weekDayArray = @[@"S",@"M",@"T",@"W",@"T",@"F",@"S"];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addSelNoti:) name:@"addSelNoti" object:nil];
+}
+
+- (void)addSelNoti:(NSNotification *)noti {
+    NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:self.date];
+    NSInteger day = [noti.userInfo[@"day"] integerValue];
+    if (self.calendarBlock) {
+        self.calendarBlock(day, [comp month], [comp year]);
+    }
 }
 
 - (void)customInterface
@@ -140,10 +149,11 @@ NSString *const SZCalendarCellIdentifier = @"cell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     SZCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:SZCalendarCellIdentifier forIndexPath:indexPath];
+
     if (indexPath.section == 0) {
-        [cell.dateLabel setText:_weekDayArray[indexPath.row]];
-        [cell.dateLabel setTextColor:DARK_MAIN_COLOR];
-        cell.dateLabel.backgroundColor = [UIColor whiteColor];
+        [cell.dateBtn setTitle:_weekDayArray[indexPath.row] forState:UIControlStateNormal];
+        [cell.dateBtn setTitleColor:DARK_MAIN_COLOR forState:UIControlStateNormal];
+        [cell.dateBtn setBackgroundColor:[UIColor whiteColor] forState:UIControlStateNormal];
     } else {
         NSInteger daysInThisMonth = [self totaldaysInMonth:_date];
         NSInteger firstWeekday = [self firstWeekdayInThisMonth:_date];
@@ -151,38 +161,49 @@ NSString *const SZCalendarCellIdentifier = @"cell";
         NSInteger i = indexPath.row;
         
         if (i < firstWeekday) {
-            [cell.dateLabel setText:@""];
-            cell.dateLabel.backgroundColor = [UIColor whiteColor];
-            
+            [cell.dateBtn setTitle:@"" forState:UIControlStateNormal];
+            [cell.dateBtn setBackgroundColor:[UIColor whiteColor] forState:UIControlStateNormal];
         }else if (i > firstWeekday + daysInThisMonth - 1){
-            [cell.dateLabel setText:@""];
-            cell.dateLabel.backgroundColor = [UIColor whiteColor];
+            [cell.dateBtn setTitle:@"" forState:UIControlStateNormal];
+            [cell.dateBtn setBackgroundColor:[UIColor whiteColor] forState:UIControlStateNormal];
         }else{
             day = i - firstWeekday + 1;
             if (day < 10) {
-                [cell.dateLabel setText:[NSString stringWithFormat:@"0%i",day]];
+                [cell.dateBtn setTitle:[NSString stringWithFormat:@"0%ld",day] forState:UIControlStateNormal];
             } else {
-                [cell.dateLabel setText:[NSString stringWithFormat:@"%i",day]];
+                [cell.dateBtn setTitle:[NSString stringWithFormat:@"%ld",day] forState:UIControlStateNormal];
             }
-            NSString * time = [self.monthLabel.text stringByAppendingString:[NSString stringWithFormat:@"-%@",cell.dateLabel.text]];
+            NSString * time = [self.monthLabel.text stringByAppendingString:[NSString stringWithFormat:@"-%@",cell.dateBtn.titleLabel.text]];
             NSInteger isEqual = [self.orderDataArr indexOfObject:time];
-            if (isEqual >= 0 && isEqual < self.orderDataArr.count && cell.dateLabel.text.length>0) {
-                [cell.dateLabel setTextColor:[UIColor colorWithHexString:@"#6f6f6f"]];
-                cell.dateLabel.backgroundColor = DARK_MAIN_COLOR;
+            if (isEqual >= 0 && isEqual < self.orderDataArr.count && cell.dateBtn.titleLabel.text.length>0) {
+                [cell.dateBtn setTitleColor:[UIColor colorWithHexString:@"#cbcbcb"] forState:UIControlStateNormal];
+                [cell.dateBtn setBackgroundColor:MAIN_COLOR forState:UIControlStateNormal];
             } else {
-                [cell.dateLabel setTextColor:[UIColor colorWithHexString:@"#6f6f6f"]];
-                cell.dateLabel.backgroundColor = [UIColor whiteColor];
+                [cell.dateBtn setTitleColor:[UIColor colorWithHexString:@"#cbcbcb"] forState:UIControlStateNormal];
+                [cell.dateBtn setBackgroundColor:[UIColor whiteColor] forState:UIControlStateNormal];
             }
-            //this month
+            //this month   4898eb:lv   6f6f6f:black cbcbcb :gray
             if ([_today isEqualToDate:_date]) {
                 if (day == [self day:_date]) {
-                    [cell.dateLabel setTextColor:[UIColor colorWithHexString:@"#4898eb"]];
+                    [cell.dateBtn setTitleColor:[UIColor colorWithHexString:@"#4898eb"] forState:UIControlStateNormal];
                 } else if (day > [self day:_date]) {
-                    [cell.dateLabel setTextColor:[UIColor colorWithHexString:@"#cbcbcb"]];
+                    [cell.dateBtn setTitleColor:[UIColor colorWithHexString:@"#6f6f6f"] forState:UIControlStateNormal];
                 }
             } else if ([_today compare:_date] == NSOrderedAscending) {
-                [cell.dateLabel setTextColor:[UIColor colorWithHexString:@"#cbcbcb"]];
+                [cell.dateBtn setTitleColor:[UIColor colorWithHexString:@"#6f6f6f"] forState:UIControlStateNormal];
             }
+        }
+    }
+    
+    cell.dateBtn.enabled = self.canSelected;
+    if (self.canSelected) {
+        cell.dateBtn.selected = NO;
+        NSString * time = [self.monthLabel.text stringByAppendingString:[NSString stringWithFormat:@"-%@",cell.dateBtn.titleLabel.text]];
+        NSString * curStr = [self getCurTimeStr];
+        if (indexPath.section == 1 && [time compare:curStr] > 0) {
+            cell.dateBtn.enabled = YES;
+        } else {
+            cell.dateBtn.enabled = NO;
         }
     }
     return cell;
@@ -190,51 +211,30 @@ NSString *const SZCalendarCellIdentifier = @"cell";
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (indexPath.section == 1) {
-//        NSInteger daysInThisMonth = [self totaldaysInMonth:_date];
-//        NSInteger firstWeekday = [self firstWeekdayInThisMonth:_date];
-//        
-//        NSInteger day = 0;
-//        NSInteger i = indexPath.row;
-//        
-//        if (i >= firstWeekday && i <= firstWeekday + daysInThisMonth - 1) {
-//            day = i - firstWeekday + 1;
-//            
-//            //this month
-//            if ([_today isEqualToDate:_date]) {
-//                if (day <= [self day:_date]) {
-//                    return YES;
-//                }
-//            } else if ([_today compare:_date] == NSOrderedDescending) {
-//                return YES;
-//            }
-//        }
-//    }
-//    return NO;
     return YES;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    SZCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:SZCalendarCellIdentifier forIndexPath:indexPath];
-    if (self.canSelected) {
-        [cell.dateLabel setBackgroundColor:MAIN_COLOR];
-    } else {
-        cell.dateLabel.backgroundColor = [UIColor whiteColor];
-    }
-    NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:self.date];
-    NSInteger firstWeekday = [self firstWeekdayInThisMonth:_date];
-    
-    NSInteger day = 0;
-    NSInteger i = indexPath.row;
-    day = i - firstWeekday + 1;
-    if (self.calendarBlock) {
-        self.calendarBlock(day, [comp month], [comp year]);
+    SZCalendarCell *cell = (SZCalendarCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    if (!self.canSelected) {
+        NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:self.date];
+        NSInteger day = [cell.dateBtn.titleLabel.text integerValue];
+        if (self.calendarBlock) {
+            self.calendarBlock(day, [comp month], [comp year]);
+        }
     }
 }
 
 - (IBAction)previouseAction:(UIButton *)sender
 {
+    if (self.canSelected) {
+        [UIView transitionWithView:self duration:0.5 options:UIViewAnimationOptionTransitionCurlDown animations:^(void) {
+            self.date = [self lastMonth:self.date];
+        } completion:nil];
+        return;
+    }
+    
     [[LKAPIClient sharedClient] requestGETForOrderListHistoryOneMonth:@"user/orders" params:[self paramsWithCurDate:-1] modelClass:[UserHistory class] completionHandler:^(LKJSonModel *aModelBaseObject) {
         UserHistory * dic;
         if ([aModelBaseObject isKindOfClass:[UserHistory class]]) {
@@ -255,6 +255,13 @@ NSString *const SZCalendarCellIdentifier = @"cell";
 
 - (IBAction)nexAction:(UIButton *)sender
 {
+    if (self.canSelected) {
+        [UIView transitionWithView:self duration:0.5 options:UIViewAnimationOptionTransitionCurlDown animations:^(void) {
+            self.date = [self nextMonth:self.date];
+        } completion:nil];
+        return;
+    }
+    
     [[LKAPIClient sharedClient] requestGETForOrderListHistoryOneMonth:@"user/orders" params:[self paramsWithCurDate:1] modelClass:[UserHistory class] completionHandler:^(LKJSonModel *aModelBaseObject) {
         UserHistory * dic;
         if ([aModelBaseObject isKindOfClass:[UserHistory class]]) {
